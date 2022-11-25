@@ -638,15 +638,15 @@ async function callRouteAction({
 async function callRouteLoader({
   loadContext,
   routeId,
-  loader,
+  loader: loader2,
   params,
   request
 }) {
-  if (!loader)
+  if (!loader2)
     throw new Error(`You made a ${request.method} request to ${request.url} but did not provide a default component or \`loader\` for route "${routeId}", so there is no way to handle the request.`);
   let result;
   try {
-    result = await loader({
+    result = await loader2({
       request: stripDataParam(stripIndexParam(request)),
       context: loadContext,
       params
@@ -10454,12 +10454,23 @@ function App() {
   }, this);
 }
 
+// app/routes/hello.js
+var hello_exports = {};
+__export(hello_exports, {
+  Fsdf: () => Fsdf
+});
+var import_cloudflare2 = __toESM(require_dist());
+function Fsdf() {
+  return { df: "hola" };
+}
+
 // app/routes/index.tsx
 var routes_exports = {};
 __export(routes_exports, {
-  default: () => Index
+  default: () => Index,
+  loader: () => loader
 });
-var import_jsx_dev_runtime = __toESM(require_jsx_dev_runtime());
+var import_jsx_dev_runtime = __toESM(require_jsx_dev_runtime()), loader = async ({ context, request }) => (console.log("XX", context == null ? void 0 : context.sessionStorage), null);
 function Index() {
   return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
     style: { fontFamily: "system-ui, sans-serif", lineHeight: "1.4" },
@@ -10468,7 +10479,7 @@ function Index() {
         children: "Hola"
       }, void 0, !1, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 22,
+        lineNumber: 26,
         columnNumber: 7
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("ul", {
@@ -10481,12 +10492,12 @@ function Index() {
               children: "15m Quickstart Blog Tutorial"
             }, void 0, !1, {
               fileName: "app/routes/index.tsx",
-              lineNumber: 25,
+              lineNumber: 29,
               columnNumber: 11
             }, this)
           }, void 0, !1, {
             fileName: "app/routes/index.tsx",
-            lineNumber: 24,
+            lineNumber: 28,
             columnNumber: 9
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("li", {
@@ -10497,12 +10508,12 @@ function Index() {
               children: "Deep Dive Jokes App Tutorial"
             }, void 0, !1, {
               fileName: "app/routes/index.tsx",
-              lineNumber: 34,
+              lineNumber: 38,
               columnNumber: 11
             }, this)
           }, void 0, !1, {
             fileName: "app/routes/index.tsx",
-            lineNumber: 33,
+            lineNumber: 37,
             columnNumber: 9
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("li", {
@@ -10513,30 +10524,30 @@ function Index() {
               children: "Remix Docs"
             }, void 0, !1, {
               fileName: "app/routes/index.tsx",
-              lineNumber: 43,
+              lineNumber: 47,
               columnNumber: 11
             }, this)
           }, void 0, !1, {
             fileName: "app/routes/index.tsx",
-            lineNumber: 42,
+            lineNumber: 46,
             columnNumber: 9
           }, this)
         ]
       }, void 0, !0, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 23,
+        lineNumber: 27,
         columnNumber: 7
       }, this)
     ]
   }, void 0, !0, {
     fileName: "app/routes/index.tsx",
-    lineNumber: 21,
+    lineNumber: 25,
     columnNumber: 5
   }, this);
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "e94874f9", entry: { module: "/build/entry.client-U36SYI2Q.js", imports: ["/build/_shared/chunk-UFLJHWDI.js", "/build/_shared/chunk-6RKL5HGB.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-XOXEPHCG.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-DMRFZNEU.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-E94874F9.js" };
+var assets_manifest_default = { version: "d285dd42", entry: { module: "/build/entry.client-3IUT6VNV.js", imports: ["/build/_shared/chunk-NM2B5XN4.js", "/build/_shared/chunk-YW5IH3FG.js", "/build/_shared/chunk-42Z7WWMI.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-J6NINZYM.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/hello": { id: "routes/hello", parentId: "root", path: "hello", index: void 0, caseSensitive: void 0, module: "/build/routes/hello-42DM7SKU.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-IQODUKJC.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-D285DD42.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
@@ -10547,6 +10558,14 @@ var assetsBuildDirectory = "public/build", publicPath = "/build/", entry = { mod
     index: void 0,
     caseSensitive: void 0,
     module: root_exports
+  },
+  "routes/hello": {
+    id: "routes/hello",
+    parentId: "root",
+    path: "hello",
+    index: void 0,
+    caseSensitive: void 0,
+    module: hello_exports
   },
   "routes/index": {
     id: "routes/index",

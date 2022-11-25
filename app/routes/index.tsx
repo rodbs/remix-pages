@@ -1,20 +1,24 @@
 import { json, LoaderFunction } from '@remix-run/cloudflare'
 
-// export const loader: LoaderFunction = async ({ context, request }) => {
-//   const session = await context.sessionStorage.getSession(
-//     request.headers.get("Cookie")
-//   )
+export const loader: LoaderFunction = async ({ context, request }) => {
+  // const session = await context.sessionStorage.get("userId"))
+  console.log('XX', context?.sessionStorage)
+  return null
 
-//   let headers = {}
+  // const session = await context.sessionStorage.getSession(
+  //   request.headers.get("Cookie")
+  // )
 
-//   if (!session.has("userId")) {
-//     session.set("userId", `user:${Math.random()}`)
-//     headers["Set-Cookie"] = await context.sessionStorage.commitSession(session)
-//   } else {
-//     console.log(session.get("userId"))
-//   }
-//   return json(null, { headers })
-// }
+  // let headers = {}
+
+  // if (!session.has("userId")) {
+  //   session.set("userId", `user:${Math.random()}`)
+  //   headers["Set-Cookie"] = await context.sessionStorage.commitSession(session)
+  // } else {
+  //   console.log(session.get("userId"))
+  // }
+  // return json(null, { headers })
+}
 
 export default function Index() {
   return (
