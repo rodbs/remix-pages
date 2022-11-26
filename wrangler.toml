@@ -1,4 +1,4 @@
-name = "rremix-pages"
+name = "remix-pages"
 main = "server.ts"
 compatibility_date = "2022-11-24"
 compatibility_flags = ["streams_enable_constructors"]
