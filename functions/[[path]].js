@@ -609,11 +609,11 @@ var json, redirect, redirectStatusCodes, init_responses = __esm({
 async function callRouteAction({
   loadContext,
   routeId,
-  action,
+  action: action3,
   params,
   request
 }) {
-  if (!action) {
+  if (!action3) {
     let response = new Response(null, {
       status: 405
     });
@@ -621,7 +621,7 @@ async function callRouteAction({
   }
   let result;
   try {
-    result = await action({
+    result = await action3({
       request: stripDataParam(stripIndexParam(request)),
       context: loadContext,
       params
@@ -638,15 +638,15 @@ async function callRouteAction({
 async function callRouteLoader({
   loadContext,
   routeId,
-  loader: loader2,
+  loader: loader3,
   params,
   request
 }) {
-  if (!loader2)
+  if (!loader3)
     throw new Error(`You made a ${request.method} request to ${request.url} but did not provide a default component or \`loader\` for route "${routeId}", so there is no way to handle the request.`);
   let result;
   try {
-    result = await loader2({
+    result = await loader3({
       request: stripDataParam(stripIndexParam(request)),
       context: loadContext,
       params
@@ -1124,7 +1124,7 @@ var require_react_development = __commonJS({
           didWarnAboutStringRefs[componentName] || (error('Component "%s" contains the string ref "%s". Support for string refs will be removed in a future major release. This case cannot be automatically converted to an arrow function. We ask you to manually fix this case by using useRef() or createRef() instead. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref', componentName, config2.ref), didWarnAboutStringRefs[componentName] = !0);
         }
       }
-      var ReactElement = function(type, key, ref, self, source, owner, props) {
+      var ReactElement = function(type, key, ref, self2, source, owner, props) {
         var element = {
           $$typeof: REACT_ELEMENT_TYPE,
           type,
@@ -1142,7 +1142,7 @@ var require_react_development = __commonJS({
           configurable: !1,
           enumerable: !1,
           writable: !1,
-          value: self
+          value: self2
         }), Object.defineProperty(element, "_source", {
           configurable: !1,
           enumerable: !1,
@@ -1151,9 +1151,9 @@ var require_react_development = __commonJS({
         }), Object.freeze && (Object.freeze(element.props), Object.freeze(element)), element;
       };
       function createElement7(type, config2, children) {
-        var propName, props = {}, key = null, ref = null, self = null, source = null;
+        var propName, props = {}, key = null, ref = null, self2 = null, source = null;
         if (config2 != null) {
-          hasValidRef(config2) && (ref = config2.ref, warnIfStringRefCannotBeAutoConverted(config2)), hasValidKey(config2) && (key = "" + config2.key), self = config2.__self === void 0 ? null : config2.__self, source = config2.__source === void 0 ? null : config2.__source;
+          hasValidRef(config2) && (ref = config2.ref, warnIfStringRefCannotBeAutoConverted(config2)), hasValidKey(config2) && (key = "" + config2.key), self2 = config2.__self === void 0 ? null : config2.__self, source = config2.__source === void 0 ? null : config2.__source;
           for (propName in config2)
             hasOwnProperty2.call(config2, propName) && !RESERVED_PROPS.hasOwnProperty(propName) && (props[propName] = config2[propName]);
         }
@@ -1174,7 +1174,7 @@ var require_react_development = __commonJS({
           var displayName = typeof type == "function" ? type.displayName || type.name || "Unknown" : type;
           key && defineKeyPropWarningGetter(props, displayName), ref && defineRefPropWarningGetter(props, displayName);
         }
-        return ReactElement(type, key, ref, self, source, ReactCurrentOwner.current, props);
+        return ReactElement(type, key, ref, self2, source, ReactCurrentOwner.current, props);
       }
       function cloneAndReplaceKey(oldElement, newKey) {
         var newElement = ReactElement(oldElement.type, newKey, oldElement.ref, oldElement._self, oldElement._source, oldElement._owner, oldElement.props);
@@ -1183,7 +1183,7 @@ var require_react_development = __commonJS({
       function cloneElement(element, config2, children) {
         if (element == null)
           throw Error("React.cloneElement(...): The argument must be a React element, but you passed " + element + ".");
-        var propName, props = _assign({}, element.props), key = element.key, ref = element.ref, self = element._self, source = element._source, owner = element._owner;
+        var propName, props = _assign({}, element.props), key = element.key, ref = element.ref, self2 = element._self, source = element._source, owner = element._owner;
         if (config2 != null) {
           hasValidRef(config2) && (ref = config2.ref, owner = ReactCurrentOwner.current), hasValidKey(config2) && (key = "" + config2.key);
           var defaultProps;
@@ -1199,7 +1199,7 @@ var require_react_development = __commonJS({
             childArray[i] = arguments[i + 2];
           props.children = childArray;
         }
-        return ReactElement(element.type, key, ref, self, source, owner, props);
+        return ReactElement(element.type, key, ref, self2, source, owner, props);
       }
       function isValidElement2(object) {
         return typeof object == "object" && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
@@ -1291,7 +1291,7 @@ var require_react_development = __commonJS({
           forEachFunc.apply(this, arguments);
         }, forEachContext);
       }
-      function toArray(children) {
+      function toArray2(children) {
         return mapChildren(children, function(child) {
           return child;
         }) || [];
@@ -1906,7 +1906,7 @@ Check the top-level render call using <` + parentName + ">.");
         map: mapChildren,
         forEach: forEachChildren,
         count: countChildren,
-        toArray,
+        toArray: toArray2,
         only: onlyChild
       };
       exports.Children = Children2, exports.Component = Component, exports.PureComponent = PureComponent, exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals, exports.cloneElement = cloneElement$1, exports.createContext = createContext3, exports.createElement = createElement$1, exports.createFactory = createFactory, exports.createRef = createRef, exports.forwardRef = forwardRef3, exports.isValidElement = isValidElement2, exports.lazy = lazy, exports.memo = memo, exports.useCallback = useCallback5, exports.useContext = useContext4, exports.useDebugValue = useDebugValue, exports.useEffect = useEffect4, exports.useImperativeHandle = useImperativeHandle, exports.useLayoutEffect = useLayoutEffect4, exports.useMemo = useMemo4, exports.useReducer = useReducer, exports.useRef = useRef4, exports.useState = useState4, exports.version = ReactVersion;
@@ -3167,40 +3167,40 @@ function EventEmitter() {
 function $getMaxListeners(that) {
   return that._maxListeners === void 0 ? EventEmitter.defaultMaxListeners : that._maxListeners;
 }
-function emitNone(handler, isFn, self) {
+function emitNone(handler, isFn, self2) {
   if (isFn)
-    handler.call(self);
+    handler.call(self2);
   else
     for (var len = handler.length, listeners2 = arrayClone(handler, len), i = 0; i < len; ++i)
-      listeners2[i].call(self);
+      listeners2[i].call(self2);
 }
-function emitOne(handler, isFn, self, arg1) {
+function emitOne(handler, isFn, self2, arg1) {
   if (isFn)
-    handler.call(self, arg1);
+    handler.call(self2, arg1);
   else
     for (var len = handler.length, listeners2 = arrayClone(handler, len), i = 0; i < len; ++i)
-      listeners2[i].call(self, arg1);
+      listeners2[i].call(self2, arg1);
 }
-function emitTwo(handler, isFn, self, arg1, arg2) {
+function emitTwo(handler, isFn, self2, arg1, arg2) {
   if (isFn)
-    handler.call(self, arg1, arg2);
+    handler.call(self2, arg1, arg2);
   else
     for (var len = handler.length, listeners2 = arrayClone(handler, len), i = 0; i < len; ++i)
-      listeners2[i].call(self, arg1, arg2);
+      listeners2[i].call(self2, arg1, arg2);
 }
-function emitThree(handler, isFn, self, arg1, arg2, arg3) {
+function emitThree(handler, isFn, self2, arg1, arg2, arg3) {
   if (isFn)
-    handler.call(self, arg1, arg2, arg3);
+    handler.call(self2, arg1, arg2, arg3);
   else
     for (var len = handler.length, listeners2 = arrayClone(handler, len), i = 0; i < len; ++i)
-      listeners2[i].call(self, arg1, arg2, arg3);
+      listeners2[i].call(self2, arg1, arg2, arg3);
 }
-function emitMany(handler, isFn, self, args) {
+function emitMany(handler, isFn, self2, args) {
   if (isFn)
-    handler.apply(self, args);
+    handler.apply(self2, args);
   else
     for (var len = handler.length, listeners2 = arrayClone(handler, len), i = 0; i < len; ++i)
-      listeners2[i].apply(self, args);
+      listeners2[i].apply(self2, args);
 }
 function _addListener(target, type, listener, prepend) {
   var m, events, existing;
@@ -4939,8 +4939,8 @@ function pipeOnDrain(src) {
     debug("pipeOnDrain", state.awaitDrain), state.awaitDrain && state.awaitDrain--, state.awaitDrain === 0 && src.listeners("data").length && (state.flowing = !0, flow(src));
   };
 }
-function nReadingNextTick(self) {
-  debug("readable nexttick read 0"), self.read(0);
+function nReadingNextTick(self2) {
+  debug("readable nexttick read 0"), self2.read(0);
 }
 function resume(stream, state) {
   state.resumeScheduled || (state.resumeScheduled = !0, nextTick(resume_, stream, state));
@@ -5135,16 +5135,16 @@ var debug, MAX_HWM, init_readable = __esm({
       return debug("call pause flowing=%j", this._readableState.flowing), this._readableState.flowing !== !1 && (debug("pause"), this._readableState.flowing = !1, this.emit("pause")), this;
     };
     Readable.prototype.wrap = function(stream) {
-      var state = this._readableState, paused = !1, self = this;
+      var state = this._readableState, paused = !1, self2 = this;
       stream.on("end", function() {
         if (debug("wrapped end"), state.decoder && !state.ended) {
           var chunk = state.decoder.end();
-          chunk && chunk.length && self.push(chunk);
+          chunk && chunk.length && self2.push(chunk);
         }
-        self.push(null);
+        self2.push(null);
       }), stream.on("data", function(chunk) {
         if (debug("wrapped data"), state.decoder && (chunk = state.decoder.write(chunk)), !(state.objectMode && chunk == null) && !(!state.objectMode && (!chunk || !chunk.length))) {
-          var ret = self.push(chunk);
+          var ret = self2.push(chunk);
           ret || (paused = !0, stream.pause());
         }
       });
@@ -5156,10 +5156,10 @@ var debug, MAX_HWM, init_readable = __esm({
         }(i));
       var events = ["error", "close", "destroy", "pause", "resume"];
       return forEach(events, function(ev) {
-        stream.on(ev, self.emit.bind(self, ev));
-      }), self._read = function(n) {
+        stream.on(ev, self2.emit.bind(self2, ev));
+      }), self2._read = function(n) {
         debug("wrapped _read", n), paused && (paused = !1, stream.resume());
-      }, self;
+      }, self2;
     };
     Readable._fromList = fromList;
   }
@@ -5333,8 +5333,8 @@ function Duplex(options) {
 function onend() {
   this.allowHalfOpen || this._writableState.ended || nextTick(onEndNT, this);
 }
-function onEndNT(self) {
-  self.end();
+function onEndNT(self2) {
+  self2.end();
 }
 var keys, method, v, init_duplex = __esm({
   "node_modules/rollup-plugin-node-polyfills/polyfills/readable-stream/duplex.js"() {
@@ -6331,8 +6331,8 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
         var threadID = currentPartialRenderer.threadID;
         return validateContextBounds(context, threadID), context[threadID];
       }
-      function basicStateReducer(state, action) {
-        return typeof action == "function" ? action(state) : action;
+      function basicStateReducer(state, action3) {
+        return typeof action3 == "function" ? action3(state) : action3;
       }
       function useState4(initialState) {
         return currentHookNameInDev = "useState", useReducer(
@@ -6349,8 +6349,8 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
               renderPhaseUpdates.delete(queue2);
               var newState = workInProgressHook.memoizedState, update = firstRenderPhaseUpdate;
               do {
-                var action = update.action;
-                isInHookUserCodeInDev = !0, newState = reducer(newState, action), isInHookUserCodeInDev = !1, update = update.next;
+                var action3 = update.action;
+                isInHookUserCodeInDev = !0, newState = reducer(newState, action3), isInHookUserCodeInDev = !1, update = update.next;
               } while (update !== null);
               return workInProgressHook.memoizedState = newState, [newState, dispatch];
             }
@@ -6396,13 +6396,13 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
       function useLayoutEffect4(create, inputs) {
         currentHookNameInDev = "useLayoutEffect", error("useLayoutEffect does nothing on the server, because its effect cannot be encoded into the server renderer's output format. This will lead to a mismatch between the initial, non-hydrated UI and the intended UI. To avoid this, useLayoutEffect should only be used in components that render exclusively on the client. See https://reactjs.org/link/uselayouteffect-ssr for common fixes.");
       }
-      function dispatchAction(componentIdentity, queue2, action) {
+      function dispatchAction(componentIdentity, queue2, action3) {
         if (!(numberOfReRenders < RE_RENDER_LIMIT))
           throw Error("Too many re-renders. React limits the number of renders to prevent an infinite loop.");
         if (componentIdentity === currentlyRenderingComponent) {
           didScheduleRenderPhaseUpdate = !0;
           var update = {
-            action,
+            action: action3,
             next: null
           };
           renderPhaseUpdates === null && (renderPhaseUpdates = /* @__PURE__ */ new Map());
@@ -6437,7 +6437,7 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
       function useOpaqueIdentifier() {
         return (currentPartialRenderer.identifierPrefix || "") + "R:" + (currentPartialRenderer.uniqueID++).toString(36);
       }
-      function noop2() {
+      function noop4() {
       }
       var currentPartialRenderer = null;
       function setCurrentPartialRenderer(renderer) {
@@ -6452,9 +6452,9 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
         useState: useState4,
         useLayoutEffect: useLayoutEffect4,
         useCallback: useCallback5,
-        useImperativeHandle: noop2,
-        useEffect: noop2,
-        useDebugValue: noop2,
+        useImperativeHandle: noop4,
+        useEffect: noop4,
+        useDebugValue: noop4,
         useDeferredValue,
         useTransition: useTransition2,
         useOpaqueIdentifier,
@@ -7262,7 +7262,7 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
       function validateProperties$2(type, props, eventRegistry) {
         isCustomComponent(type, props) || warnUnknownProperties(type, props, eventRegistry);
       }
-      var toArray = React5.Children.toArray, currentDebugStacks = [], ReactCurrentDispatcher$1 = ReactSharedInternals.ReactCurrentDispatcher, ReactDebugCurrentFrame$1, prevGetCurrentStackImpl = null, getCurrentServerStackImpl = function() {
+      var toArray2 = React5.Children.toArray, currentDebugStacks = [], ReactCurrentDispatcher$1 = ReactSharedInternals.ReactCurrentDispatcher, ReactDebugCurrentFrame$1, prevGetCurrentStackImpl = null, getCurrentServerStackImpl = function() {
         return "";
       }, describeStackFrame = function(element) {
         return "";
@@ -7344,13 +7344,13 @@ Please check the code for the %s component.`, callerName, callerName, componentN
       }
       function flattenTopLevelChildren(children) {
         if (!React5.isValidElement(children))
-          return toArray(children);
+          return toArray2(children);
         var element = children;
         if (element.type !== REACT_FRAGMENT_TYPE)
           return [element];
         var fragmentChildren = element.props.children;
         if (!React5.isValidElement(fragmentChildren))
-          return toArray(fragmentChildren);
+          return toArray2(fragmentChildren);
         var fragmentChildElement = fragmentChildren;
         return [fragmentChildElement];
       }
@@ -7595,7 +7595,7 @@ Add a <Suspense fallback=...> component higher in the tree to provide a loading 
                 var $$typeof = nextChild.$$typeof;
                 throw Error($$typeof === REACT_PORTAL_TYPE ? "Portals are not currently supported by the server renderer. Render them conditionally so that they only appear on the client render." : "Unknown element-like object type: " + $$typeof.toString() + ". This is likely a bug in React. Please file an issue.");
               }
-              var nextChildren = toArray(nextChild), frame = {
+              var nextChildren = toArray2(nextChild), frame = {
                 type: null,
                 domNamespace: parentNamespace,
                 children: nextChildren,
@@ -7615,7 +7615,7 @@ Add a <Suspense fallback=...> component higher in the tree to provide a loading 
               case REACT_PROFILER_TYPE:
               case REACT_SUSPENSE_LIST_TYPE:
               case REACT_FRAGMENT_TYPE: {
-                var _nextChildren = toArray(nextChild.props.children), _frame = {
+                var _nextChildren = toArray2(nextChild.props.children), _frame = {
                   type: null,
                   domNamespace: parentNamespace,
                   children: _nextChildren,
@@ -7634,7 +7634,7 @@ Add a <Suspense fallback=...> component higher in the tree to provide a loading 
               switch (elementType.$$typeof) {
                 case REACT_FORWARD_REF_TYPE: {
                   var element = nextChild, _nextChildren5, componentIdentity = {};
-                  prepareToUseHooks(componentIdentity), _nextChildren5 = elementType.render(element.props, element.ref), _nextChildren5 = finishHooks(elementType.render, element.props, _nextChildren5, element.ref), _nextChildren5 = toArray(_nextChildren5);
+                  prepareToUseHooks(componentIdentity), _nextChildren5 = elementType.render(element.props, element.ref), _nextChildren5 = finishHooks(elementType.render, element.props, _nextChildren5, element.ref), _nextChildren5 = toArray2(_nextChildren5);
                   var _frame5 = {
                     type: null,
                     domNamespace: parentNamespace,
@@ -7659,7 +7659,7 @@ Add a <Suspense fallback=...> component higher in the tree to provide a loading 
                   return _frame6.debugElementStack = [], this.stack.push(_frame6), "";
                 }
                 case REACT_PROVIDER_TYPE: {
-                  var provider = nextChild, nextProps = provider.props, _nextChildren7 = toArray(nextProps.children), _frame7 = {
+                  var provider = nextChild, nextProps = provider.props, _nextChildren7 = toArray2(nextProps.children), _frame7 = {
                     type: provider,
                     domNamespace: parentNamespace,
                     children: _nextChildren7,
@@ -7674,7 +7674,7 @@ Add a <Suspense fallback=...> component higher in the tree to provide a loading 
                   reactContext._context === void 0 ? reactContext !== reactContext.Consumer && (hasWarnedAboutUsingContextAsConsumer || (hasWarnedAboutUsingContextAsConsumer = !0, error("Rendering <Context> directly is not supported and will be removed in a future major release. Did you mean to render <Context.Consumer> instead?"))) : reactContext = reactContext._context;
                   var _nextProps = nextChild.props, threadID = this.threadID;
                   validateContextBounds(reactContext, threadID);
-                  var nextValue = reactContext[threadID], _nextChildren8 = toArray(_nextProps.children(nextValue)), _frame8 = {
+                  var nextValue = reactContext[threadID], _nextChildren8 = toArray2(_nextProps.children(nextValue)), _frame8 = {
                     type: nextChild,
                     domNamespace: parentNamespace,
                     children: _nextChildren8,
@@ -7787,7 +7787,7 @@ Check the render method of \`` + ownerName + "`.");
           var children, innerMarkup = getNonChildrenInnerMarkup(props);
           innerMarkup != null ? (children = [], newlineEatingTags.hasOwnProperty(tag) && innerMarkup.charAt(0) === `
 ` && (out += `
-`), out += innerMarkup) : children = toArray(props.children);
+`), out += innerMarkup) : children = toArray2(props.children);
           var frame = {
             domNamespace: getChildNamespace(parentNamespace, element.type),
             type: tag,
@@ -8199,8 +8199,8 @@ var require_react_jsx_dev_runtime_development = __commonJS({
         }
         return config2.key !== void 0;
       }
-      function warnIfStringRefCannotBeAutoConverted(config2, self) {
-        if (typeof config2.ref == "string" && ReactCurrentOwner.current && self && ReactCurrentOwner.current.stateNode !== self) {
+      function warnIfStringRefCannotBeAutoConverted(config2, self2) {
+        if (typeof config2.ref == "string" && ReactCurrentOwner.current && self2 && ReactCurrentOwner.current.stateNode !== self2) {
           var componentName = getComponentName(ReactCurrentOwner.current.type);
           didWarnAboutStringRefs[componentName] || (error('Component "%s" contains the string ref "%s". Support for string refs will be removed in a future major release. This case cannot be automatically converted to an arrow function. We ask you to manually fix this case by using useRef() or createRef() instead. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref', getComponentName(ReactCurrentOwner.current.type), config2.ref), didWarnAboutStringRefs[componentName] = !0);
         }
@@ -8227,7 +8227,7 @@ var require_react_jsx_dev_runtime_development = __commonJS({
           });
         }
       }
-      var ReactElement = function(type, key, ref, self, source, owner, props) {
+      var ReactElement = function(type, key, ref, self2, source, owner, props) {
         var element = {
           $$typeof: REACT_ELEMENT_TYPE,
           type,
@@ -8245,7 +8245,7 @@ var require_react_jsx_dev_runtime_development = __commonJS({
           configurable: !1,
           enumerable: !1,
           writable: !1,
-          value: self
+          value: self2
         }), Object.defineProperty(element, "_source", {
           configurable: !1,
           enumerable: !1,
@@ -8253,10 +8253,10 @@ var require_react_jsx_dev_runtime_development = __commonJS({
           value: source
         }), Object.freeze && (Object.freeze(element.props), Object.freeze(element)), element;
       };
-      function jsxDEV4(type, config2, maybeKey, source, self) {
+      function jsxDEV5(type, config2, maybeKey, source, self2) {
         {
           var propName, props = {}, key = null, ref = null;
-          maybeKey !== void 0 && (key = "" + maybeKey), hasValidKey(config2) && (key = "" + config2.key), hasValidRef(config2) && (ref = config2.ref, warnIfStringRefCannotBeAutoConverted(config2, self));
+          maybeKey !== void 0 && (key = "" + maybeKey), hasValidKey(config2) && (key = "" + config2.key), hasValidRef(config2) && (ref = config2.ref, warnIfStringRefCannotBeAutoConverted(config2, self2));
           for (propName in config2)
             hasOwnProperty2.call(config2, propName) && !RESERVED_PROPS.hasOwnProperty(propName) && (props[propName] = config2[propName]);
           if (type && type.defaultProps) {
@@ -8268,7 +8268,7 @@ var require_react_jsx_dev_runtime_development = __commonJS({
             var displayName = typeof type == "function" ? type.displayName || type.name || "Unknown" : type;
             key && defineKeyPropWarningGetter(props, displayName), ref && defineRefPropWarningGetter(props, displayName);
           }
-          return ReactElement(type, key, ref, self, source, ReactCurrentOwner.current, props);
+          return ReactElement(type, key, ref, self2, source, ReactCurrentOwner.current, props);
         }
       }
       var ReactCurrentOwner$1 = ReactSharedInternals.ReactCurrentOwner, ReactDebugCurrentFrame$1 = ReactSharedInternals.ReactDebugCurrentFrame;
@@ -8387,7 +8387,7 @@ Check the top-level render call using <` + parentName + ">.");
           fragment.ref !== null && (setCurrentlyValidatingElement$1(fragment), error("Invalid attribute `ref` supplied to `React.Fragment`."), setCurrentlyValidatingElement$1(null));
         }
       }
-      function jsxWithValidation(type, props, key, isStaticChildren, source, self) {
+      function jsxWithValidation(type, props, key, isStaticChildren, source, self2) {
         {
           var validType = isValidElementType(type);
           if (!validType) {
@@ -8398,7 +8398,7 @@ Check the top-level render call using <` + parentName + ">.");
             var typeString;
             type === null ? typeString = "null" : Array.isArray(type) ? typeString = "array" : type !== void 0 && type.$$typeof === REACT_ELEMENT_TYPE ? (typeString = "<" + (getComponentName(type.type) || "Unknown") + " />", info = " Did you accidentally export a JSX literal instead of a component?") : typeString = typeof type, error("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
           }
-          var element = jsxDEV4(type, props, key, source, self);
+          var element = jsxDEV5(type, props, key, source, self2);
           if (element == null)
             return element;
           if (validType) {
@@ -8428,6 +8428,427 @@ var require_jsx_dev_runtime = __commonJS({
   "node_modules/react/jsx-dev-runtime.js"(exports, module) {
     "use strict";
     module.exports = require_react_jsx_dev_runtime_development();
+  }
+});
+
+// node_modules/cross-fetch/dist/browser-ponyfill.js
+var require_browser_ponyfill = __commonJS({
+  "node_modules/cross-fetch/dist/browser-ponyfill.js"(exports, module) {
+    var global2 = typeof self < "u" ? self : exports, __self__ = function() {
+      function F() {
+        this.fetch = !1, this.DOMException = global2.DOMException;
+      }
+      return F.prototype = global2, new F();
+    }();
+    (function(self2) {
+      var irrelevant = function(exports2) {
+        var support = {
+          searchParams: "URLSearchParams" in self2,
+          iterable: "Symbol" in self2 && "iterator" in Symbol,
+          blob: "FileReader" in self2 && "Blob" in self2 && function() {
+            try {
+              return new Blob(), !0;
+            } catch {
+              return !1;
+            }
+          }(),
+          formData: "FormData" in self2,
+          arrayBuffer: "ArrayBuffer" in self2
+        };
+        function isDataView(obj) {
+          return obj && DataView.prototype.isPrototypeOf(obj);
+        }
+        if (support.arrayBuffer)
+          var viewClasses = [
+            "[object Int8Array]",
+            "[object Uint8Array]",
+            "[object Uint8ClampedArray]",
+            "[object Int16Array]",
+            "[object Uint16Array]",
+            "[object Int32Array]",
+            "[object Uint32Array]",
+            "[object Float32Array]",
+            "[object Float64Array]"
+          ], isArrayBufferView = ArrayBuffer.isView || function(obj) {
+            return obj && viewClasses.indexOf(Object.prototype.toString.call(obj)) > -1;
+          };
+        function normalizeName(name) {
+          if (typeof name != "string" && (name = String(name)), /[^a-z0-9\-#$%&'*+.^_`|~]/i.test(name))
+            throw new TypeError("Invalid character in header field name");
+          return name.toLowerCase();
+        }
+        function normalizeValue(value) {
+          return typeof value != "string" && (value = String(value)), value;
+        }
+        function iteratorFor(items) {
+          var iterator = {
+            next: function() {
+              var value = items.shift();
+              return { done: value === void 0, value };
+            }
+          };
+          return support.iterable && (iterator[Symbol.iterator] = function() {
+            return iterator;
+          }), iterator;
+        }
+        function Headers2(headers) {
+          this.map = {}, headers instanceof Headers2 ? headers.forEach(function(value, name) {
+            this.append(name, value);
+          }, this) : Array.isArray(headers) ? headers.forEach(function(header) {
+            this.append(header[0], header[1]);
+          }, this) : headers && Object.getOwnPropertyNames(headers).forEach(function(name) {
+            this.append(name, headers[name]);
+          }, this);
+        }
+        Headers2.prototype.append = function(name, value) {
+          name = normalizeName(name), value = normalizeValue(value);
+          var oldValue = this.map[name];
+          this.map[name] = oldValue ? oldValue + ", " + value : value;
+        }, Headers2.prototype.delete = function(name) {
+          delete this.map[normalizeName(name)];
+        }, Headers2.prototype.get = function(name) {
+          return name = normalizeName(name), this.has(name) ? this.map[name] : null;
+        }, Headers2.prototype.has = function(name) {
+          return this.map.hasOwnProperty(normalizeName(name));
+        }, Headers2.prototype.set = function(name, value) {
+          this.map[normalizeName(name)] = normalizeValue(value);
+        }, Headers2.prototype.forEach = function(callback, thisArg) {
+          for (var name in this.map)
+            this.map.hasOwnProperty(name) && callback.call(thisArg, this.map[name], name, this);
+        }, Headers2.prototype.keys = function() {
+          var items = [];
+          return this.forEach(function(value, name) {
+            items.push(name);
+          }), iteratorFor(items);
+        }, Headers2.prototype.values = function() {
+          var items = [];
+          return this.forEach(function(value) {
+            items.push(value);
+          }), iteratorFor(items);
+        }, Headers2.prototype.entries = function() {
+          var items = [];
+          return this.forEach(function(value, name) {
+            items.push([name, value]);
+          }), iteratorFor(items);
+        }, support.iterable && (Headers2.prototype[Symbol.iterator] = Headers2.prototype.entries);
+        function consumed(body) {
+          if (body.bodyUsed)
+            return Promise.reject(new TypeError("Already read"));
+          body.bodyUsed = !0;
+        }
+        function fileReaderReady(reader) {
+          return new Promise(function(resolve, reject) {
+            reader.onload = function() {
+              resolve(reader.result);
+            }, reader.onerror = function() {
+              reject(reader.error);
+            };
+          });
+        }
+        function readBlobAsArrayBuffer(blob) {
+          var reader = new FileReader(), promise = fileReaderReady(reader);
+          return reader.readAsArrayBuffer(blob), promise;
+        }
+        function readBlobAsText(blob) {
+          var reader = new FileReader(), promise = fileReaderReady(reader);
+          return reader.readAsText(blob), promise;
+        }
+        function readArrayBufferAsText(buf) {
+          for (var view = new Uint8Array(buf), chars = new Array(view.length), i = 0; i < view.length; i++)
+            chars[i] = String.fromCharCode(view[i]);
+          return chars.join("");
+        }
+        function bufferClone(buf) {
+          if (buf.slice)
+            return buf.slice(0);
+          var view = new Uint8Array(buf.byteLength);
+          return view.set(new Uint8Array(buf)), view.buffer;
+        }
+        function Body() {
+          return this.bodyUsed = !1, this._initBody = function(body) {
+            this._bodyInit = body, body ? typeof body == "string" ? this._bodyText = body : support.blob && Blob.prototype.isPrototypeOf(body) ? this._bodyBlob = body : support.formData && FormData.prototype.isPrototypeOf(body) ? this._bodyFormData = body : support.searchParams && URLSearchParams.prototype.isPrototypeOf(body) ? this._bodyText = body.toString() : support.arrayBuffer && support.blob && isDataView(body) ? (this._bodyArrayBuffer = bufferClone(body.buffer), this._bodyInit = new Blob([this._bodyArrayBuffer])) : support.arrayBuffer && (ArrayBuffer.prototype.isPrototypeOf(body) || isArrayBufferView(body)) ? this._bodyArrayBuffer = bufferClone(body) : this._bodyText = body = Object.prototype.toString.call(body) : this._bodyText = "", this.headers.get("content-type") || (typeof body == "string" ? this.headers.set("content-type", "text/plain;charset=UTF-8") : this._bodyBlob && this._bodyBlob.type ? this.headers.set("content-type", this._bodyBlob.type) : support.searchParams && URLSearchParams.prototype.isPrototypeOf(body) && this.headers.set("content-type", "application/x-www-form-urlencoded;charset=UTF-8"));
+          }, support.blob && (this.blob = function() {
+            var rejected = consumed(this);
+            if (rejected)
+              return rejected;
+            if (this._bodyBlob)
+              return Promise.resolve(this._bodyBlob);
+            if (this._bodyArrayBuffer)
+              return Promise.resolve(new Blob([this._bodyArrayBuffer]));
+            if (this._bodyFormData)
+              throw new Error("could not read FormData body as blob");
+            return Promise.resolve(new Blob([this._bodyText]));
+          }, this.arrayBuffer = function() {
+            return this._bodyArrayBuffer ? consumed(this) || Promise.resolve(this._bodyArrayBuffer) : this.blob().then(readBlobAsArrayBuffer);
+          }), this.text = function() {
+            var rejected = consumed(this);
+            if (rejected)
+              return rejected;
+            if (this._bodyBlob)
+              return readBlobAsText(this._bodyBlob);
+            if (this._bodyArrayBuffer)
+              return Promise.resolve(readArrayBufferAsText(this._bodyArrayBuffer));
+            if (this._bodyFormData)
+              throw new Error("could not read FormData body as text");
+            return Promise.resolve(this._bodyText);
+          }, support.formData && (this.formData = function() {
+            return this.text().then(decode);
+          }), this.json = function() {
+            return this.text().then(JSON.parse);
+          }, this;
+        }
+        var methods = ["DELETE", "GET", "HEAD", "OPTIONS", "POST", "PUT"];
+        function normalizeMethod(method) {
+          var upcased = method.toUpperCase();
+          return methods.indexOf(upcased) > -1 ? upcased : method;
+        }
+        function Request2(input, options) {
+          options = options || {};
+          var body = options.body;
+          if (input instanceof Request2) {
+            if (input.bodyUsed)
+              throw new TypeError("Already read");
+            this.url = input.url, this.credentials = input.credentials, options.headers || (this.headers = new Headers2(input.headers)), this.method = input.method, this.mode = input.mode, this.signal = input.signal, !body && input._bodyInit != null && (body = input._bodyInit, input.bodyUsed = !0);
+          } else
+            this.url = String(input);
+          if (this.credentials = options.credentials || this.credentials || "same-origin", (options.headers || !this.headers) && (this.headers = new Headers2(options.headers)), this.method = normalizeMethod(options.method || this.method || "GET"), this.mode = options.mode || this.mode || null, this.signal = options.signal || this.signal, this.referrer = null, (this.method === "GET" || this.method === "HEAD") && body)
+            throw new TypeError("Body not allowed for GET or HEAD requests");
+          this._initBody(body);
+        }
+        Request2.prototype.clone = function() {
+          return new Request2(this, { body: this._bodyInit });
+        };
+        function decode(body) {
+          var form = new FormData();
+          return body.trim().split("&").forEach(function(bytes) {
+            if (bytes) {
+              var split = bytes.split("="), name = split.shift().replace(/\+/g, " "), value = split.join("=").replace(/\+/g, " ");
+              form.append(decodeURIComponent(name), decodeURIComponent(value));
+            }
+          }), form;
+        }
+        function parseHeaders(rawHeaders) {
+          var headers = new Headers2(), preProcessedHeaders = rawHeaders.replace(/\r?\n[\t ]+/g, " ");
+          return preProcessedHeaders.split(/\r?\n/).forEach(function(line) {
+            var parts = line.split(":"), key = parts.shift().trim();
+            if (key) {
+              var value = parts.join(":").trim();
+              headers.append(key, value);
+            }
+          }), headers;
+        }
+        Body.call(Request2.prototype);
+        function Response2(bodyInit, options) {
+          options || (options = {}), this.type = "default", this.status = options.status === void 0 ? 200 : options.status, this.ok = this.status >= 200 && this.status < 300, this.statusText = "statusText" in options ? options.statusText : "OK", this.headers = new Headers2(options.headers), this.url = options.url || "", this._initBody(bodyInit);
+        }
+        Body.call(Response2.prototype), Response2.prototype.clone = function() {
+          return new Response2(this._bodyInit, {
+            status: this.status,
+            statusText: this.statusText,
+            headers: new Headers2(this.headers),
+            url: this.url
+          });
+        }, Response2.error = function() {
+          var response = new Response2(null, { status: 0, statusText: "" });
+          return response.type = "error", response;
+        };
+        var redirectStatuses = [301, 302, 303, 307, 308];
+        Response2.redirect = function(url, status) {
+          if (redirectStatuses.indexOf(status) === -1)
+            throw new RangeError("Invalid status code");
+          return new Response2(null, { status, headers: { location: url } });
+        }, exports2.DOMException = self2.DOMException;
+        try {
+          new exports2.DOMException();
+        } catch {
+          exports2.DOMException = function(message, name) {
+            this.message = message, this.name = name;
+            var error = Error(message);
+            this.stack = error.stack;
+          }, exports2.DOMException.prototype = Object.create(Error.prototype), exports2.DOMException.prototype.constructor = exports2.DOMException;
+        }
+        function fetch2(input, init2) {
+          return new Promise(function(resolve, reject) {
+            var request = new Request2(input, init2);
+            if (request.signal && request.signal.aborted)
+              return reject(new exports2.DOMException("Aborted", "AbortError"));
+            var xhr = new XMLHttpRequest();
+            function abortXhr() {
+              xhr.abort();
+            }
+            xhr.onload = function() {
+              var options = {
+                status: xhr.status,
+                statusText: xhr.statusText,
+                headers: parseHeaders(xhr.getAllResponseHeaders() || "")
+              };
+              options.url = "responseURL" in xhr ? xhr.responseURL : options.headers.get("X-Request-URL");
+              var body = "response" in xhr ? xhr.response : xhr.responseText;
+              resolve(new Response2(body, options));
+            }, xhr.onerror = function() {
+              reject(new TypeError("Network request failed"));
+            }, xhr.ontimeout = function() {
+              reject(new TypeError("Network request failed"));
+            }, xhr.onabort = function() {
+              reject(new exports2.DOMException("Aborted", "AbortError"));
+            }, xhr.open(request.method, request.url, !0), request.credentials === "include" ? xhr.withCredentials = !0 : request.credentials === "omit" && (xhr.withCredentials = !1), "responseType" in xhr && support.blob && (xhr.responseType = "blob"), request.headers.forEach(function(value, name) {
+              xhr.setRequestHeader(name, value);
+            }), request.signal && (request.signal.addEventListener("abort", abortXhr), xhr.onreadystatechange = function() {
+              xhr.readyState === 4 && request.signal.removeEventListener("abort", abortXhr);
+            }), xhr.send(typeof request._bodyInit > "u" ? null : request._bodyInit);
+          });
+        }
+        return fetch2.polyfill = !0, self2.fetch || (self2.fetch = fetch2, self2.Headers = Headers2, self2.Request = Request2, self2.Response = Response2), exports2.Headers = Headers2, exports2.Request = Request2, exports2.Response = Response2, exports2.fetch = fetch2, Object.defineProperty(exports2, "__esModule", { value: !0 }), exports2;
+      }({});
+    })(__self__);
+    __self__.fetch.ponyfill = !0;
+    delete __self__.fetch.polyfill;
+    var ctx = __self__;
+    exports = ctx.fetch;
+    exports.default = ctx.fetch;
+    exports.fetch = ctx.fetch;
+    exports.Headers = ctx.Headers;
+    exports.Request = ctx.Request;
+    exports.Response = ctx.Response;
+    module.exports = exports;
+  }
+});
+
+// node_modules/es5-ext/global.js
+var require_global = __commonJS({
+  "node_modules/es5-ext/global.js"(exports, module) {
+    var naiveFallback = function() {
+      if (typeof self == "object" && self)
+        return self;
+      if (typeof window == "object" && window)
+        return window;
+      throw new Error("Unable to resolve global `this`");
+    };
+    module.exports = function() {
+      if (this)
+        return this;
+      if (typeof globalThis == "object" && globalThis)
+        return globalThis;
+      try {
+        Object.defineProperty(Object.prototype, "__global__", {
+          get: function() {
+            return this;
+          },
+          configurable: !0
+        });
+      } catch {
+        return naiveFallback();
+      }
+      try {
+        return __global__ || naiveFallback();
+      } finally {
+        delete Object.prototype.__global__;
+      }
+    }();
+  }
+});
+
+// node_modules/websocket/package.json
+var require_package = __commonJS({
+  "node_modules/websocket/package.json"(exports, module) {
+    module.exports = {
+      name: "websocket",
+      description: "Websocket Client & Server Library implementing the WebSocket protocol as specified in RFC 6455.",
+      keywords: [
+        "websocket",
+        "websockets",
+        "socket",
+        "networking",
+        "comet",
+        "push",
+        "RFC-6455",
+        "realtime",
+        "server",
+        "client"
+      ],
+      author: "Brian McKelvey <theturtle32@gmail.com> (https://github.com/theturtle32)",
+      contributors: [
+        "I\xF1aki Baz Castillo <ibc@aliax.net> (http://dev.sipdoc.net)"
+      ],
+      version: "1.0.34",
+      repository: {
+        type: "git",
+        url: "https://github.com/theturtle32/WebSocket-Node.git"
+      },
+      homepage: "https://github.com/theturtle32/WebSocket-Node",
+      engines: {
+        node: ">=4.0.0"
+      },
+      dependencies: {
+        bufferutil: "^4.0.1",
+        debug: "^2.2.0",
+        "es5-ext": "^0.10.50",
+        "typedarray-to-buffer": "^3.1.5",
+        "utf-8-validate": "^5.0.2",
+        yaeti: "^0.0.6"
+      },
+      devDependencies: {
+        "buffer-equal": "^1.0.0",
+        gulp: "^4.0.2",
+        "gulp-jshint": "^2.0.4",
+        "jshint-stylish": "^2.2.1",
+        jshint: "^2.0.0",
+        tape: "^4.9.1"
+      },
+      config: {
+        verbose: !1
+      },
+      scripts: {
+        test: "tape test/unit/*.js",
+        gulp: "gulp"
+      },
+      main: "index",
+      directories: {
+        lib: "./lib"
+      },
+      browser: "lib/browser.js",
+      license: "Apache-2.0"
+    };
+  }
+});
+
+// node_modules/websocket/lib/version.js
+var require_version = __commonJS({
+  "node_modules/websocket/lib/version.js"(exports, module) {
+    module.exports = require_package().version;
+  }
+});
+
+// node_modules/websocket/lib/browser.js
+var require_browser = __commonJS({
+  "node_modules/websocket/lib/browser.js"(exports, module) {
+    var _globalThis;
+    if (typeof globalThis == "object")
+      _globalThis = globalThis;
+    else
+      try {
+        _globalThis = require_global();
+      } catch {
+      } finally {
+        if (!_globalThis && typeof window < "u" && (_globalThis = window), !_globalThis)
+          throw new Error("Could not determine global this");
+      }
+    var NativeWebSocket = _globalThis.WebSocket || _globalThis.MozWebSocket, websocket_version = require_version();
+    function W3CWebSocket(uri, protocols) {
+      var native_instance;
+      return protocols ? native_instance = new NativeWebSocket(uri, protocols) : native_instance = new NativeWebSocket(uri), native_instance;
+    }
+    NativeWebSocket && ["CONNECTING", "OPEN", "CLOSING", "CLOSED"].forEach(function(prop) {
+      Object.defineProperty(W3CWebSocket, prop, {
+        get: function() {
+          return NativeWebSocket[prop];
+        }
+      });
+    });
+    module.exports = {
+      w3cwebsocket: NativeWebSocket ? W3CWebSocket : null,
+      version: websocket_version
+    };
   }
 });
 
@@ -8902,11 +9323,11 @@ function createTransitionManager(init2) {
     switch (event.type) {
       case "navigation": {
         let {
-          action,
+          action: action3,
           location,
           submission
         } = event, matches2 = matchClientRoutes(routes2, location);
-        matches2 ? !submission && isHashChangeOnly(location) ? await handleHashChange(location, matches2) : action === Action.Pop ? await handleLoad(location, matches2) : submission && isActionSubmission(submission) ? await handleActionSubmissionNavigation(location, submission, matches2) : submission && isLoaderSubmission(submission) ? await handleLoaderSubmissionNavigation(location, submission, matches2) : isActionRedirectLocation(location) ? await handleActionRedirect(location, matches2) : isLoaderSubmissionRedirectLocation(location) ? await handleLoaderSubmissionRedirect(location, matches2) : isLoaderRedirectLocation(location) ? await handleLoaderRedirect(location, matches2) : isFetchActionRedirect(location) ? await handleFetchActionRedirect(location, matches2) : await handleLoad(location, matches2) : (matches2 = [{
+        matches2 ? !submission && isHashChangeOnly(location) ? await handleHashChange(location, matches2) : action3 === Action.Pop ? await handleLoad(location, matches2) : submission && isActionSubmission(submission) ? await handleActionSubmissionNavigation(location, submission, matches2) : submission && isLoaderSubmission(submission) ? await handleLoaderSubmissionNavigation(location, submission, matches2) : isActionRedirectLocation(location) ? await handleActionRedirect(location, matches2) : isLoaderSubmissionRedirectLocation(location) ? await handleLoaderSubmissionRedirect(location, matches2) : isLoaderRedirectLocation(location) ? await handleLoaderRedirect(location, matches2) : isFetchActionRedirect(location) ? await handleFetchActionRedirect(location, matches2) : await handleLoad(location, matches2) : (matches2 = [{
           params: {},
           pathname: "",
           route: routes2[0]
@@ -9656,7 +10077,7 @@ function useRemixEntryContext() {
 }
 function RemixEntry({
   context: entryContext,
-  action,
+  action: action3,
   location: historyLocation,
   navigator: _navigator,
   static: staticProp = !1
@@ -9708,9 +10129,9 @@ function RemixEntry({
       type: "navigation",
       location: historyLocation,
       submission: consumeNextNavigationSubmission(),
-      action
+      action: action3
     });
-  }, [transitionManager, historyLocation, action]);
+  }, [transitionManager, historyLocation, action3]);
   let ssrErrorBeforeRoutesRendered = clientState.error && clientState.renderBoundaryRouteId === null && clientState.loaderBoundaryRouteId === null ? deserializeError(clientState.error) : void 0, ssrCatchBeforeRoutesRendered = clientState.catch && clientState.catchBoundaryRouteId === null ? clientState.catch : void 0;
   return /* @__PURE__ */ React2.createElement(RemixEntryContext.Provider, {
     value: {
@@ -9733,7 +10154,7 @@ function RemixEntry({
     component: RemixRootDefaultCatchBoundary,
     catch: ssrCatchBeforeRoutesRendered
   }, /* @__PURE__ */ React2.createElement(Router, {
-    navigationType: action,
+    navigationType: action3,
     location,
     navigator,
     static: staticProp
@@ -10058,13 +10479,13 @@ var FormImpl = /* @__PURE__ */ React2.forwardRef(({
   reloadDocument = !1,
   replace = !1,
   method = "get",
-  action,
+  action: action3,
   encType = "application/x-www-form-urlencoded",
   fetchKey,
   onSubmit,
   ...props
 }, forwardedRef) => {
-  let submit = useSubmitImpl(fetchKey), formMethod = method.toLowerCase() === "get" ? "get" : "post", formAction = useFormAction(action);
+  let submit = useSubmitImpl(fetchKey), formMethod = method.toLowerCase() === "get" ? "get" : "post", formAction = useFormAction(action3);
   return /* @__PURE__ */ React2.createElement("form", _extends3({
     ref: forwardedRef,
     method: formMethod,
@@ -10083,18 +10504,18 @@ var FormImpl = /* @__PURE__ */ React2.forwardRef(({
   }, props));
 });
 FormImpl.displayName = "FormImpl";
-function useFormAction(action, method = "get") {
+function useFormAction(action3, method = "get") {
   let {
     id
-  } = useRemixRouteContext(), resolvedPath = useResolvedPath(action || "."), location = useLocation(), {
+  } = useRemixRouteContext(), resolvedPath = useResolvedPath(action3 || "."), location = useLocation(), {
     search,
     hash
   } = resolvedPath, isIndexRoute = id.endsWith("/index");
-  if (action == null && (search = location.search, hash = location.hash, isIndexRoute)) {
+  if (action3 == null && (search = location.search, hash = location.hash, isIndexRoute)) {
     let params = new URLSearchParams(search);
     params.delete("index"), search = params.toString() ? `?${params.toString()}` : "";
   }
-  return (action == null || action === ".") && isIndexRoute && (search = search ? search.replace(/^\?/, "?index&") : "?index"), createPath({
+  return (action3 == null || action3 === ".") && isIndexRoute && (search = search ? search.replace(/^\?/, "?index&") : "?index"), createPath({
     pathname: resolvedPath.pathname,
     search,
     hash
@@ -10106,19 +10527,19 @@ function useSubmitImpl(key) {
     transitionManager
   } = useRemixEntryContext();
   return React2.useCallback((target, options = {}) => {
-    let method, action, encType, formData;
+    let method, action3, encType, formData;
     if (isFormElement(target)) {
       let submissionTrigger = options.submissionTrigger;
-      method = options.method || target.getAttribute("method") || defaultMethod, action = options.action || target.getAttribute("action") || defaultAction, encType = options.encType || target.getAttribute("enctype") || defaultEncType, formData = new FormData(target), submissionTrigger && submissionTrigger.name && formData.append(submissionTrigger.name, submissionTrigger.value);
+      method = options.method || target.getAttribute("method") || defaultMethod, action3 = options.action || target.getAttribute("action") || defaultAction, encType = options.encType || target.getAttribute("enctype") || defaultEncType, formData = new FormData(target), submissionTrigger && submissionTrigger.name && formData.append(submissionTrigger.name, submissionTrigger.value);
     } else if (isButtonElement(target) || isInputElement(target) && (target.type === "submit" || target.type === "image")) {
       let form = target.form;
       if (form == null)
         throw new Error("Cannot submit a <button> without a <form>");
-      method = options.method || target.getAttribute("formmethod") || form.getAttribute("method") || defaultMethod, action = options.action || target.getAttribute("formaction") || form.getAttribute("action") || defaultAction, encType = options.encType || target.getAttribute("formenctype") || form.getAttribute("enctype") || defaultEncType, formData = new FormData(form), target.name && formData.append(target.name, target.value);
+      method = options.method || target.getAttribute("formmethod") || form.getAttribute("method") || defaultMethod, action3 = options.action || target.getAttribute("formaction") || form.getAttribute("action") || defaultAction, encType = options.encType || target.getAttribute("formenctype") || form.getAttribute("enctype") || defaultEncType, formData = new FormData(form), target.name && formData.append(target.name, target.value);
     } else {
       if (isHtmlElement(target))
         throw new Error('Cannot submit element that is not <form>, <button>, or <input type="submit|image">');
-      if (method = options.method || "get", action = options.action || defaultAction, encType = options.encType || "application/x-www-form-urlencoded", target instanceof FormData)
+      if (method = options.method || "get", action3 = options.action || defaultAction, encType = options.encType || "application/x-www-form-urlencoded", target instanceof FormData)
         formData = target;
       else if (formData = new FormData(), target instanceof URLSearchParams)
         for (let [name, value] of target)
@@ -10132,7 +10553,7 @@ function useSubmitImpl(key) {
     let {
       protocol,
       host
-    } = window.location, url = new URL(action, `${protocol}//${host}`);
+    } = window.location, url = new URL(action3, `${protocol}//${host}`);
     if (method.toLowerCase() === "get") {
       let params = new URLSearchParams(), hasParams = !1;
       for (let [name, value] of formData)
@@ -10184,6 +10605,9 @@ function useBeforeUnload(callback) {
   React2.useEffect(() => (window.addEventListener("beforeunload", callback), () => {
     window.removeEventListener("beforeunload", callback);
   }), [callback]);
+}
+function useLoaderData() {
+  return useRemixRouteContext().data;
 }
 function useTransition() {
   let {
@@ -10262,7 +10686,7 @@ function ScrollRestoration({
   }, []), useBeforeUnload(React3.useCallback(() => {
     window.history.scrollRestoration = "auto";
   }, []));
-  let restoreScroll = ((STORAGE_KEY2) => {
+  let restoreScroll = ((STORAGE_KEY3) => {
     if (!window.history.state || !window.history.state.key) {
       let key = Math.random().toString(32).slice(2);
       window.history.replaceState({
@@ -10270,10 +10694,10 @@ function ScrollRestoration({
       }, "");
     }
     try {
-      let storedY = JSON.parse(sessionStorage.getItem(STORAGE_KEY2) || "{}")[window.history.state.key];
+      let storedY = JSON.parse(sessionStorage.getItem(STORAGE_KEY3) || "{}")[window.history.state.key];
       typeof storedY == "number" && window.scrollTo(0, storedY);
     } catch (error) {
-      console.error(error), sessionStorage.removeItem(STORAGE_KEY2);
+      console.error(error), sessionStorage.removeItem(STORAGE_KEY3);
     }
   }).toString();
   return /* @__PURE__ */ React3.createElement("script", {
@@ -10454,12 +10878,3121 @@ function App() {
   }, this);
 }
 
+// app/routes/resources/revalidate.tsx
+var revalidate_exports = {};
+__export(revalidate_exports, {
+  action: () => action
+});
+var import_cloudflare2 = __toESM(require_dist());
+
+// app/lib/cache.js
+var readFrom = async (cache, path) => {
+  let data = await cache.get(path);
+  return JSON.parse(data);
+}, writeTo = async (cache, path, data) => {
+  await cache.put(path, JSON.stringify(data));
+};
+
+// app/routes/resources/revalidate.tsx
+var action = async ({ request, context }) => {
+  switch (console.log("request body", request == null ? void 0 : request.body), request.method) {
+    case "POST": {
+      let payload = await request.json();
+      console.log("payload", payload);
+      let { type, record, old_record } = payload;
+      (type === "INSERT" || type === "UPDATE") && await writeTo(context.TABLES, `/tables/${record.id}`, record), type === "DELETE" && await context.TABLES.delete(`/tables/${old_record.id}`);
+    }
+    case "PUT":
+    case "PATCH":
+    case "DELETE":
+  }
+  return (0, import_cloudflare2.json)({ success: !0 }, 200);
+};
+
+// app/routes/tables.tsx
+var tables_exports = {};
+__export(tables_exports, {
+  action: () => action2,
+  default: () => Index,
+  loader: () => loader
+});
+
+// node_modules/@supabase/functions-js/dist/module/helper.js
+var __awaiter = function(thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function(resolve) {
+      resolve(value);
+    });
+  }
+  return new (P || (P = Promise))(function(resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function rejected(value) {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+}, resolveFetch = (customFetch) => {
+  let _fetch;
+  return customFetch ? _fetch = customFetch : typeof fetch > "u" ? _fetch = (...args) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield (yield Promise.resolve().then(() => __toESM(require_browser_ponyfill()))).fetch(...args);
+  }) : _fetch = fetch, (...args) => _fetch(...args);
+};
+
+// node_modules/@supabase/functions-js/dist/module/types.js
+var FunctionsError = class extends Error {
+  constructor(message, name = "FunctionsError", context) {
+    super(message), super.name = name, this.context = context;
+  }
+}, FunctionsFetchError = class extends FunctionsError {
+  constructor(context) {
+    super("Failed to send a request to the Edge Function", "FunctionsFetchError", context);
+  }
+}, FunctionsRelayError = class extends FunctionsError {
+  constructor(context) {
+    super("Relay Error invoking the Edge Function", "FunctionsRelayError", context);
+  }
+}, FunctionsHttpError = class extends FunctionsError {
+  constructor(context) {
+    super("Edge Function returned a non-2xx status code", "FunctionsHttpError", context);
+  }
+};
+
+// node_modules/@supabase/functions-js/dist/module/FunctionsClient.js
+var __awaiter2 = function(thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function(resolve) {
+      resolve(value);
+    });
+  }
+  return new (P || (P = Promise))(function(resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function rejected(value) {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+}, FunctionsClient = class {
+  constructor(url, { headers = {}, customFetch } = {}) {
+    this.url = url, this.headers = headers, this.fetch = resolveFetch(customFetch);
+  }
+  setAuth(token) {
+    this.headers.Authorization = `Bearer ${token}`;
+  }
+  invoke(functionName, invokeOptions = {}) {
+    var _a;
+    return __awaiter2(this, void 0, void 0, function* () {
+      try {
+        let { headers, body: functionArgs } = invokeOptions, _headers = {}, body;
+        functionArgs && (headers && !Object.prototype.hasOwnProperty.call(headers, "Content-Type") || !headers) && (typeof Blob < "u" && functionArgs instanceof Blob || functionArgs instanceof ArrayBuffer ? (_headers["Content-Type"] = "application/octet-stream", body = functionArgs) : typeof functionArgs == "string" ? (_headers["Content-Type"] = "text/plain", body = functionArgs) : typeof FormData < "u" && functionArgs instanceof FormData ? body = functionArgs : (_headers["Content-Type"] = "application/json", body = JSON.stringify(functionArgs)));
+        let response = yield this.fetch(`${this.url}/${functionName}`, {
+          method: "POST",
+          headers: Object.assign(Object.assign(Object.assign({}, _headers), this.headers), headers),
+          body
+        }).catch((fetchError) => {
+          throw new FunctionsFetchError(fetchError);
+        }), isRelayError = response.headers.get("x-relay-error");
+        if (isRelayError && isRelayError === "true")
+          throw new FunctionsRelayError(response);
+        if (!response.ok)
+          throw new FunctionsHttpError(response);
+        let responseType = ((_a = response.headers.get("Content-Type")) !== null && _a !== void 0 ? _a : "text/plain").split(";")[0].trim(), data;
+        return responseType === "application/json" ? data = yield response.json() : responseType === "application/octet-stream" ? data = yield response.blob() : responseType === "multipart/form-data" ? data = yield response.formData() : data = yield response.text(), { data, error: null };
+      } catch (error) {
+        return { data: null, error };
+      }
+    });
+  }
+};
+
+// node_modules/@supabase/postgrest-js/dist/module/PostgrestBuilder.js
+var import_cross_fetch = __toESM(require_browser_ponyfill()), __awaiter3 = function(thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function(resolve) {
+      resolve(value);
+    });
+  }
+  return new (P || (P = Promise))(function(resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function rejected(value) {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+}, PostgrestBuilder = class {
+  constructor(builder) {
+    this.shouldThrowOnError = !1, this.method = builder.method, this.url = builder.url, this.headers = builder.headers, this.schema = builder.schema, this.body = builder.body, this.shouldThrowOnError = builder.shouldThrowOnError, this.signal = builder.signal, this.allowEmpty = builder.allowEmpty, builder.fetch ? this.fetch = builder.fetch : typeof fetch > "u" ? this.fetch = import_cross_fetch.default : this.fetch = fetch;
+  }
+  throwOnError() {
+    return this.shouldThrowOnError = !0, this;
+  }
+  then(onfulfilled, onrejected) {
+    this.schema === void 0 || (["GET", "HEAD"].includes(this.method) ? this.headers["Accept-Profile"] = this.schema : this.headers["Content-Profile"] = this.schema), this.method !== "GET" && this.method !== "HEAD" && (this.headers["Content-Type"] = "application/json");
+    let _fetch = this.fetch, res = _fetch(this.url.toString(), {
+      method: this.method,
+      headers: this.headers,
+      body: JSON.stringify(this.body),
+      signal: this.signal
+    }).then((res2) => __awaiter3(this, void 0, void 0, function* () {
+      var _a, _b, _c;
+      let error = null, data = null, count = null, status = res2.status, statusText = res2.statusText;
+      if (res2.ok) {
+        if (this.method !== "HEAD") {
+          let body = yield res2.text();
+          body === "" || (this.headers.Accept === "text/csv" || this.headers.Accept && this.headers.Accept.includes("application/vnd.pgrst.plan+text") ? data = body : data = JSON.parse(body));
+        }
+        let countHeader = (_a = this.headers.Prefer) === null || _a === void 0 ? void 0 : _a.match(/count=(exact|planned|estimated)/), contentRange = (_b = res2.headers.get("content-range")) === null || _b === void 0 ? void 0 : _b.split("/");
+        countHeader && contentRange && contentRange.length > 1 && (count = parseInt(contentRange[1]));
+      } else {
+        let body = yield res2.text();
+        try {
+          error = JSON.parse(body);
+        } catch {
+          error = {
+            message: body
+          };
+        }
+        if (error && this.allowEmpty && ((_c = error == null ? void 0 : error.details) === null || _c === void 0 ? void 0 : _c.includes("Results contain 0 rows")) && (error = null, status = 200, statusText = "OK"), error && this.shouldThrowOnError)
+          throw error;
+      }
+      return {
+        error,
+        data,
+        count,
+        status,
+        statusText
+      };
+    }));
+    return this.shouldThrowOnError || (res = res.catch((fetchError) => ({
+      error: {
+        message: `FetchError: ${fetchError.message}`,
+        details: "",
+        hint: "",
+        code: fetchError.code || ""
+      },
+      data: null,
+      count: null,
+      status: 0,
+      statusText: ""
+    }))), res.then(onfulfilled, onrejected);
+  }
+};
+
+// node_modules/@supabase/postgrest-js/dist/module/PostgrestTransformBuilder.js
+var PostgrestTransformBuilder = class extends PostgrestBuilder {
+  select(columns) {
+    let quoted = !1, cleanedColumns = (columns ?? "*").split("").map((c) => /\s/.test(c) && !quoted ? "" : (c === '"' && (quoted = !quoted), c)).join("");
+    return this.url.searchParams.set("select", cleanedColumns), this.headers.Prefer && (this.headers.Prefer += ","), this.headers.Prefer += "return=representation", this;
+  }
+  order(column, { ascending = !0, nullsFirst, foreignTable } = {}) {
+    let key = foreignTable ? `${foreignTable}.order` : "order", existingOrder = this.url.searchParams.get(key);
+    return this.url.searchParams.set(key, `${existingOrder ? `${existingOrder},` : ""}${column}.${ascending ? "asc" : "desc"}${nullsFirst === void 0 ? "" : nullsFirst ? ".nullsfirst" : ".nullslast"}`), this;
+  }
+  limit(count, { foreignTable } = {}) {
+    let key = typeof foreignTable > "u" ? "limit" : `${foreignTable}.limit`;
+    return this.url.searchParams.set(key, `${count}`), this;
+  }
+  range(from2, to, { foreignTable } = {}) {
+    let keyOffset = typeof foreignTable > "u" ? "offset" : `${foreignTable}.offset`, keyLimit = typeof foreignTable > "u" ? "limit" : `${foreignTable}.limit`;
+    return this.url.searchParams.set(keyOffset, `${from2}`), this.url.searchParams.set(keyLimit, `${to - from2 + 1}`), this;
+  }
+  abortSignal(signal) {
+    return this.signal = signal, this;
+  }
+  single() {
+    return this.headers.Accept = "application/vnd.pgrst.object+json", this;
+  }
+  maybeSingle() {
+    return this.headers.Accept = "application/vnd.pgrst.object+json", this.allowEmpty = !0, this;
+  }
+  csv() {
+    return this.headers.Accept = "text/csv", this;
+  }
+  geojson() {
+    return this.headers.Accept = "application/geo+json", this;
+  }
+  explain({ analyze = !1, verbose = !1, settings = !1, buffers = !1, wal = !1, format: format2 = "text" } = {}) {
+    let options = [
+      analyze ? "analyze" : null,
+      verbose ? "verbose" : null,
+      settings ? "settings" : null,
+      buffers ? "buffers" : null,
+      wal ? "wal" : null
+    ].filter(Boolean).join("|"), forMediatype = this.headers.Accept;
+    return this.headers.Accept = `application/vnd.pgrst.plan+${format2}; for="${forMediatype}"; options=${options};`, format2 === "json" ? this : this;
+  }
+  rollback() {
+    var _a;
+    return ((_a = this.headers.Prefer) !== null && _a !== void 0 ? _a : "").trim().length > 0 ? this.headers.Prefer += ",tx=rollback" : this.headers.Prefer = "tx=rollback", this;
+  }
+  returns() {
+    return this;
+  }
+};
+
+// node_modules/@supabase/postgrest-js/dist/module/PostgrestFilterBuilder.js
+var PostgrestFilterBuilder = class extends PostgrestTransformBuilder {
+  eq(column, value) {
+    return this.url.searchParams.append(column, `eq.${value}`), this;
+  }
+  neq(column, value) {
+    return this.url.searchParams.append(column, `neq.${value}`), this;
+  }
+  gt(column, value) {
+    return this.url.searchParams.append(column, `gt.${value}`), this;
+  }
+  gte(column, value) {
+    return this.url.searchParams.append(column, `gte.${value}`), this;
+  }
+  lt(column, value) {
+    return this.url.searchParams.append(column, `lt.${value}`), this;
+  }
+  lte(column, value) {
+    return this.url.searchParams.append(column, `lte.${value}`), this;
+  }
+  like(column, pattern) {
+    return this.url.searchParams.append(column, `like.${pattern}`), this;
+  }
+  ilike(column, pattern) {
+    return this.url.searchParams.append(column, `ilike.${pattern}`), this;
+  }
+  is(column, value) {
+    return this.url.searchParams.append(column, `is.${value}`), this;
+  }
+  in(column, values) {
+    let cleanedValues = values.map((s) => typeof s == "string" && new RegExp("[,()]").test(s) ? `"${s}"` : `${s}`).join(",");
+    return this.url.searchParams.append(column, `in.(${cleanedValues})`), this;
+  }
+  contains(column, value) {
+    return typeof value == "string" ? this.url.searchParams.append(column, `cs.${value}`) : Array.isArray(value) ? this.url.searchParams.append(column, `cs.{${value.join(",")}}`) : this.url.searchParams.append(column, `cs.${JSON.stringify(value)}`), this;
+  }
+  containedBy(column, value) {
+    return typeof value == "string" ? this.url.searchParams.append(column, `cd.${value}`) : Array.isArray(value) ? this.url.searchParams.append(column, `cd.{${value.join(",")}}`) : this.url.searchParams.append(column, `cd.${JSON.stringify(value)}`), this;
+  }
+  rangeGt(column, range) {
+    return this.url.searchParams.append(column, `sr.${range}`), this;
+  }
+  rangeGte(column, range) {
+    return this.url.searchParams.append(column, `nxl.${range}`), this;
+  }
+  rangeLt(column, range) {
+    return this.url.searchParams.append(column, `sl.${range}`), this;
+  }
+  rangeLte(column, range) {
+    return this.url.searchParams.append(column, `nxr.${range}`), this;
+  }
+  rangeAdjacent(column, range) {
+    return this.url.searchParams.append(column, `adj.${range}`), this;
+  }
+  overlaps(column, value) {
+    return typeof value == "string" ? this.url.searchParams.append(column, `ov.${value}`) : this.url.searchParams.append(column, `ov.{${value.join(",")}}`), this;
+  }
+  textSearch(column, query, { config: config2, type } = {}) {
+    let typePart = "";
+    type === "plain" ? typePart = "pl" : type === "phrase" ? typePart = "ph" : type === "websearch" && (typePart = "w");
+    let configPart = config2 === void 0 ? "" : `(${config2})`;
+    return this.url.searchParams.append(column, `${typePart}fts${configPart}.${query}`), this;
+  }
+  match(query) {
+    return Object.entries(query).forEach(([column, value]) => {
+      this.url.searchParams.append(column, `eq.${value}`);
+    }), this;
+  }
+  not(column, operator, value) {
+    return this.url.searchParams.append(column, `not.${operator}.${value}`), this;
+  }
+  or(filters, { foreignTable } = {}) {
+    let key = foreignTable ? `${foreignTable}.or` : "or";
+    return this.url.searchParams.append(key, `(${filters})`), this;
+  }
+  filter(column, operator, value) {
+    return this.url.searchParams.append(column, `${operator}.${value}`), this;
+  }
+};
+
+// node_modules/@supabase/postgrest-js/dist/module/PostgrestQueryBuilder.js
+var PostgrestQueryBuilder = class {
+  constructor(url, { headers = {}, schema, fetch: fetch2 }) {
+    this.url = url, this.headers = headers, this.schema = schema, this.fetch = fetch2;
+  }
+  select(columns, { head = !1, count } = {}) {
+    let method = head ? "HEAD" : "GET", quoted = !1, cleanedColumns = (columns ?? "*").split("").map((c) => /\s/.test(c) && !quoted ? "" : (c === '"' && (quoted = !quoted), c)).join("");
+    return this.url.searchParams.set("select", cleanedColumns), count && (this.headers.Prefer = `count=${count}`), new PostgrestFilterBuilder({
+      method,
+      url: this.url,
+      headers: this.headers,
+      schema: this.schema,
+      fetch: this.fetch,
+      allowEmpty: !1
+    });
+  }
+  insert(values, { count } = {}) {
+    let method = "POST", prefersHeaders = [], body = values;
+    if (count && prefersHeaders.push(`count=${count}`), this.headers.Prefer && prefersHeaders.unshift(this.headers.Prefer), this.headers.Prefer = prefersHeaders.join(","), Array.isArray(values)) {
+      let columns = values.reduce((acc, x) => acc.concat(Object.keys(x)), []);
+      if (columns.length > 0) {
+        let uniqueColumns = [...new Set(columns)].map((column) => `"${column}"`);
+        this.url.searchParams.set("columns", uniqueColumns.join(","));
+      }
+    }
+    return new PostgrestFilterBuilder({
+      method,
+      url: this.url,
+      headers: this.headers,
+      schema: this.schema,
+      body,
+      fetch: this.fetch,
+      allowEmpty: !1
+    });
+  }
+  upsert(values, { onConflict, ignoreDuplicates = !1, count } = {}) {
+    let method = "POST", prefersHeaders = [`resolution=${ignoreDuplicates ? "ignore" : "merge"}-duplicates`];
+    onConflict !== void 0 && this.url.searchParams.set("on_conflict", onConflict);
+    let body = values;
+    return count && prefersHeaders.push(`count=${count}`), this.headers.Prefer && prefersHeaders.unshift(this.headers.Prefer), this.headers.Prefer = prefersHeaders.join(","), new PostgrestFilterBuilder({
+      method,
+      url: this.url,
+      headers: this.headers,
+      schema: this.schema,
+      body,
+      fetch: this.fetch,
+      allowEmpty: !1
+    });
+  }
+  update(values, { count } = {}) {
+    let method = "PATCH", prefersHeaders = [], body = values;
+    return count && prefersHeaders.push(`count=${count}`), this.headers.Prefer && prefersHeaders.unshift(this.headers.Prefer), this.headers.Prefer = prefersHeaders.join(","), new PostgrestFilterBuilder({
+      method,
+      url: this.url,
+      headers: this.headers,
+      schema: this.schema,
+      body,
+      fetch: this.fetch,
+      allowEmpty: !1
+    });
+  }
+  delete({ count } = {}) {
+    let method = "DELETE", prefersHeaders = [];
+    return count && prefersHeaders.push(`count=${count}`), this.headers.Prefer && prefersHeaders.unshift(this.headers.Prefer), this.headers.Prefer = prefersHeaders.join(","), new PostgrestFilterBuilder({
+      method,
+      url: this.url,
+      headers: this.headers,
+      schema: this.schema,
+      fetch: this.fetch,
+      allowEmpty: !1
+    });
+  }
+};
+
+// node_modules/@supabase/postgrest-js/dist/module/version.js
+var version2 = "1.1.0";
+
+// node_modules/@supabase/postgrest-js/dist/module/constants.js
+var DEFAULT_HEADERS = { "X-Client-Info": `postgrest-js/${version2}` };
+
+// node_modules/@supabase/postgrest-js/dist/module/PostgrestClient.js
+var PostgrestClient = class {
+  constructor(url, { headers = {}, schema, fetch: fetch2 } = {}) {
+    this.url = url, this.headers = Object.assign(Object.assign({}, DEFAULT_HEADERS), headers), this.schema = schema, this.fetch = fetch2;
+  }
+  from(relation) {
+    let url = new URL(`${this.url}/${relation}`);
+    return new PostgrestQueryBuilder(url, {
+      headers: Object.assign({}, this.headers),
+      schema: this.schema,
+      fetch: this.fetch
+    });
+  }
+  rpc(fn, args = {}, { head = !1, count } = {}) {
+    let method, url = new URL(`${this.url}/rpc/${fn}`), body;
+    head ? (method = "HEAD", Object.entries(args).forEach(([name, value]) => {
+      url.searchParams.append(name, `${value}`);
+    })) : (method = "POST", body = args);
+    let headers = Object.assign({}, this.headers);
+    return count && (headers.Prefer = `count=${count}`), new PostgrestFilterBuilder({
+      method,
+      url,
+      headers,
+      schema: this.schema,
+      body,
+      fetch: this.fetch,
+      allowEmpty: !1
+    });
+  }
+};
+
+// node_modules/@supabase/realtime-js/dist/module/RealtimeClient.js
+var import_websocket = __toESM(require_browser());
+
+// node_modules/@supabase/realtime-js/dist/module/lib/version.js
+var version3 = "2.1.0";
+
+// node_modules/@supabase/realtime-js/dist/module/lib/constants.js
+var DEFAULT_HEADERS2 = { "X-Client-Info": `realtime-js/${version3}` }, VSN = "1.0.0", DEFAULT_TIMEOUT = 1e4, WS_CLOSE_NORMAL = 1e3, SOCKET_STATES;
+(function(SOCKET_STATES2) {
+  SOCKET_STATES2[SOCKET_STATES2.connecting = 0] = "connecting", SOCKET_STATES2[SOCKET_STATES2.open = 1] = "open", SOCKET_STATES2[SOCKET_STATES2.closing = 2] = "closing", SOCKET_STATES2[SOCKET_STATES2.closed = 3] = "closed";
+})(SOCKET_STATES || (SOCKET_STATES = {}));
+var CHANNEL_STATES;
+(function(CHANNEL_STATES2) {
+  CHANNEL_STATES2.closed = "closed", CHANNEL_STATES2.errored = "errored", CHANNEL_STATES2.joined = "joined", CHANNEL_STATES2.joining = "joining", CHANNEL_STATES2.leaving = "leaving";
+})(CHANNEL_STATES || (CHANNEL_STATES = {}));
+var CHANNEL_EVENTS;
+(function(CHANNEL_EVENTS2) {
+  CHANNEL_EVENTS2.close = "phx_close", CHANNEL_EVENTS2.error = "phx_error", CHANNEL_EVENTS2.join = "phx_join", CHANNEL_EVENTS2.reply = "phx_reply", CHANNEL_EVENTS2.leave = "phx_leave", CHANNEL_EVENTS2.access_token = "access_token";
+})(CHANNEL_EVENTS || (CHANNEL_EVENTS = {}));
+var TRANSPORTS;
+(function(TRANSPORTS2) {
+  TRANSPORTS2.websocket = "websocket";
+})(TRANSPORTS || (TRANSPORTS = {}));
+var CONNECTION_STATE;
+(function(CONNECTION_STATE2) {
+  CONNECTION_STATE2.Connecting = "connecting", CONNECTION_STATE2.Open = "open", CONNECTION_STATE2.Closing = "closing", CONNECTION_STATE2.Closed = "closed";
+})(CONNECTION_STATE || (CONNECTION_STATE = {}));
+
+// node_modules/@supabase/realtime-js/dist/module/lib/timer.js
+var Timer = class {
+  constructor(callback, timerCalc) {
+    this.callback = callback, this.timerCalc = timerCalc, this.timer = void 0, this.tries = 0, this.callback = callback, this.timerCalc = timerCalc;
+  }
+  reset() {
+    this.tries = 0, clearTimeout(this.timer);
+  }
+  scheduleTimeout() {
+    clearTimeout(this.timer), this.timer = setTimeout(() => {
+      this.tries = this.tries + 1, this.callback();
+    }, this.timerCalc(this.tries + 1));
+  }
+};
+
+// node_modules/@supabase/realtime-js/dist/module/lib/serializer.js
+var Serializer = class {
+  constructor() {
+    this.HEADER_LENGTH = 1;
+  }
+  decode(rawPayload, callback) {
+    return rawPayload.constructor === ArrayBuffer ? callback(this._binaryDecode(rawPayload)) : callback(typeof rawPayload == "string" ? JSON.parse(rawPayload) : {});
+  }
+  _binaryDecode(buffer) {
+    let view = new DataView(buffer), decoder = new TextDecoder();
+    return this._decodeBroadcast(buffer, view, decoder);
+  }
+  _decodeBroadcast(buffer, view, decoder) {
+    let topicSize = view.getUint8(1), eventSize = view.getUint8(2), offset = this.HEADER_LENGTH + 2, topic = decoder.decode(buffer.slice(offset, offset + topicSize));
+    offset = offset + topicSize;
+    let event = decoder.decode(buffer.slice(offset, offset + eventSize));
+    offset = offset + eventSize;
+    let data = JSON.parse(decoder.decode(buffer.slice(offset, buffer.byteLength)));
+    return { ref: null, topic, event, payload: data };
+  }
+};
+
+// node_modules/@supabase/realtime-js/dist/module/lib/push.js
+var Push = class {
+  constructor(channel, event, payload = {}, timeout = DEFAULT_TIMEOUT) {
+    this.channel = channel, this.event = event, this.payload = payload, this.timeout = timeout, this.sent = !1, this.timeoutTimer = void 0, this.ref = "", this.receivedResp = null, this.recHooks = [], this.refEvent = null, this.rateLimited = !1;
+  }
+  resend(timeout) {
+    this.timeout = timeout, this._cancelRefEvent(), this.ref = "", this.refEvent = null, this.receivedResp = null, this.sent = !1, this.send();
+  }
+  send() {
+    if (this._hasReceived("timeout"))
+      return;
+    this.startTimeout(), this.sent = !0, this.channel.socket.push({
+      topic: this.channel.topic,
+      event: this.event,
+      payload: this.payload,
+      ref: this.ref,
+      join_ref: this.channel._joinRef()
+    }) === "rate limited" && (this.rateLimited = !0);
+  }
+  updatePayload(payload) {
+    this.payload = Object.assign(Object.assign({}, this.payload), payload);
+  }
+  receive(status, callback) {
+    var _a;
+    return this._hasReceived(status) && callback((_a = this.receivedResp) === null || _a === void 0 ? void 0 : _a.response), this.recHooks.push({ status, callback }), this;
+  }
+  startTimeout() {
+    if (this.timeoutTimer)
+      return;
+    this.ref = this.channel.socket._makeRef(), this.refEvent = this.channel._replyEventName(this.ref);
+    let callback = (payload) => {
+      this._cancelRefEvent(), this._cancelTimeout(), this.receivedResp = payload, this._matchReceive(payload);
+    };
+    this.channel._on(this.refEvent, {}, callback), this.timeoutTimer = setTimeout(() => {
+      this.trigger("timeout", {});
+    }, this.timeout);
+  }
+  trigger(status, response) {
+    this.refEvent && this.channel._trigger(this.refEvent, { status, response });
+  }
+  destroy() {
+    this._cancelRefEvent(), this._cancelTimeout();
+  }
+  _cancelRefEvent() {
+    !this.refEvent || this.channel._off(this.refEvent, {});
+  }
+  _cancelTimeout() {
+    clearTimeout(this.timeoutTimer), this.timeoutTimer = void 0;
+  }
+  _matchReceive({ status, response }) {
+    this.recHooks.filter((h) => h.status === status).forEach((h) => h.callback(response));
+  }
+  _hasReceived(status) {
+    return this.receivedResp && this.receivedResp.status === status;
+  }
+};
+
+// node_modules/@supabase/realtime-js/dist/module/RealtimePresence.js
+var REALTIME_PRESENCE_LISTEN_EVENTS;
+(function(REALTIME_PRESENCE_LISTEN_EVENTS2) {
+  REALTIME_PRESENCE_LISTEN_EVENTS2.SYNC = "sync", REALTIME_PRESENCE_LISTEN_EVENTS2.JOIN = "join", REALTIME_PRESENCE_LISTEN_EVENTS2.LEAVE = "leave";
+})(REALTIME_PRESENCE_LISTEN_EVENTS || (REALTIME_PRESENCE_LISTEN_EVENTS = {}));
+var RealtimePresence = class {
+  constructor(channel, opts) {
+    this.channel = channel, this.state = {}, this.pendingDiffs = [], this.joinRef = null, this.caller = {
+      onJoin: () => {
+      },
+      onLeave: () => {
+      },
+      onSync: () => {
+      }
+    };
+    let events = (opts == null ? void 0 : opts.events) || {
+      state: "presence_state",
+      diff: "presence_diff"
+    };
+    this.channel._on(events.state, {}, (newState) => {
+      let { onJoin, onLeave, onSync } = this.caller;
+      this.joinRef = this.channel._joinRef(), this.state = RealtimePresence.syncState(this.state, newState, onJoin, onLeave), this.pendingDiffs.forEach((diff) => {
+        this.state = RealtimePresence.syncDiff(this.state, diff, onJoin, onLeave);
+      }), this.pendingDiffs = [], onSync();
+    }), this.channel._on(events.diff, {}, (diff) => {
+      let { onJoin, onLeave, onSync } = this.caller;
+      this.inPendingSyncState() ? this.pendingDiffs.push(diff) : (this.state = RealtimePresence.syncDiff(this.state, diff, onJoin, onLeave), onSync());
+    }), this.onJoin((key, currentPresences, newPresences) => {
+      this.channel._trigger("presence", {
+        event: "join",
+        key,
+        currentPresences,
+        newPresences
+      });
+    }), this.onLeave((key, currentPresences, leftPresences) => {
+      this.channel._trigger("presence", {
+        event: "leave",
+        key,
+        currentPresences,
+        leftPresences
+      });
+    }), this.onSync(() => {
+      this.channel._trigger("presence", { event: "sync" });
+    });
+  }
+  static syncState(currentState, newState, onJoin, onLeave) {
+    let state = this.cloneDeep(currentState), transformedState = this.transformState(newState), joins = {}, leaves = {};
+    return this.map(state, (key, presences) => {
+      transformedState[key] || (leaves[key] = presences);
+    }), this.map(transformedState, (key, newPresences) => {
+      let currentPresences = state[key];
+      if (currentPresences) {
+        let newPresenceRefs = newPresences.map((m) => m.presence_ref), curPresenceRefs = currentPresences.map((m) => m.presence_ref), joinedPresences = newPresences.filter((m) => curPresenceRefs.indexOf(m.presence_ref) < 0), leftPresences = currentPresences.filter((m) => newPresenceRefs.indexOf(m.presence_ref) < 0);
+        joinedPresences.length > 0 && (joins[key] = joinedPresences), leftPresences.length > 0 && (leaves[key] = leftPresences);
+      } else
+        joins[key] = newPresences;
+    }), this.syncDiff(state, { joins, leaves }, onJoin, onLeave);
+  }
+  static syncDiff(state, diff, onJoin, onLeave) {
+    let { joins, leaves } = {
+      joins: this.transformState(diff.joins),
+      leaves: this.transformState(diff.leaves)
+    };
+    return onJoin || (onJoin = () => {
+    }), onLeave || (onLeave = () => {
+    }), this.map(joins, (key, newPresences) => {
+      var _a;
+      let currentPresences = (_a = state[key]) !== null && _a !== void 0 ? _a : [];
+      if (state[key] = this.cloneDeep(newPresences), currentPresences.length > 0) {
+        let joinedPresenceRefs = state[key].map((m) => m.presence_ref), curPresences = currentPresences.filter((m) => joinedPresenceRefs.indexOf(m.presence_ref) < 0);
+        state[key].unshift(...curPresences);
+      }
+      onJoin(key, currentPresences, newPresences);
+    }), this.map(leaves, (key, leftPresences) => {
+      let currentPresences = state[key];
+      if (!currentPresences)
+        return;
+      let presenceRefsToRemove = leftPresences.map((m) => m.presence_ref);
+      currentPresences = currentPresences.filter((m) => presenceRefsToRemove.indexOf(m.presence_ref) < 0), state[key] = currentPresences, onLeave(key, currentPresences, leftPresences), currentPresences.length === 0 && delete state[key];
+    }), state;
+  }
+  static map(obj, func) {
+    return Object.getOwnPropertyNames(obj).map((key) => func(key, obj[key]));
+  }
+  static transformState(state) {
+    return state = this.cloneDeep(state), Object.getOwnPropertyNames(state).reduce((newState, key) => {
+      let presences = state[key];
+      return "metas" in presences ? newState[key] = presences.metas.map((presence) => (presence.presence_ref = presence.phx_ref, delete presence.phx_ref, delete presence.phx_ref_prev, presence)) : newState[key] = presences, newState;
+    }, {});
+  }
+  static cloneDeep(obj) {
+    return JSON.parse(JSON.stringify(obj));
+  }
+  onJoin(callback) {
+    this.caller.onJoin = callback;
+  }
+  onLeave(callback) {
+    this.caller.onLeave = callback;
+  }
+  onSync(callback) {
+    this.caller.onSync = callback;
+  }
+  inPendingSyncState() {
+    return !this.joinRef || this.joinRef !== this.channel._joinRef();
+  }
+};
+
+// node_modules/@supabase/realtime-js/dist/module/lib/transformers.js
+var PostgresTypes;
+(function(PostgresTypes2) {
+  PostgresTypes2.abstime = "abstime", PostgresTypes2.bool = "bool", PostgresTypes2.date = "date", PostgresTypes2.daterange = "daterange", PostgresTypes2.float4 = "float4", PostgresTypes2.float8 = "float8", PostgresTypes2.int2 = "int2", PostgresTypes2.int4 = "int4", PostgresTypes2.int4range = "int4range", PostgresTypes2.int8 = "int8", PostgresTypes2.int8range = "int8range", PostgresTypes2.json = "json", PostgresTypes2.jsonb = "jsonb", PostgresTypes2.money = "money", PostgresTypes2.numeric = "numeric", PostgresTypes2.oid = "oid", PostgresTypes2.reltime = "reltime", PostgresTypes2.text = "text", PostgresTypes2.time = "time", PostgresTypes2.timestamp = "timestamp", PostgresTypes2.timestamptz = "timestamptz", PostgresTypes2.timetz = "timetz", PostgresTypes2.tsrange = "tsrange", PostgresTypes2.tstzrange = "tstzrange";
+})(PostgresTypes || (PostgresTypes = {}));
+var convertChangeData = (columns, record, options = {}) => {
+  var _a;
+  let skipTypes = (_a = options.skipTypes) !== null && _a !== void 0 ? _a : [];
+  return Object.keys(record).reduce((acc, rec_key) => (acc[rec_key] = convertColumn(rec_key, columns, record, skipTypes), acc), {});
+}, convertColumn = (columnName, columns, record, skipTypes) => {
+  let column = columns.find((x) => x.name === columnName), colType = column == null ? void 0 : column.type, value = record[columnName];
+  return colType && !skipTypes.includes(colType) ? convertCell(colType, value) : noop2(value);
+}, convertCell = (type, value) => {
+  if (type.charAt(0) === "_") {
+    let dataType = type.slice(1, type.length);
+    return toArray(value, dataType);
+  }
+  switch (type) {
+    case PostgresTypes.bool:
+      return toBoolean(value);
+    case PostgresTypes.float4:
+    case PostgresTypes.float8:
+    case PostgresTypes.int2:
+    case PostgresTypes.int4:
+    case PostgresTypes.int8:
+    case PostgresTypes.numeric:
+    case PostgresTypes.oid:
+      return toNumber(value);
+    case PostgresTypes.json:
+    case PostgresTypes.jsonb:
+      return toJson(value);
+    case PostgresTypes.timestamp:
+      return toTimestampString(value);
+    case PostgresTypes.abstime:
+    case PostgresTypes.date:
+    case PostgresTypes.daterange:
+    case PostgresTypes.int4range:
+    case PostgresTypes.int8range:
+    case PostgresTypes.money:
+    case PostgresTypes.reltime:
+    case PostgresTypes.text:
+    case PostgresTypes.time:
+    case PostgresTypes.timestamptz:
+    case PostgresTypes.timetz:
+    case PostgresTypes.tsrange:
+    case PostgresTypes.tstzrange:
+      return noop2(value);
+    default:
+      return noop2(value);
+  }
+}, noop2 = (value) => value, toBoolean = (value) => {
+  switch (value) {
+    case "t":
+      return !0;
+    case "f":
+      return !1;
+    default:
+      return value;
+  }
+}, toNumber = (value) => {
+  if (typeof value == "string") {
+    let parsedValue = parseFloat(value);
+    if (!Number.isNaN(parsedValue))
+      return parsedValue;
+  }
+  return value;
+}, toJson = (value) => {
+  if (typeof value == "string")
+    try {
+      return JSON.parse(value);
+    } catch (error) {
+      return console.log(`JSON parse error: ${error}`), value;
+    }
+  return value;
+}, toArray = (value, type) => {
+  if (typeof value != "string")
+    return value;
+  let lastIdx = value.length - 1, closeBrace = value[lastIdx];
+  if (value[0] === "{" && closeBrace === "}") {
+    let arr, valTrim = value.slice(1, lastIdx);
+    try {
+      arr = JSON.parse("[" + valTrim + "]");
+    } catch {
+      arr = valTrim ? valTrim.split(",") : [];
+    }
+    return arr.map((val) => convertCell(type, val));
+  }
+  return value;
+}, toTimestampString = (value) => typeof value == "string" ? value.replace(" ", "T") : value;
+
+// node_modules/@supabase/realtime-js/dist/module/RealtimeChannel.js
+var __awaiter4 = function(thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function(resolve) {
+      resolve(value);
+    });
+  }
+  return new (P || (P = Promise))(function(resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function rejected(value) {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+}, REALTIME_POSTGRES_CHANGES_LISTEN_EVENT;
+(function(REALTIME_POSTGRES_CHANGES_LISTEN_EVENT2) {
+  REALTIME_POSTGRES_CHANGES_LISTEN_EVENT2.ALL = "*", REALTIME_POSTGRES_CHANGES_LISTEN_EVENT2.INSERT = "INSERT", REALTIME_POSTGRES_CHANGES_LISTEN_EVENT2.UPDATE = "UPDATE", REALTIME_POSTGRES_CHANGES_LISTEN_EVENT2.DELETE = "DELETE";
+})(REALTIME_POSTGRES_CHANGES_LISTEN_EVENT || (REALTIME_POSTGRES_CHANGES_LISTEN_EVENT = {}));
+var REALTIME_LISTEN_TYPES;
+(function(REALTIME_LISTEN_TYPES2) {
+  REALTIME_LISTEN_TYPES2.BROADCAST = "broadcast", REALTIME_LISTEN_TYPES2.PRESENCE = "presence", REALTIME_LISTEN_TYPES2.POSTGRES_CHANGES = "postgres_changes";
+})(REALTIME_LISTEN_TYPES || (REALTIME_LISTEN_TYPES = {}));
+var REALTIME_SUBSCRIBE_STATES;
+(function(REALTIME_SUBSCRIBE_STATES2) {
+  REALTIME_SUBSCRIBE_STATES2.SUBSCRIBED = "SUBSCRIBED", REALTIME_SUBSCRIBE_STATES2.TIMED_OUT = "TIMED_OUT", REALTIME_SUBSCRIBE_STATES2.CLOSED = "CLOSED", REALTIME_SUBSCRIBE_STATES2.CHANNEL_ERROR = "CHANNEL_ERROR";
+})(REALTIME_SUBSCRIBE_STATES || (REALTIME_SUBSCRIBE_STATES = {}));
+var RealtimeChannel = class {
+  constructor(topic, params = { config: {} }, socket) {
+    this.topic = topic, this.params = params, this.socket = socket, this.bindings = {}, this.state = CHANNEL_STATES.closed, this.joinedOnce = !1, this.pushBuffer = [], this.params.config = Object.assign({
+      broadcast: { ack: !1, self: !1 },
+      presence: { key: "" }
+    }, params.config), this.timeout = this.socket.timeout, this.joinPush = new Push(this, CHANNEL_EVENTS.join, this.params, this.timeout), this.rejoinTimer = new Timer(() => this._rejoinUntilConnected(), this.socket.reconnectAfterMs), this.joinPush.receive("ok", () => {
+      this.state = CHANNEL_STATES.joined, this.rejoinTimer.reset(), this.pushBuffer.forEach((pushEvent) => pushEvent.send()), this.pushBuffer = [];
+    }), this._onClose(() => {
+      this.rejoinTimer.reset(), this.socket.log("channel", `close ${this.topic} ${this._joinRef()}`), this.state = CHANNEL_STATES.closed, this.socket._remove(this);
+    }), this._onError((reason) => {
+      this._isLeaving() || this._isClosed() || (this.socket.log("channel", `error ${this.topic}`, reason), this.state = CHANNEL_STATES.errored, this.rejoinTimer.scheduleTimeout());
+    }), this.joinPush.receive("timeout", () => {
+      !this._isJoining() || (this.socket.log("channel", `timeout ${this.topic}`, this.joinPush.timeout), this.state = CHANNEL_STATES.errored, this.rejoinTimer.scheduleTimeout());
+    }), this._on(CHANNEL_EVENTS.reply, {}, (payload, ref) => {
+      this._trigger(this._replyEventName(ref), payload);
+    }), this.presence = new RealtimePresence(this);
+  }
+  subscribe(callback, timeout = this.timeout) {
+    var _a, _b;
+    if (this.joinedOnce)
+      throw "tried to subscribe multiple times. 'subscribe' can only be called a single time per channel instance";
+    {
+      let { config: { broadcast, presence } } = this.params;
+      this._onError((e) => callback && callback("CHANNEL_ERROR", e)), this._onClose(() => callback && callback("CLOSED"));
+      let accessTokenPayload = {}, config2 = {
+        broadcast,
+        presence,
+        postgres_changes: (_b = (_a = this.bindings.postgres_changes) === null || _a === void 0 ? void 0 : _a.map((r) => r.filter)) !== null && _b !== void 0 ? _b : []
+      };
+      this.socket.accessToken && (accessTokenPayload.access_token = this.socket.accessToken), this.updateJoinPayload(Object.assign({ config: config2 }, accessTokenPayload)), this.joinedOnce = !0, this._rejoin(timeout), this.joinPush.receive("ok", ({ postgres_changes: serverPostgresFilters }) => {
+        var _a2;
+        if (this.socket.accessToken && this.socket.setAuth(this.socket.accessToken), serverPostgresFilters === void 0) {
+          callback && callback("SUBSCRIBED");
+          return;
+        } else {
+          let clientPostgresBindings = this.bindings.postgres_changes, bindingsLen = (_a2 = clientPostgresBindings == null ? void 0 : clientPostgresBindings.length) !== null && _a2 !== void 0 ? _a2 : 0, newPostgresBindings = [];
+          for (let i = 0; i < bindingsLen; i++) {
+            let clientPostgresBinding = clientPostgresBindings[i], { filter: { event, schema, table, filter } } = clientPostgresBinding, serverPostgresFilter = serverPostgresFilters && serverPostgresFilters[i];
+            if (serverPostgresFilter && serverPostgresFilter.event === event && serverPostgresFilter.schema === schema && serverPostgresFilter.table === table && serverPostgresFilter.filter === filter)
+              newPostgresBindings.push(Object.assign(Object.assign({}, clientPostgresBinding), { id: serverPostgresFilter.id }));
+            else {
+              this.unsubscribe(), callback && callback("CHANNEL_ERROR", new Error("mismatch between server and client bindings for postgres changes"));
+              return;
+            }
+          }
+          this.bindings.postgres_changes = newPostgresBindings, callback && callback("SUBSCRIBED");
+          return;
+        }
+      }).receive("error", (error) => {
+        callback && callback("CHANNEL_ERROR", new Error(JSON.stringify(Object.values(error).join(", ") || "error")));
+      }).receive("timeout", () => {
+        callback && callback("TIMED_OUT");
+      });
+    }
+    return this;
+  }
+  presenceState() {
+    return this.presence.state;
+  }
+  track(payload, opts = {}) {
+    return __awaiter4(this, void 0, void 0, function* () {
+      return yield this.send({
+        type: "presence",
+        event: "track",
+        payload
+      }, opts.timeout || this.timeout);
+    });
+  }
+  untrack(opts = {}) {
+    return __awaiter4(this, void 0, void 0, function* () {
+      return yield this.send({
+        type: "presence",
+        event: "untrack"
+      }, opts);
+    });
+  }
+  on(type, filter, callback) {
+    return this._on(type, filter, callback);
+  }
+  send(payload, opts = {}) {
+    return new Promise((resolve) => {
+      var _a, _b, _c;
+      let push = this._push(payload.type, payload, opts.timeout || this.timeout);
+      push.rateLimited && resolve("rate limited"), payload.type === "broadcast" && !(!((_c = (_b = (_a = this.params) === null || _a === void 0 ? void 0 : _a.config) === null || _b === void 0 ? void 0 : _b.broadcast) === null || _c === void 0) && _c.ack) && resolve("ok"), push.receive("ok", () => resolve("ok")), push.receive("timeout", () => resolve("timed out"));
+    });
+  }
+  updateJoinPayload(payload) {
+    this.joinPush.updatePayload(payload);
+  }
+  unsubscribe(timeout = this.timeout) {
+    this.state = CHANNEL_STATES.leaving;
+    let onClose = () => {
+      this.socket.log("channel", `leave ${this.topic}`), this._trigger(CHANNEL_EVENTS.close, "leave", this._joinRef());
+    };
+    return this.rejoinTimer.reset(), this.joinPush.destroy(), new Promise((resolve) => {
+      let leavePush = new Push(this, CHANNEL_EVENTS.leave, {}, timeout);
+      leavePush.receive("ok", () => {
+        onClose(), resolve("ok");
+      }).receive("timeout", () => {
+        onClose(), resolve("timed out");
+      }).receive("error", () => {
+        resolve("error");
+      }), leavePush.send(), this._canPush() || leavePush.trigger("ok", {});
+    });
+  }
+  _push(event, payload, timeout = this.timeout) {
+    if (!this.joinedOnce)
+      throw `tried to push '${event}' to '${this.topic}' before joining. Use channel.subscribe() before pushing events`;
+    let pushEvent = new Push(this, event, payload, timeout);
+    return this._canPush() ? pushEvent.send() : (pushEvent.startTimeout(), this.pushBuffer.push(pushEvent)), pushEvent;
+  }
+  _onMessage(_event, payload, _ref) {
+    return payload;
+  }
+  _isMember(topic) {
+    return this.topic === topic;
+  }
+  _joinRef() {
+    return this.joinPush.ref;
+  }
+  _trigger(type, payload, ref) {
+    var _a, _b;
+    let typeLower = type.toLocaleLowerCase(), { close, error, leave, join } = CHANNEL_EVENTS;
+    if (ref && [close, error, leave, join].indexOf(typeLower) >= 0 && ref !== this._joinRef())
+      return;
+    let handledPayload = this._onMessage(typeLower, payload, ref);
+    if (payload && !handledPayload)
+      throw "channel onMessage callbacks must return the payload, modified or unmodified";
+    ["insert", "update", "delete"].includes(typeLower) ? (_a = this.bindings.postgres_changes) === null || _a === void 0 || _a.filter((bind) => {
+      var _a2, _b2, _c;
+      return ((_a2 = bind.filter) === null || _a2 === void 0 ? void 0 : _a2.event) === "*" || ((_c = (_b2 = bind.filter) === null || _b2 === void 0 ? void 0 : _b2.event) === null || _c === void 0 ? void 0 : _c.toLocaleLowerCase()) === typeLower;
+    }).map((bind) => bind.callback(handledPayload, ref)) : (_b = this.bindings[typeLower]) === null || _b === void 0 || _b.filter((bind) => {
+      var _a2, _b2, _c, _d, _e, _f;
+      if (["broadcast", "presence", "postgres_changes"].includes(typeLower))
+        if ("id" in bind) {
+          let bindId = bind.id, bindEvent = (_a2 = bind.filter) === null || _a2 === void 0 ? void 0 : _a2.event;
+          return bindId && ((_b2 = payload.ids) === null || _b2 === void 0 ? void 0 : _b2.includes(bindId)) && (bindEvent === "*" || (bindEvent == null ? void 0 : bindEvent.toLocaleLowerCase()) === ((_c = payload.data) === null || _c === void 0 ? void 0 : _c.type.toLocaleLowerCase()));
+        } else {
+          let bindEvent = (_e = (_d = bind == null ? void 0 : bind.filter) === null || _d === void 0 ? void 0 : _d.event) === null || _e === void 0 ? void 0 : _e.toLocaleLowerCase();
+          return bindEvent === "*" || bindEvent === ((_f = payload == null ? void 0 : payload.event) === null || _f === void 0 ? void 0 : _f.toLocaleLowerCase());
+        }
+      else
+        return bind.type.toLocaleLowerCase() === typeLower;
+    }).map((bind) => {
+      if (typeof handledPayload == "object" && "ids" in handledPayload) {
+        let postgresChanges = handledPayload.data, { schema, table, commit_timestamp, type: type2, errors } = postgresChanges;
+        handledPayload = Object.assign(Object.assign({}, {
+          schema,
+          table,
+          commit_timestamp,
+          eventType: type2,
+          new: {},
+          old: {},
+          errors
+        }), this._getPayloadRecords(postgresChanges));
+      }
+      bind.callback(handledPayload, ref);
+    });
+  }
+  _isClosed() {
+    return this.state === CHANNEL_STATES.closed;
+  }
+  _isJoined() {
+    return this.state === CHANNEL_STATES.joined;
+  }
+  _isJoining() {
+    return this.state === CHANNEL_STATES.joining;
+  }
+  _isLeaving() {
+    return this.state === CHANNEL_STATES.leaving;
+  }
+  _replyEventName(ref) {
+    return `chan_reply_${ref}`;
+  }
+  _on(type, filter, callback) {
+    let typeLower = type.toLocaleLowerCase(), binding2 = {
+      type: typeLower,
+      filter,
+      callback
+    };
+    return this.bindings[typeLower] ? this.bindings[typeLower].push(binding2) : this.bindings[typeLower] = [binding2], this;
+  }
+  _off(type, filter) {
+    let typeLower = type.toLocaleLowerCase();
+    return this.bindings[typeLower] = this.bindings[typeLower].filter((bind) => {
+      var _a;
+      return !(((_a = bind.type) === null || _a === void 0 ? void 0 : _a.toLocaleLowerCase()) === typeLower && RealtimeChannel.isEqual(bind.filter, filter));
+    }), this;
+  }
+  static isEqual(obj1, obj2) {
+    if (Object.keys(obj1).length !== Object.keys(obj2).length)
+      return !1;
+    for (let k in obj1)
+      if (obj1[k] !== obj2[k])
+        return !1;
+    return !0;
+  }
+  _rejoinUntilConnected() {
+    this.rejoinTimer.scheduleTimeout(), this.socket.isConnected() && this._rejoin();
+  }
+  _onClose(callback) {
+    this._on(CHANNEL_EVENTS.close, {}, callback);
+  }
+  _onError(callback) {
+    this._on(CHANNEL_EVENTS.error, {}, (reason) => callback(reason));
+  }
+  _canPush() {
+    return this.socket.isConnected() && this._isJoined();
+  }
+  _rejoin(timeout = this.timeout) {
+    this._isLeaving() || (this.socket._leaveOpenTopic(this.topic), this.state = CHANNEL_STATES.joining, this.joinPush.resend(timeout));
+  }
+  _getPayloadRecords(payload) {
+    let records = {
+      new: {},
+      old: {}
+    };
+    return (payload.type === "INSERT" || payload.type === "UPDATE") && (records.new = convertChangeData(payload.columns, payload.record)), (payload.type === "UPDATE" || payload.type === "DELETE") && (records.old = convertChangeData(payload.columns, payload.old_record)), records;
+  }
+};
+
+// node_modules/@supabase/realtime-js/dist/module/RealtimeClient.js
+var __awaiter5 = function(thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function(resolve) {
+      resolve(value);
+    });
+  }
+  return new (P || (P = Promise))(function(resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function rejected(value) {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+}, noop3 = () => {
+}, RealtimeClient = class {
+  constructor(endPoint, options) {
+    var _a;
+    this.accessToken = null, this.channels = [], this.endPoint = "", this.headers = DEFAULT_HEADERS2, this.params = {}, this.timeout = DEFAULT_TIMEOUT, this.transport = import_websocket.w3cwebsocket, this.heartbeatIntervalMs = 3e4, this.heartbeatTimer = void 0, this.pendingHeartbeatRef = null, this.ref = 0, this.logger = noop3, this.conn = null, this.sendBuffer = [], this.serializer = new Serializer(), this.stateChangeCallbacks = {
+      open: [],
+      close: [],
+      error: [],
+      message: []
+    }, this.eventsPerSecondLimitMs = 100, this.inThrottle = !1, this.endPoint = `${endPoint}/${TRANSPORTS.websocket}`, options != null && options.params && (this.params = options.params), options != null && options.headers && (this.headers = Object.assign(Object.assign({}, this.headers), options.headers)), options != null && options.timeout && (this.timeout = options.timeout), options != null && options.logger && (this.logger = options.logger), options != null && options.transport && (this.transport = options.transport), options != null && options.heartbeatIntervalMs && (this.heartbeatIntervalMs = options.heartbeatIntervalMs);
+    let eventsPerSecond = (_a = options == null ? void 0 : options.params) === null || _a === void 0 ? void 0 : _a.eventsPerSecond;
+    eventsPerSecond && (this.eventsPerSecondLimitMs = Math.floor(1e3 / eventsPerSecond)), this.reconnectAfterMs = options != null && options.reconnectAfterMs ? options.reconnectAfterMs : (tries) => [1e3, 2e3, 5e3, 1e4][tries - 1] || 1e4, this.encode = options != null && options.encode ? options.encode : (payload, callback) => callback(JSON.stringify(payload)), this.decode = options != null && options.decode ? options.decode : this.serializer.decode.bind(this.serializer), this.reconnectTimer = new Timer(() => __awaiter5(this, void 0, void 0, function* () {
+      this.disconnect(), this.connect();
+    }), this.reconnectAfterMs);
+  }
+  connect() {
+    this.conn || (this.conn = new this.transport(this._endPointURL(), [], null, this.headers), this.conn && (this.conn.binaryType = "arraybuffer", this.conn.onopen = () => this._onConnOpen(), this.conn.onerror = (error) => this._onConnError(error), this.conn.onmessage = (event) => this._onConnMessage(event), this.conn.onclose = (event) => this._onConnClose(event)));
+  }
+  disconnect(code, reason) {
+    this.conn && (this.conn.onclose = function() {
+    }, code ? this.conn.close(code, reason ?? "") : this.conn.close(), this.conn = null, this.heartbeatTimer && clearInterval(this.heartbeatTimer), this.reconnectTimer.reset());
+  }
+  getChannels() {
+    return this.channels;
+  }
+  removeChannel(channel) {
+    return channel.unsubscribe().then((status) => (this.channels.length === 0 && this.disconnect(), status));
+  }
+  removeAllChannels() {
+    return Promise.all(this.channels.map((channel) => channel.unsubscribe())).then((values) => (this.disconnect(), values));
+  }
+  log(kind, msg, data) {
+    this.logger(kind, msg, data);
+  }
+  connectionState() {
+    switch (this.conn && this.conn.readyState) {
+      case SOCKET_STATES.connecting:
+        return CONNECTION_STATE.Connecting;
+      case SOCKET_STATES.open:
+        return CONNECTION_STATE.Open;
+      case SOCKET_STATES.closing:
+        return CONNECTION_STATE.Closing;
+      default:
+        return CONNECTION_STATE.Closed;
+    }
+  }
+  isConnected() {
+    return this.connectionState() === CONNECTION_STATE.Open;
+  }
+  channel(topic, params = { config: {} }) {
+    this.isConnected() || this.connect();
+    let chan = new RealtimeChannel(`realtime:${topic}`, params, this);
+    return this.channels.push(chan), chan;
+  }
+  push(data) {
+    let { topic, event, payload, ref } = data, callback = () => {
+      this.encode(data, (result) => {
+        var _a;
+        (_a = this.conn) === null || _a === void 0 || _a.send(result);
+      });
+    };
+    if (this.log("push", `${topic} ${event} (${ref})`, payload), this.isConnected())
+      if (["broadcast", "presence", "postgres_changes"].includes(event)) {
+        if (this._throttle(callback)())
+          return "rate limited";
+      } else
+        callback();
+    else
+      this.sendBuffer.push(callback);
+  }
+  setAuth(token) {
+    this.accessToken = token, this.channels.forEach((channel) => {
+      token && channel.updateJoinPayload({ access_token: token }), channel.joinedOnce && channel._isJoined() && channel._push(CHANNEL_EVENTS.access_token, { access_token: token });
+    });
+  }
+  _makeRef() {
+    let newRef = this.ref + 1;
+    return newRef === this.ref ? this.ref = 0 : this.ref = newRef, this.ref.toString();
+  }
+  _leaveOpenTopic(topic) {
+    let dupChannel = this.channels.find((c) => c.topic === topic && (c._isJoined() || c._isJoining()));
+    dupChannel && (this.log("transport", `leaving duplicate topic "${topic}"`), dupChannel.unsubscribe());
+  }
+  _remove(channel) {
+    this.channels = this.channels.filter((c) => c._joinRef() !== channel._joinRef());
+  }
+  _endPointURL() {
+    return this._appendParams(this.endPoint, Object.assign({}, this.params, { vsn: VSN }));
+  }
+  _onConnMessage(rawMessage) {
+    this.decode(rawMessage.data, (msg) => {
+      let { topic, event, payload, ref } = msg;
+      (ref && ref === this.pendingHeartbeatRef || event === (payload == null ? void 0 : payload.type)) && (this.pendingHeartbeatRef = null), this.log("receive", `${payload.status || ""} ${topic} ${event} ${ref && "(" + ref + ")" || ""}`, payload), this.channels.filter((channel) => channel._isMember(topic)).forEach((channel) => channel._trigger(event, payload, ref)), this.stateChangeCallbacks.message.forEach((callback) => callback(msg));
+    });
+  }
+  _onConnOpen() {
+    this.log("transport", `connected to ${this._endPointURL()}`), this._flushSendBuffer(), this.reconnectTimer.reset(), this.heartbeatTimer && clearInterval(this.heartbeatTimer), this.heartbeatTimer = setInterval(() => this._sendHeartbeat(), this.heartbeatIntervalMs), this.stateChangeCallbacks.open.forEach((callback) => callback());
+  }
+  _onConnClose(event) {
+    this.log("transport", "close", event), this._triggerChanError(), this.heartbeatTimer && clearInterval(this.heartbeatTimer), this.reconnectTimer.scheduleTimeout(), this.stateChangeCallbacks.close.forEach((callback) => callback(event));
+  }
+  _onConnError(error) {
+    this.log("transport", error.message), this._triggerChanError(), this.stateChangeCallbacks.error.forEach((callback) => callback(error));
+  }
+  _triggerChanError() {
+    this.channels.forEach((channel) => channel._trigger(CHANNEL_EVENTS.error));
+  }
+  _appendParams(url, params) {
+    if (Object.keys(params).length === 0)
+      return url;
+    let prefix = url.match(/\?/) ? "&" : "?", query = new URLSearchParams(params);
+    return `${url}${prefix}${query}`;
+  }
+  _flushSendBuffer() {
+    this.isConnected() && this.sendBuffer.length > 0 && (this.sendBuffer.forEach((callback) => callback()), this.sendBuffer = []);
+  }
+  _sendHeartbeat() {
+    var _a;
+    if (!!this.isConnected()) {
+      if (this.pendingHeartbeatRef) {
+        this.pendingHeartbeatRef = null, this.log("transport", "heartbeat timeout. Attempting to re-establish connection"), (_a = this.conn) === null || _a === void 0 || _a.close(WS_CLOSE_NORMAL, "hearbeat timeout");
+        return;
+      }
+      this.pendingHeartbeatRef = this._makeRef(), this.push({
+        topic: "phoenix",
+        event: "heartbeat",
+        payload: {},
+        ref: this.pendingHeartbeatRef
+      }), this.setAuth(this.accessToken);
+    }
+  }
+  _throttle(callback, eventsPerSecondLimit = this.eventsPerSecondLimitMs) {
+    return () => this.inThrottle ? !0 : (callback(), this.inThrottle = !0, setTimeout(() => {
+      this.inThrottle = !1;
+    }, eventsPerSecondLimit), !1);
+  }
+};
+
+// node_modules/@supabase/storage-js/dist/module/lib/errors.js
+var StorageError = class extends Error {
+  constructor(message) {
+    super(message), this.__isStorageError = !0, this.name = "StorageError";
+  }
+};
+function isStorageError(error) {
+  return typeof error == "object" && error !== null && "__isStorageError" in error;
+}
+var StorageApiError = class extends StorageError {
+  constructor(message, status) {
+    super(message), this.name = "StorageApiError", this.status = status;
+  }
+  toJSON() {
+    return {
+      name: this.name,
+      message: this.message,
+      status: this.status
+    };
+  }
+}, StorageUnknownError = class extends StorageError {
+  constructor(message, originalError) {
+    super(message), this.name = "StorageUnknownError", this.originalError = originalError;
+  }
+};
+
+// node_modules/@supabase/storage-js/dist/module/lib/helpers.js
+var __awaiter6 = function(thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function(resolve) {
+      resolve(value);
+    });
+  }
+  return new (P || (P = Promise))(function(resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function rejected(value) {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+}, resolveFetch2 = (customFetch) => {
+  let _fetch;
+  return customFetch ? _fetch = customFetch : typeof fetch > "u" ? _fetch = (...args) => __awaiter6(void 0, void 0, void 0, function* () {
+    return yield (yield Promise.resolve().then(() => __toESM(require_browser_ponyfill()))).fetch(...args);
+  }) : _fetch = fetch, (...args) => _fetch(...args);
+}, resolveResponse = () => __awaiter6(void 0, void 0, void 0, function* () {
+  return typeof Response > "u" ? (yield Promise.resolve().then(() => __toESM(require_browser_ponyfill()))).Response : Response;
+});
+
+// node_modules/@supabase/storage-js/dist/module/lib/fetch.js
+var __awaiter7 = function(thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function(resolve) {
+      resolve(value);
+    });
+  }
+  return new (P || (P = Promise))(function(resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function rejected(value) {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+}, _getErrorMessage = (err) => err.msg || err.message || err.error_description || err.error || JSON.stringify(err), handleError = (error, reject) => __awaiter7(void 0, void 0, void 0, function* () {
+  let Res = yield resolveResponse();
+  error instanceof Res ? error.json().then((err) => {
+    reject(new StorageApiError(_getErrorMessage(err), error.status || 500));
+  }) : reject(new StorageUnknownError(_getErrorMessage(error), error));
+}), _getRequestParams = (method, options, parameters, body) => {
+  let params = { method, headers: (options == null ? void 0 : options.headers) || {} };
+  return method === "GET" ? params : (params.headers = Object.assign({ "Content-Type": "application/json" }, options == null ? void 0 : options.headers), params.body = JSON.stringify(body), Object.assign(Object.assign({}, params), parameters));
+};
+function _handleRequest(fetcher, method, url, options, parameters, body) {
+  return __awaiter7(this, void 0, void 0, function* () {
+    return new Promise((resolve, reject) => {
+      fetcher(url, _getRequestParams(method, options, parameters, body)).then((result) => {
+        if (!result.ok)
+          throw result;
+        return options != null && options.noResolveJson ? result : result.json();
+      }).then((data) => resolve(data)).catch((error) => handleError(error, reject));
+    });
+  });
+}
+function get(fetcher, url, options, parameters) {
+  return __awaiter7(this, void 0, void 0, function* () {
+    return _handleRequest(fetcher, "GET", url, options, parameters);
+  });
+}
+function post(fetcher, url, body, options, parameters) {
+  return __awaiter7(this, void 0, void 0, function* () {
+    return _handleRequest(fetcher, "POST", url, options, parameters, body);
+  });
+}
+function put(fetcher, url, body, options, parameters) {
+  return __awaiter7(this, void 0, void 0, function* () {
+    return _handleRequest(fetcher, "PUT", url, options, parameters, body);
+  });
+}
+function remove(fetcher, url, body, options, parameters) {
+  return __awaiter7(this, void 0, void 0, function* () {
+    return _handleRequest(fetcher, "DELETE", url, options, parameters, body);
+  });
+}
+
+// node_modules/@supabase/storage-js/dist/module/packages/StorageFileApi.js
+var __awaiter8 = function(thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function(resolve) {
+      resolve(value);
+    });
+  }
+  return new (P || (P = Promise))(function(resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function rejected(value) {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+}, DEFAULT_SEARCH_OPTIONS = {
+  limit: 100,
+  offset: 0,
+  sortBy: {
+    column: "name",
+    order: "asc"
+  }
+}, DEFAULT_FILE_OPTIONS = {
+  cacheControl: "3600",
+  contentType: "text/plain;charset=UTF-8",
+  upsert: !1
+}, StorageFileApi = class {
+  constructor(url, headers = {}, bucketId, fetch2) {
+    this.url = url, this.headers = headers, this.bucketId = bucketId, this.fetch = resolveFetch2(fetch2);
+  }
+  uploadOrUpdate(method, path, fileBody, fileOptions) {
+    return __awaiter8(this, void 0, void 0, function* () {
+      try {
+        let body, options = Object.assign(Object.assign({}, DEFAULT_FILE_OPTIONS), fileOptions), headers = Object.assign(Object.assign({}, this.headers), method === "POST" && { "x-upsert": String(options.upsert) });
+        typeof Blob < "u" && fileBody instanceof Blob ? (body = new FormData(), body.append("cacheControl", options.cacheControl), body.append("", fileBody)) : typeof FormData < "u" && fileBody instanceof FormData ? (body = fileBody, body.append("cacheControl", options.cacheControl)) : (body = fileBody, headers["cache-control"] = `max-age=${options.cacheControl}`, headers["content-type"] = options.contentType);
+        let cleanPath = this._removeEmptyFolders(path), _path = this._getFinalPath(cleanPath), res = yield this.fetch(`${this.url}/object/${_path}`, {
+          method,
+          body,
+          headers
+        });
+        if (res.ok)
+          return {
+            data: { path: cleanPath },
+            error: null
+          };
+        {
+          let error = yield res.json();
+          return { data: null, error };
+        }
+      } catch (error) {
+        if (isStorageError(error))
+          return { data: null, error };
+        throw error;
+      }
+    });
+  }
+  upload(path, fileBody, fileOptions) {
+    return __awaiter8(this, void 0, void 0, function* () {
+      return this.uploadOrUpdate("POST", path, fileBody, fileOptions);
+    });
+  }
+  update(path, fileBody, fileOptions) {
+    return __awaiter8(this, void 0, void 0, function* () {
+      return this.uploadOrUpdate("PUT", path, fileBody, fileOptions);
+    });
+  }
+  move(fromPath, toPath) {
+    return __awaiter8(this, void 0, void 0, function* () {
+      try {
+        return { data: yield post(this.fetch, `${this.url}/object/move`, { bucketId: this.bucketId, sourceKey: fromPath, destinationKey: toPath }, { headers: this.headers }), error: null };
+      } catch (error) {
+        if (isStorageError(error))
+          return { data: null, error };
+        throw error;
+      }
+    });
+  }
+  copy(fromPath, toPath) {
+    return __awaiter8(this, void 0, void 0, function* () {
+      try {
+        return { data: { path: (yield post(this.fetch, `${this.url}/object/copy`, { bucketId: this.bucketId, sourceKey: fromPath, destinationKey: toPath }, { headers: this.headers })).Key }, error: null };
+      } catch (error) {
+        if (isStorageError(error))
+          return { data: null, error };
+        throw error;
+      }
+    });
+  }
+  createSignedUrl(path, expiresIn, options) {
+    return __awaiter8(this, void 0, void 0, function* () {
+      try {
+        let _path = this._getFinalPath(path), data = yield post(this.fetch, `${this.url}/object/sign/${_path}`, { expiresIn }, { headers: this.headers }), downloadQueryParam = options != null && options.download ? `&download=${options.download === !0 ? "" : options.download}` : "";
+        return data = { signedUrl: encodeURI(`${this.url}${data.signedURL}${downloadQueryParam}`) }, { data, error: null };
+      } catch (error) {
+        if (isStorageError(error))
+          return { data: null, error };
+        throw error;
+      }
+    });
+  }
+  createSignedUrls(paths, expiresIn, options) {
+    return __awaiter8(this, void 0, void 0, function* () {
+      try {
+        let data = yield post(this.fetch, `${this.url}/object/sign/${this.bucketId}`, { expiresIn, paths }, { headers: this.headers }), downloadQueryParam = options != null && options.download ? `&download=${options.download === !0 ? "" : options.download}` : "";
+        return {
+          data: data.map((datum) => Object.assign(Object.assign({}, datum), { signedUrl: datum.signedURL ? encodeURI(`${this.url}${datum.signedURL}${downloadQueryParam}`) : null })),
+          error: null
+        };
+      } catch (error) {
+        if (isStorageError(error))
+          return { data: null, error };
+        throw error;
+      }
+    });
+  }
+  download(path) {
+    return __awaiter8(this, void 0, void 0, function* () {
+      try {
+        let _path = this._getFinalPath(path);
+        return { data: yield (yield get(this.fetch, `${this.url}/object/${_path}`, {
+          headers: this.headers,
+          noResolveJson: !0
+        })).blob(), error: null };
+      } catch (error) {
+        if (isStorageError(error))
+          return { data: null, error };
+        throw error;
+      }
+    });
+  }
+  getPublicUrl(path, options) {
+    let _path = this._getFinalPath(path), downloadQueryParam = options != null && options.download ? `?download=${options.download === !0 ? "" : options.download}` : "";
+    return {
+      data: { publicUrl: encodeURI(`${this.url}/object/public/${_path}${downloadQueryParam}`) }
+    };
+  }
+  remove(paths) {
+    return __awaiter8(this, void 0, void 0, function* () {
+      try {
+        return { data: yield remove(this.fetch, `${this.url}/object/${this.bucketId}`, { prefixes: paths }, { headers: this.headers }), error: null };
+      } catch (error) {
+        if (isStorageError(error))
+          return { data: null, error };
+        throw error;
+      }
+    });
+  }
+  list(path, options, parameters) {
+    return __awaiter8(this, void 0, void 0, function* () {
+      try {
+        let body = Object.assign(Object.assign(Object.assign({}, DEFAULT_SEARCH_OPTIONS), options), { prefix: path || "" });
+        return { data: yield post(this.fetch, `${this.url}/object/list/${this.bucketId}`, body, { headers: this.headers }, parameters), error: null };
+      } catch (error) {
+        if (isStorageError(error))
+          return { data: null, error };
+        throw error;
+      }
+    });
+  }
+  _getFinalPath(path) {
+    return `${this.bucketId}/${path}`;
+  }
+  _removeEmptyFolders(path) {
+    return path.replace(/^\/|\/$/g, "").replace(/\/+/g, "/");
+  }
+};
+
+// node_modules/@supabase/storage-js/dist/module/lib/version.js
+var version4 = "2.0.0";
+
+// node_modules/@supabase/storage-js/dist/module/lib/constants.js
+var DEFAULT_HEADERS3 = { "X-Client-Info": `storage-js/${version4}` };
+
+// node_modules/@supabase/storage-js/dist/module/packages/StorageBucketApi.js
+var __awaiter9 = function(thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function(resolve) {
+      resolve(value);
+    });
+  }
+  return new (P || (P = Promise))(function(resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function rejected(value) {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+}, StorageBucketApi = class {
+  constructor(url, headers = {}, fetch2) {
+    this.url = url, this.headers = Object.assign(Object.assign({}, DEFAULT_HEADERS3), headers), this.fetch = resolveFetch2(fetch2);
+  }
+  listBuckets() {
+    return __awaiter9(this, void 0, void 0, function* () {
+      try {
+        return { data: yield get(this.fetch, `${this.url}/bucket`, { headers: this.headers }), error: null };
+      } catch (error) {
+        if (isStorageError(error))
+          return { data: null, error };
+        throw error;
+      }
+    });
+  }
+  getBucket(id) {
+    return __awaiter9(this, void 0, void 0, function* () {
+      try {
+        return { data: yield get(this.fetch, `${this.url}/bucket/${id}`, { headers: this.headers }), error: null };
+      } catch (error) {
+        if (isStorageError(error))
+          return { data: null, error };
+        throw error;
+      }
+    });
+  }
+  createBucket(id, options = { public: !1 }) {
+    return __awaiter9(this, void 0, void 0, function* () {
+      try {
+        return { data: yield post(this.fetch, `${this.url}/bucket`, { id, name: id, public: options.public }, { headers: this.headers }), error: null };
+      } catch (error) {
+        if (isStorageError(error))
+          return { data: null, error };
+        throw error;
+      }
+    });
+  }
+  updateBucket(id, options) {
+    return __awaiter9(this, void 0, void 0, function* () {
+      try {
+        return { data: yield put(this.fetch, `${this.url}/bucket/${id}`, { id, name: id, public: options.public }, { headers: this.headers }), error: null };
+      } catch (error) {
+        if (isStorageError(error))
+          return { data: null, error };
+        throw error;
+      }
+    });
+  }
+  emptyBucket(id) {
+    return __awaiter9(this, void 0, void 0, function* () {
+      try {
+        return { data: yield post(this.fetch, `${this.url}/bucket/${id}/empty`, {}, { headers: this.headers }), error: null };
+      } catch (error) {
+        if (isStorageError(error))
+          return { data: null, error };
+        throw error;
+      }
+    });
+  }
+  deleteBucket(id) {
+    return __awaiter9(this, void 0, void 0, function* () {
+      try {
+        return { data: yield remove(this.fetch, `${this.url}/bucket/${id}`, {}, { headers: this.headers }), error: null };
+      } catch (error) {
+        if (isStorageError(error))
+          return { data: null, error };
+        throw error;
+      }
+    });
+  }
+};
+
+// node_modules/@supabase/storage-js/dist/module/StorageClient.js
+var StorageClient = class extends StorageBucketApi {
+  constructor(url, headers = {}, fetch2) {
+    super(url, headers, fetch2);
+  }
+  from(id) {
+    return new StorageFileApi(this.url, this.headers, id, this.fetch);
+  }
+};
+
+// node_modules/@supabase/supabase-js/dist/module/lib/version.js
+var version5 = "2.1.1";
+
+// node_modules/@supabase/supabase-js/dist/module/lib/constants.js
+var DEFAULT_HEADERS4 = { "X-Client-Info": `supabase-js/${version5}` };
+
+// node_modules/@supabase/supabase-js/dist/module/lib/fetch.js
+var import_cross_fetch2 = __toESM(require_browser_ponyfill()), __awaiter10 = function(thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function(resolve) {
+      resolve(value);
+    });
+  }
+  return new (P || (P = Promise))(function(resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function rejected(value) {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+}, resolveFetch3 = (customFetch) => {
+  let _fetch;
+  return customFetch ? _fetch = customFetch : typeof fetch > "u" ? _fetch = import_cross_fetch2.default : _fetch = fetch, (...args) => _fetch(...args);
+}, resolveHeadersConstructor = () => typeof Headers > "u" ? import_cross_fetch2.Headers : Headers, fetchWithAuth = (supabaseKey, getAccessToken, customFetch) => {
+  let fetch2 = resolveFetch3(customFetch), HeadersConstructor = resolveHeadersConstructor();
+  return (input, init2) => __awaiter10(void 0, void 0, void 0, function* () {
+    var _a;
+    let accessToken = (_a = yield getAccessToken()) !== null && _a !== void 0 ? _a : supabaseKey, headers = new HeadersConstructor(init2 == null ? void 0 : init2.headers);
+    return headers.has("apikey") || headers.set("apikey", supabaseKey), headers.has("Authorization") || headers.set("Authorization", `Bearer ${accessToken}`), fetch2(input, Object.assign(Object.assign({}, init2), { headers }));
+  });
+};
+
+// node_modules/@supabase/supabase-js/dist/module/lib/helpers.js
+function stripTrailingSlash(url) {
+  return url.replace(/\/$/, "");
+}
+function applySettingDefaults(options, defaults) {
+  let { db: dbOptions, auth: authOptions, realtime: realtimeOptions, global: globalOptions } = options, { db: DEFAULT_DB_OPTIONS2, auth: DEFAULT_AUTH_OPTIONS2, realtime: DEFAULT_REALTIME_OPTIONS2, global: DEFAULT_GLOBAL_OPTIONS2 } = defaults;
+  return {
+    db: Object.assign(Object.assign({}, DEFAULT_DB_OPTIONS2), dbOptions),
+    auth: Object.assign(Object.assign({}, DEFAULT_AUTH_OPTIONS2), authOptions),
+    realtime: Object.assign(Object.assign({}, DEFAULT_REALTIME_OPTIONS2), realtimeOptions),
+    global: Object.assign(Object.assign({}, DEFAULT_GLOBAL_OPTIONS2), globalOptions)
+  };
+}
+
+// node_modules/@supabase/gotrue-js/dist/module/lib/helpers.js
+var __awaiter11 = function(thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function(resolve) {
+      resolve(value);
+    });
+  }
+  return new (P || (P = Promise))(function(resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function rejected(value) {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+function expiresAt(expiresIn) {
+  return Math.round(Date.now() / 1e3) + expiresIn;
+}
+function uuid() {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
+    let r = Math.random() * 16 | 0;
+    return (c == "x" ? r : r & 3 | 8).toString(16);
+  });
+}
+var isBrowser2 = () => typeof window < "u";
+function getParameterByName(name, url) {
+  var _a;
+  url || (url = ((_a = window == null ? void 0 : window.location) === null || _a === void 0 ? void 0 : _a.href) || ""), name = name.replace(/[\[\]]/g, "\\$&");
+  let regex = new RegExp("[?&#]" + name + "(=([^&#]*)|&|#|$)"), results = regex.exec(url);
+  return results ? results[2] ? decodeURIComponent(results[2].replace(/\+/g, " ")) : "" : null;
+}
+var resolveFetch4 = (customFetch) => {
+  let _fetch;
+  return customFetch ? _fetch = customFetch : typeof fetch > "u" ? _fetch = (...args) => __awaiter11(void 0, void 0, void 0, function* () {
+    return yield (yield Promise.resolve().then(() => __toESM(require_browser_ponyfill()))).fetch(...args);
+  }) : _fetch = fetch, (...args) => _fetch(...args);
+}, looksLikeFetchResponse = (maybeResponse) => typeof maybeResponse == "object" && maybeResponse !== null && "status" in maybeResponse && "ok" in maybeResponse && "json" in maybeResponse && typeof maybeResponse.json == "function", setItemAsync = (storage, key, data) => __awaiter11(void 0, void 0, void 0, function* () {
+  yield storage.setItem(key, JSON.stringify(data));
+}), getItemAsync = (storage, key) => __awaiter11(void 0, void 0, void 0, function* () {
+  let value = yield storage.getItem(key);
+  if (!value)
+    return null;
+  try {
+    return JSON.parse(value);
+  } catch {
+    return value;
+  }
+}), removeItemAsync = (storage, key) => __awaiter11(void 0, void 0, void 0, function* () {
+  yield storage.removeItem(key);
+}), decodeBase64URL = (value) => {
+  try {
+    return decodeURIComponent(atob(value.replace(/[-]/g, "+").replace(/[_]/g, "/")).split("").map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2)).join(""));
+  } catch (e) {
+    if (e instanceof ReferenceError)
+      return Buffer.from(value, "base64").toString("utf-8");
+    throw e;
+  }
+}, Deferred = class {
+  constructor() {
+    this.promise = new Deferred.promiseConstructor((res, rej) => {
+      this.resolve = res, this.reject = rej;
+    });
+  }
+};
+Deferred.promiseConstructor = Promise;
+function decodeJWTPayload(token) {
+  let parts = token.split(".");
+  if (parts.length !== 3)
+    throw new Error("JWT is not valid: not a JWT structure");
+  let base64Url = parts[1];
+  return JSON.parse(decodeBase64URL(base64Url));
+}
+
+// node_modules/@supabase/gotrue-js/dist/module/lib/errors.js
+var AuthError = class extends Error {
+  constructor(message) {
+    super(message), this.__isAuthError = !0, this.name = "AuthError";
+  }
+};
+function isAuthError(error) {
+  return typeof error == "object" && error !== null && "__isAuthError" in error;
+}
+var AuthApiError = class extends AuthError {
+  constructor(message, status) {
+    super(message), this.name = "AuthApiError", this.status = status;
+  }
+  toJSON() {
+    return {
+      name: this.name,
+      message: this.message,
+      status: this.status
+    };
+  }
+};
+function isAuthApiError(error) {
+  return isAuthError(error) && error.name === "AuthApiError";
+}
+var AuthUnknownError = class extends AuthError {
+  constructor(message, originalError) {
+    super(message), this.name = "AuthUnknownError", this.originalError = originalError;
+  }
+}, CustomAuthError = class extends AuthError {
+  constructor(message, name, status) {
+    super(message), this.name = name, this.status = status;
+  }
+  toJSON() {
+    return {
+      name: this.name,
+      message: this.message,
+      status: this.status
+    };
+  }
+}, AuthSessionMissingError = class extends CustomAuthError {
+  constructor() {
+    super("Auth session missing!", "AuthSessionMissingError", 400);
+  }
+}, AuthInvalidCredentialsError = class extends CustomAuthError {
+  constructor(message) {
+    super(message, "AuthInvalidCredentialsError", 400);
+  }
+}, AuthImplicitGrantRedirectError = class extends CustomAuthError {
+  constructor(message, details = null) {
+    super(message, "AuthImplicitGrantRedirectError", 500), this.details = null, this.details = details;
+  }
+  toJSON() {
+    return {
+      name: this.name,
+      message: this.message,
+      status: this.status,
+      details: this.details
+    };
+  }
+}, AuthRetryableFetchError = class extends CustomAuthError {
+  constructor(message, status) {
+    super(message, "AuthRetryableFetchError", status);
+  }
+};
+
+// node_modules/@supabase/gotrue-js/dist/module/lib/fetch.js
+var __awaiter12 = function(thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function(resolve) {
+      resolve(value);
+    });
+  }
+  return new (P || (P = Promise))(function(resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function rejected(value) {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+}, __rest = function(s, e) {
+  var t = {};
+  for (var p in s)
+    Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0 && (t[p] = s[p]);
+  if (s != null && typeof Object.getOwnPropertySymbols == "function")
+    for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++)
+      e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]) && (t[p[i]] = s[p[i]]);
+  return t;
+}, _getErrorMessage2 = (err) => err.msg || err.message || err.error_description || err.error || JSON.stringify(err), handleError2 = (error, reject) => __awaiter12(void 0, void 0, void 0, function* () {
+  let NETWORK_ERROR_CODES = [502, 503, 504];
+  looksLikeFetchResponse(error) ? NETWORK_ERROR_CODES.includes(error.status) ? reject(new AuthRetryableFetchError(_getErrorMessage2(error), error.status)) : error.json().then((err) => {
+    reject(new AuthApiError(_getErrorMessage2(err), error.status || 500));
+  }).catch((e) => {
+    reject(new AuthUnknownError(_getErrorMessage2(e), e));
+  }) : reject(new AuthRetryableFetchError(_getErrorMessage2(error), 0));
+}), _getRequestParams2 = (method, options, parameters, body) => {
+  let params = { method, headers: (options == null ? void 0 : options.headers) || {} };
+  return method === "GET" ? params : (params.headers = Object.assign({ "Content-Type": "application/json;charset=UTF-8" }, options == null ? void 0 : options.headers), params.body = JSON.stringify(body), Object.assign(Object.assign({}, params), parameters));
+};
+function _request(fetcher, method, url, options) {
+  var _a;
+  return __awaiter12(this, void 0, void 0, function* () {
+    let headers = Object.assign({}, options == null ? void 0 : options.headers);
+    options != null && options.jwt && (headers.Authorization = `Bearer ${options.jwt}`);
+    let qs = (_a = options == null ? void 0 : options.query) !== null && _a !== void 0 ? _a : {};
+    options != null && options.redirectTo && (qs.redirect_to = options.redirectTo);
+    let queryString = Object.keys(qs).length ? "?" + new URLSearchParams(qs).toString() : "", data = yield _handleRequest2(fetcher, method, url + queryString, { headers, noResolveJson: options == null ? void 0 : options.noResolveJson }, {}, options == null ? void 0 : options.body);
+    return options != null && options.xform ? options == null ? void 0 : options.xform(data) : { data: Object.assign({}, data), error: null };
+  });
+}
+function _handleRequest2(fetcher, method, url, options, parameters, body) {
+  return __awaiter12(this, void 0, void 0, function* () {
+    return new Promise((resolve, reject) => {
+      fetcher(url, _getRequestParams2(method, options, parameters, body)).then((result) => {
+        if (!result.ok)
+          throw result;
+        return options != null && options.noResolveJson ? result : result.json();
+      }).then((data) => resolve(data)).catch((error) => handleError2(error, reject));
+    });
+  });
+}
+function _sessionResponse(data) {
+  var _a;
+  let session = null;
+  hasSession(data) && (session = Object.assign({}, data), session.expires_at = expiresAt(data.expires_in));
+  let user = (_a = data.user) !== null && _a !== void 0 ? _a : data;
+  return { data: { session, user }, error: null };
+}
+function _userResponse(data) {
+  var _a;
+  return { data: { user: (_a = data.user) !== null && _a !== void 0 ? _a : data }, error: null };
+}
+function _ssoResponse(data) {
+  return { data, error: null };
+}
+function _generateLinkResponse(data) {
+  let { action_link, email_otp, hashed_token, redirect_to, verification_type } = data, rest = __rest(data, ["action_link", "email_otp", "hashed_token", "redirect_to", "verification_type"]), properties = {
+    action_link,
+    email_otp,
+    hashed_token,
+    redirect_to,
+    verification_type
+  }, user = Object.assign({}, rest);
+  return {
+    data: {
+      properties,
+      user
+    },
+    error: null
+  };
+}
+function hasSession(data) {
+  return data.access_token && data.refresh_token && data.expires_in;
+}
+
+// node_modules/@supabase/gotrue-js/dist/module/GoTrueAdminApi.js
+var __awaiter13 = function(thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function(resolve) {
+      resolve(value);
+    });
+  }
+  return new (P || (P = Promise))(function(resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function rejected(value) {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+}, __rest2 = function(s, e) {
+  var t = {};
+  for (var p in s)
+    Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0 && (t[p] = s[p]);
+  if (s != null && typeof Object.getOwnPropertySymbols == "function")
+    for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++)
+      e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]) && (t[p[i]] = s[p[i]]);
+  return t;
+}, GoTrueAdminApi = class {
+  constructor({ url = "", headers = {}, fetch: fetch2 }) {
+    this.url = url, this.headers = headers, this.fetch = resolveFetch4(fetch2), this.mfa = {
+      listFactors: this._listFactors.bind(this),
+      deleteFactor: this._deleteFactor.bind(this)
+    };
+  }
+  signOut(jwt) {
+    return __awaiter13(this, void 0, void 0, function* () {
+      try {
+        return yield _request(this.fetch, "POST", `${this.url}/logout`, {
+          headers: this.headers,
+          jwt,
+          noResolveJson: !0
+        }), { data: null, error: null };
+      } catch (error) {
+        if (isAuthError(error))
+          return { data: null, error };
+        throw error;
+      }
+    });
+  }
+  inviteUserByEmail(email, options = {}) {
+    return __awaiter13(this, void 0, void 0, function* () {
+      try {
+        return yield _request(this.fetch, "POST", `${this.url}/invite`, {
+          body: { email, data: options.data },
+          headers: this.headers,
+          redirectTo: options.redirectTo,
+          xform: _userResponse
+        });
+      } catch (error) {
+        if (isAuthError(error))
+          return { data: { user: null }, error };
+        throw error;
+      }
+    });
+  }
+  generateLink(params) {
+    return __awaiter13(this, void 0, void 0, function* () {
+      try {
+        let { options } = params, rest = __rest2(params, ["options"]), body = Object.assign(Object.assign({}, rest), options);
+        return "newEmail" in rest && (body.new_email = rest == null ? void 0 : rest.newEmail, delete body.newEmail), yield _request(this.fetch, "POST", `${this.url}/admin/generate_link`, {
+          body,
+          headers: this.headers,
+          xform: _generateLinkResponse,
+          redirectTo: options == null ? void 0 : options.redirectTo
+        });
+      } catch (error) {
+        if (isAuthError(error))
+          return {
+            data: {
+              properties: null,
+              user: null
+            },
+            error
+          };
+        throw error;
+      }
+    });
+  }
+  createUser(attributes) {
+    return __awaiter13(this, void 0, void 0, function* () {
+      try {
+        return yield _request(this.fetch, "POST", `${this.url}/admin/users`, {
+          body: attributes,
+          headers: this.headers,
+          xform: _userResponse
+        });
+      } catch (error) {
+        if (isAuthError(error))
+          return { data: { user: null }, error };
+        throw error;
+      }
+    });
+  }
+  listUsers() {
+    return __awaiter13(this, void 0, void 0, function* () {
+      try {
+        let { data, error } = yield _request(this.fetch, "GET", `${this.url}/admin/users`, {
+          headers: this.headers
+        });
+        if (error)
+          throw error;
+        return { data: Object.assign({}, data), error: null };
+      } catch (error) {
+        if (isAuthError(error))
+          return { data: { users: [] }, error };
+        throw error;
+      }
+    });
+  }
+  getUserById(uid) {
+    return __awaiter13(this, void 0, void 0, function* () {
+      try {
+        return yield _request(this.fetch, "GET", `${this.url}/admin/users/${uid}`, {
+          headers: this.headers,
+          xform: _userResponse
+        });
+      } catch (error) {
+        if (isAuthError(error))
+          return { data: { user: null }, error };
+        throw error;
+      }
+    });
+  }
+  updateUserById(uid, attributes) {
+    return __awaiter13(this, void 0, void 0, function* () {
+      try {
+        return yield _request(this.fetch, "PUT", `${this.url}/admin/users/${uid}`, {
+          body: attributes,
+          headers: this.headers,
+          xform: _userResponse
+        });
+      } catch (error) {
+        if (isAuthError(error))
+          return { data: { user: null }, error };
+        throw error;
+      }
+    });
+  }
+  deleteUser(id) {
+    return __awaiter13(this, void 0, void 0, function* () {
+      try {
+        return yield _request(this.fetch, "DELETE", `${this.url}/admin/users/${id}`, {
+          headers: this.headers,
+          xform: _userResponse
+        });
+      } catch (error) {
+        if (isAuthError(error))
+          return { data: { user: null }, error };
+        throw error;
+      }
+    });
+  }
+  _listFactors(params) {
+    return __awaiter13(this, void 0, void 0, function* () {
+      try {
+        return { data: yield _request(this.fetch, "GET", `${this.url}/admin/users/${params.userId}/factors`, {
+          headers: this.headers
+        }), error: null };
+      } catch (error) {
+        if (isAuthError(error))
+          return { data: null, error };
+        throw error;
+      }
+    });
+  }
+  _deleteFactor(params) {
+    return __awaiter13(this, void 0, void 0, function* () {
+      try {
+        return { data: yield _request(this.fetch, "DELETE", `${this.url}/admin/users/${params.userId}/factors/${params.id}`, {
+          headers: this.headers
+        }), error: null };
+      } catch (error) {
+        if (isAuthError(error))
+          return { data: null, error };
+        throw error;
+      }
+    });
+  }
+};
+
+// node_modules/@supabase/gotrue-js/dist/module/lib/version.js
+var version6 = "2.3.1";
+
+// node_modules/@supabase/gotrue-js/dist/module/lib/constants.js
+var GOTRUE_URL = "http://localhost:9999", STORAGE_KEY2 = "supabase.auth.token";
+var DEFAULT_HEADERS5 = { "X-Client-Info": `gotrue-js/${version6}` }, EXPIRY_MARGIN = 10, NETWORK_FAILURE = {
+  MAX_RETRIES: 10,
+  RETRY_INTERVAL: 2
+};
+
+// node_modules/@supabase/gotrue-js/dist/module/lib/local-storage.js
+var localStorageAdapter = {
+  getItem: (key) => isBrowser2() ? globalThis.localStorage.getItem(key) : null,
+  setItem: (key, value) => {
+    !isBrowser2() || globalThis.localStorage.setItem(key, value);
+  },
+  removeItem: (key) => {
+    !isBrowser2() || globalThis.localStorage.removeItem(key);
+  }
+}, local_storage_default = localStorageAdapter;
+
+// node_modules/@supabase/gotrue-js/dist/module/lib/polyfills.js
+function polyfillGlobalThis() {
+  if (typeof globalThis != "object")
+    try {
+      Object.defineProperty(Object.prototype, "__magic__", {
+        get: function() {
+          return this;
+        },
+        configurable: !0
+      }), __magic__.globalThis = __magic__, delete Object.prototype.__magic__;
+    } catch {
+      typeof self < "u" && (self.globalThis = self);
+    }
+}
+
+// node_modules/@supabase/gotrue-js/dist/module/GoTrueClient.js
+var __awaiter14 = function(thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function(resolve) {
+      resolve(value);
+    });
+  }
+  return new (P || (P = Promise))(function(resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function rejected(value) {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+polyfillGlobalThis();
+var DEFAULT_OPTIONS = {
+  url: GOTRUE_URL,
+  storageKey: STORAGE_KEY2,
+  autoRefreshToken: !0,
+  persistSession: !0,
+  detectSessionInUrl: !0,
+  headers: DEFAULT_HEADERS5
+}, GoTrueClient = class {
+  constructor(options) {
+    this.stateChangeEmitters = /* @__PURE__ */ new Map(), this.networkRetries = 0, this.refreshingDeferred = null, this.initializePromise = null, this.detectSessionInUrl = !0;
+    let settings = Object.assign(Object.assign({}, DEFAULT_OPTIONS), options);
+    this.inMemorySession = null, this.storageKey = settings.storageKey, this.autoRefreshToken = settings.autoRefreshToken, this.persistSession = settings.persistSession, this.storage = settings.storage || local_storage_default, this.admin = new GoTrueAdminApi({
+      url: settings.url,
+      headers: settings.headers,
+      fetch: settings.fetch
+    }), this.url = settings.url, this.headers = settings.headers, this.fetch = resolveFetch4(settings.fetch), this.detectSessionInUrl = settings.detectSessionInUrl, this.initialize(), this.mfa = {
+      verify: this._verify.bind(this),
+      enroll: this._enroll.bind(this),
+      unenroll: this._unenroll.bind(this),
+      challenge: this._challenge.bind(this),
+      listFactors: this._listFactors.bind(this),
+      challengeAndVerify: this._challengeAndVerify.bind(this),
+      getAuthenticatorAssuranceLevel: this._getAuthenticatorAssuranceLevel.bind(this)
+    };
+  }
+  initialize() {
+    return this.initializePromise || (this.initializePromise = this._initialize()), this.initializePromise;
+  }
+  _initialize() {
+    return __awaiter14(this, void 0, void 0, function* () {
+      if (this.initializePromise)
+        return this.initializePromise;
+      try {
+        if (this.detectSessionInUrl && this._isImplicitGrantFlow()) {
+          let { data, error } = yield this._getSessionFromUrl();
+          if (error)
+            return yield this._removeSession(), { error };
+          let { session, redirectType } = data;
+          return yield this._saveSession(session), this._notifyAllSubscribers("SIGNED_IN", session), redirectType === "recovery" && this._notifyAllSubscribers("PASSWORD_RECOVERY", session), { error: null };
+        }
+        return yield this._recoverAndRefresh(), { error: null };
+      } catch (error) {
+        return isAuthError(error) ? { error } : {
+          error: new AuthUnknownError("Unexpected error during initialization", error)
+        };
+      } finally {
+        this._handleVisibilityChange();
+      }
+    });
+  }
+  signUp(credentials) {
+    var _a, _b;
+    return __awaiter14(this, void 0, void 0, function* () {
+      try {
+        yield this._removeSession();
+        let res;
+        if ("email" in credentials) {
+          let { email, password, options } = credentials;
+          res = yield _request(this.fetch, "POST", `${this.url}/signup`, {
+            headers: this.headers,
+            redirectTo: options == null ? void 0 : options.emailRedirectTo,
+            body: {
+              email,
+              password,
+              data: (_a = options == null ? void 0 : options.data) !== null && _a !== void 0 ? _a : {},
+              gotrue_meta_security: { captcha_token: options == null ? void 0 : options.captchaToken }
+            },
+            xform: _sessionResponse
+          });
+        } else if ("phone" in credentials) {
+          let { phone, password, options } = credentials;
+          res = yield _request(this.fetch, "POST", `${this.url}/signup`, {
+            headers: this.headers,
+            body: {
+              phone,
+              password,
+              data: (_b = options == null ? void 0 : options.data) !== null && _b !== void 0 ? _b : {},
+              gotrue_meta_security: { captcha_token: options == null ? void 0 : options.captchaToken }
+            },
+            xform: _sessionResponse
+          });
+        } else
+          throw new AuthInvalidCredentialsError("You must provide either an email or phone number and a password");
+        let { data, error } = res;
+        if (error || !data)
+          return { data: { user: null, session: null }, error };
+        let session = data.session, user = data.user;
+        return data.session && (yield this._saveSession(data.session), this._notifyAllSubscribers("SIGNED_IN", session)), { data: { user, session }, error: null };
+      } catch (error) {
+        if (isAuthError(error))
+          return { data: { user: null, session: null }, error };
+        throw error;
+      }
+    });
+  }
+  signInWithPassword(credentials) {
+    var _a, _b;
+    return __awaiter14(this, void 0, void 0, function* () {
+      try {
+        yield this._removeSession();
+        let res;
+        if ("email" in credentials) {
+          let { email, password, options } = credentials;
+          res = yield _request(this.fetch, "POST", `${this.url}/token?grant_type=password`, {
+            headers: this.headers,
+            body: {
+              email,
+              password,
+              data: (_a = options == null ? void 0 : options.data) !== null && _a !== void 0 ? _a : {},
+              gotrue_meta_security: { captcha_token: options == null ? void 0 : options.captchaToken }
+            },
+            xform: _sessionResponse
+          });
+        } else if ("phone" in credentials) {
+          let { phone, password, options } = credentials;
+          res = yield _request(this.fetch, "POST", `${this.url}/token?grant_type=password`, {
+            headers: this.headers,
+            body: {
+              phone,
+              password,
+              data: (_b = options == null ? void 0 : options.data) !== null && _b !== void 0 ? _b : {},
+              gotrue_meta_security: { captcha_token: options == null ? void 0 : options.captchaToken }
+            },
+            xform: _sessionResponse
+          });
+        } else
+          throw new AuthInvalidCredentialsError("You must provide either an email or phone number and a password");
+        let { data, error } = res;
+        return error || !data ? { data: { user: null, session: null }, error } : (data.session && (yield this._saveSession(data.session), this._notifyAllSubscribers("SIGNED_IN", data.session)), { data, error });
+      } catch (error) {
+        if (isAuthError(error))
+          return { data: { user: null, session: null }, error };
+        throw error;
+      }
+    });
+  }
+  signInWithOAuth(credentials) {
+    var _a, _b, _c;
+    return __awaiter14(this, void 0, void 0, function* () {
+      return yield this._removeSession(), this._handleProviderSignIn(credentials.provider, {
+        redirectTo: (_a = credentials.options) === null || _a === void 0 ? void 0 : _a.redirectTo,
+        scopes: (_b = credentials.options) === null || _b === void 0 ? void 0 : _b.scopes,
+        queryParams: (_c = credentials.options) === null || _c === void 0 ? void 0 : _c.queryParams
+      });
+    });
+  }
+  signInWithOtp(credentials) {
+    var _a, _b, _c, _d;
+    return __awaiter14(this, void 0, void 0, function* () {
+      try {
+        if (yield this._removeSession(), "email" in credentials) {
+          let { email, options } = credentials, { error } = yield _request(this.fetch, "POST", `${this.url}/otp`, {
+            headers: this.headers,
+            body: {
+              email,
+              data: (_a = options == null ? void 0 : options.data) !== null && _a !== void 0 ? _a : {},
+              create_user: (_b = options == null ? void 0 : options.shouldCreateUser) !== null && _b !== void 0 ? _b : !0,
+              gotrue_meta_security: { captcha_token: options == null ? void 0 : options.captchaToken }
+            },
+            redirectTo: options == null ? void 0 : options.emailRedirectTo
+          });
+          return { data: { user: null, session: null }, error };
+        }
+        if ("phone" in credentials) {
+          let { phone, options } = credentials, { error } = yield _request(this.fetch, "POST", `${this.url}/otp`, {
+            headers: this.headers,
+            body: {
+              phone,
+              data: (_c = options == null ? void 0 : options.data) !== null && _c !== void 0 ? _c : {},
+              create_user: (_d = options == null ? void 0 : options.shouldCreateUser) !== null && _d !== void 0 ? _d : !0,
+              gotrue_meta_security: { captcha_token: options == null ? void 0 : options.captchaToken }
+            }
+          });
+          return { data: { user: null, session: null }, error };
+        }
+        throw new AuthInvalidCredentialsError("You must provide either an email or phone number.");
+      } catch (error) {
+        if (isAuthError(error))
+          return { data: { user: null, session: null }, error };
+        throw error;
+      }
+    });
+  }
+  verifyOtp(params) {
+    var _a, _b;
+    return __awaiter14(this, void 0, void 0, function* () {
+      try {
+        yield this._removeSession();
+        let { data, error } = yield _request(this.fetch, "POST", `${this.url}/verify`, {
+          headers: this.headers,
+          body: Object.assign(Object.assign({}, params), { gotrue_meta_security: { captcha_token: (_a = params.options) === null || _a === void 0 ? void 0 : _a.captchaToken } }),
+          redirectTo: (_b = params.options) === null || _b === void 0 ? void 0 : _b.redirectTo,
+          xform: _sessionResponse
+        });
+        if (error)
+          throw error;
+        if (!data)
+          throw "An error occurred on token verification.";
+        let session = data.session, user = data.user;
+        return session != null && session.access_token && (yield this._saveSession(session), this._notifyAllSubscribers("SIGNED_IN", session)), { data: { user, session }, error: null };
+      } catch (error) {
+        if (isAuthError(error))
+          return { data: { user: null, session: null }, error };
+        throw error;
+      }
+    });
+  }
+  signInWithSSO(params) {
+    var _a, _b, _c;
+    return __awaiter14(this, void 0, void 0, function* () {
+      try {
+        return yield this._removeSession(), yield _request(this.fetch, "POST", `${this.url}/sso`, {
+          body: Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({}, "providerId" in params ? { provider_id: params.providerId } : null), "domain" in params ? { domain: params.domain } : null), { redirect_to: (_b = (_a = params.options) === null || _a === void 0 ? void 0 : _a.redirectTo) !== null && _b !== void 0 ? _b : void 0 }), !((_c = params == null ? void 0 : params.options) === null || _c === void 0) && _c.captchaToken ? { gotrue_meta_security: { captcha_token: params.options.captchaToken } } : null), { skip_http_redirect: !0 }),
+          headers: this.headers,
+          xform: _ssoResponse
+        });
+      } catch (error) {
+        if (isAuthError(error))
+          return { data: null, error };
+        throw error;
+      }
+    });
+  }
+  getSession() {
+    return __awaiter14(this, void 0, void 0, function* () {
+      yield this.initializePromise;
+      let currentSession = null;
+      if (this.persistSession) {
+        let maybeSession = yield getItemAsync(this.storage, this.storageKey);
+        maybeSession !== null && (this._isValidSession(maybeSession) ? currentSession = maybeSession : yield this._removeSession());
+      } else
+        currentSession = this.inMemorySession;
+      if (!currentSession)
+        return { data: { session: null }, error: null };
+      if (!(currentSession.expires_at ? currentSession.expires_at <= Date.now() / 1e3 : !1))
+        return { data: { session: currentSession }, error: null };
+      let { session, error } = yield this._callRefreshToken(currentSession.refresh_token);
+      return error ? { data: { session: null }, error } : { data: { session }, error: null };
+    });
+  }
+  getUser(jwt) {
+    var _a, _b;
+    return __awaiter14(this, void 0, void 0, function* () {
+      try {
+        if (!jwt) {
+          let { data, error } = yield this.getSession();
+          if (error)
+            throw error;
+          jwt = (_b = (_a = data.session) === null || _a === void 0 ? void 0 : _a.access_token) !== null && _b !== void 0 ? _b : void 0;
+        }
+        return yield _request(this.fetch, "GET", `${this.url}/user`, {
+          headers: this.headers,
+          jwt,
+          xform: _userResponse
+        });
+      } catch (error) {
+        if (isAuthError(error))
+          return { data: { user: null }, error };
+        throw error;
+      }
+    });
+  }
+  updateUser(attributes) {
+    return __awaiter14(this, void 0, void 0, function* () {
+      try {
+        let { data: sessionData, error: sessionError } = yield this.getSession();
+        if (sessionError)
+          throw sessionError;
+        if (!sessionData.session)
+          throw new AuthSessionMissingError();
+        let session = sessionData.session, { data, error: userError } = yield _request(this.fetch, "PUT", `${this.url}/user`, {
+          headers: this.headers,
+          body: attributes,
+          jwt: session.access_token,
+          xform: _userResponse
+        });
+        if (userError)
+          throw userError;
+        return session.user = data.user, yield this._saveSession(session), this._notifyAllSubscribers("USER_UPDATED", session), { data: { user: session.user }, error: null };
+      } catch (error) {
+        if (isAuthError(error))
+          return { data: { user: null }, error };
+        throw error;
+      }
+    });
+  }
+  _decodeJWT(jwt) {
+    return decodeJWTPayload(jwt);
+  }
+  setSession(currentSession) {
+    return __awaiter14(this, void 0, void 0, function* () {
+      try {
+        let timeNow = Date.now() / 1e3, expiresAt2 = timeNow, hasExpired = !0, session = null;
+        if (currentSession.access_token && currentSession.access_token.split(".")[1]) {
+          let payload = this._decodeJWT(currentSession.access_token);
+          payload.exp && (expiresAt2 = payload.exp, hasExpired = expiresAt2 <= timeNow);
+        }
+        if (hasExpired) {
+          if (!currentSession.refresh_token)
+            throw new AuthSessionMissingError();
+          let { data, error } = yield this._refreshAccessToken(currentSession.refresh_token);
+          if (error)
+            return { data: { session: null, user: null }, error };
+          if (!data.session)
+            return { data: { session: null, user: null }, error: null };
+          session = data.session;
+        } else {
+          let { data, error } = yield this.getUser(currentSession.access_token);
+          if (error)
+            throw error;
+          session = {
+            access_token: currentSession.access_token,
+            refresh_token: currentSession.refresh_token,
+            user: data.user,
+            token_type: "bearer",
+            expires_in: expiresAt2 - timeNow,
+            expires_at: expiresAt2
+          };
+        }
+        return yield this._saveSession(session), this._notifyAllSubscribers("TOKEN_REFRESHED", session), { data: { session, user: session.user }, error: null };
+      } catch (error) {
+        if (isAuthError(error))
+          return { data: { session: null, user: null }, error };
+        throw error;
+      }
+    });
+  }
+  refreshSession(currentSession) {
+    var _a;
+    return __awaiter14(this, void 0, void 0, function* () {
+      try {
+        if (!currentSession) {
+          let { data, error: error2 } = yield this.getSession();
+          if (error2)
+            throw error2;
+          currentSession = (_a = data.session) !== null && _a !== void 0 ? _a : void 0;
+        }
+        if (!(currentSession != null && currentSession.refresh_token))
+          throw new AuthSessionMissingError();
+        let { session, error } = yield this._callRefreshToken(currentSession.refresh_token);
+        return error ? { data: { user: null, session: null }, error } : session ? { data: { user: session.user, session }, error: null } : { data: { user: null, session: null }, error: null };
+      } catch (error) {
+        if (isAuthError(error))
+          return { data: { user: null, session: null }, error };
+        throw error;
+      }
+    });
+  }
+  _getSessionFromUrl() {
+    return __awaiter14(this, void 0, void 0, function* () {
+      try {
+        if (!isBrowser2())
+          throw new AuthImplicitGrantRedirectError("No browser detected.");
+        if (!this._isImplicitGrantFlow())
+          throw new AuthImplicitGrantRedirectError("Not a valid implicit grant flow url.");
+        let error_description = getParameterByName("error_description");
+        if (error_description) {
+          let error_code = getParameterByName("error_code");
+          if (!error_code)
+            throw new AuthImplicitGrantRedirectError("No error_code detected.");
+          let error2 = getParameterByName("error");
+          throw error2 ? new AuthImplicitGrantRedirectError(error_description, { error: error2, code: error_code }) : new AuthImplicitGrantRedirectError("No error detected.");
+        }
+        let provider_token = getParameterByName("provider_token"), provider_refresh_token = getParameterByName("provider_refresh_token"), access_token = getParameterByName("access_token");
+        if (!access_token)
+          throw new AuthImplicitGrantRedirectError("No access_token detected.");
+        let expires_in = getParameterByName("expires_in");
+        if (!expires_in)
+          throw new AuthImplicitGrantRedirectError("No expires_in detected.");
+        let refresh_token = getParameterByName("refresh_token");
+        if (!refresh_token)
+          throw new AuthImplicitGrantRedirectError("No refresh_token detected.");
+        let token_type = getParameterByName("token_type");
+        if (!token_type)
+          throw new AuthImplicitGrantRedirectError("No token_type detected.");
+        let expires_at = Math.round(Date.now() / 1e3) + parseInt(expires_in), { data, error } = yield this.getUser(access_token);
+        if (error)
+          throw error;
+        let user = data.user, session = {
+          provider_token,
+          provider_refresh_token,
+          access_token,
+          expires_in: parseInt(expires_in),
+          expires_at,
+          refresh_token,
+          token_type,
+          user
+        }, redirectType = getParameterByName("type");
+        return window.location.hash = "", { data: { session, redirectType }, error: null };
+      } catch (error) {
+        if (isAuthError(error))
+          return { data: { session: null, redirectType: null }, error };
+        throw error;
+      }
+    });
+  }
+  _isImplicitGrantFlow() {
+    return isBrowser2() && (Boolean(getParameterByName("access_token")) || Boolean(getParameterByName("error_description")));
+  }
+  signOut() {
+    var _a;
+    return __awaiter14(this, void 0, void 0, function* () {
+      let { data, error: sessionError } = yield this.getSession();
+      if (sessionError)
+        return { error: sessionError };
+      let accessToken = (_a = data.session) === null || _a === void 0 ? void 0 : _a.access_token;
+      if (accessToken) {
+        let { error } = yield this.admin.signOut(accessToken);
+        if (error && !(isAuthApiError(error) && (error.status === 404 || error.status === 401)))
+          return { error };
+      }
+      return yield this._removeSession(), this._notifyAllSubscribers("SIGNED_OUT", null), { error: null };
+    });
+  }
+  onAuthStateChange(callback) {
+    let id = uuid(), subscription = {
+      id,
+      callback,
+      unsubscribe: () => {
+        this.stateChangeEmitters.delete(id);
+      }
+    };
+    return this.stateChangeEmitters.set(id, subscription), { data: { subscription } };
+  }
+  resetPasswordForEmail(email, options = {}) {
+    return __awaiter14(this, void 0, void 0, function* () {
+      try {
+        return yield _request(this.fetch, "POST", `${this.url}/recover`, {
+          body: { email, gotrue_meta_security: { captcha_token: options.captchaToken } },
+          headers: this.headers,
+          redirectTo: options.redirectTo
+        });
+      } catch (error) {
+        if (isAuthError(error))
+          return { data: null, error };
+        throw error;
+      }
+    });
+  }
+  _refreshAccessToken(refreshToken) {
+    return __awaiter14(this, void 0, void 0, function* () {
+      try {
+        return yield _request(this.fetch, "POST", `${this.url}/token?grant_type=refresh_token`, {
+          body: { refresh_token: refreshToken },
+          headers: this.headers,
+          xform: _sessionResponse
+        });
+      } catch (error) {
+        if (isAuthError(error))
+          return { data: { session: null, user: null }, error };
+        throw error;
+      }
+    });
+  }
+  _isValidSession(maybeSession) {
+    return typeof maybeSession == "object" && maybeSession !== null && "access_token" in maybeSession && "refresh_token" in maybeSession && "expires_at" in maybeSession;
+  }
+  _handleProviderSignIn(provider, options = {}) {
+    let url = this._getUrlForProvider(provider, {
+      redirectTo: options.redirectTo,
+      scopes: options.scopes,
+      queryParams: options.queryParams
+    });
+    return isBrowser2() && (window.location.href = url), { data: { provider, url }, error: null };
+  }
+  _recoverAndRefresh() {
+    var _a;
+    return __awaiter14(this, void 0, void 0, function* () {
+      try {
+        let currentSession = yield getItemAsync(this.storage, this.storageKey);
+        if (!this._isValidSession(currentSession)) {
+          currentSession !== null && (yield this._removeSession());
+          return;
+        }
+        let timeNow = Math.round(Date.now() / 1e3);
+        if (((_a = currentSession.expires_at) !== null && _a !== void 0 ? _a : 1 / 0) < timeNow + EXPIRY_MARGIN)
+          if (this.autoRefreshToken && currentSession.refresh_token) {
+            this.networkRetries++;
+            let { error } = yield this._callRefreshToken(currentSession.refresh_token);
+            if (error) {
+              if (console.log(error.message), error instanceof AuthRetryableFetchError && this.networkRetries < NETWORK_FAILURE.MAX_RETRIES) {
+                this.refreshTokenTimer && clearTimeout(this.refreshTokenTimer), this.refreshTokenTimer = setTimeout(
+                  () => this._recoverAndRefresh(),
+                  Math.pow(NETWORK_FAILURE.RETRY_INTERVAL, this.networkRetries) * 100
+                );
+                return;
+              }
+              yield this._removeSession();
+            }
+            this.networkRetries = 0;
+          } else
+            yield this._removeSession();
+        else
+          this.persistSession && (yield this._saveSession(currentSession)), this._notifyAllSubscribers("SIGNED_IN", currentSession);
+      } catch (err) {
+        console.error(err);
+        return;
+      }
+    });
+  }
+  _callRefreshToken(refreshToken) {
+    var _a, _b;
+    return __awaiter14(this, void 0, void 0, function* () {
+      if (this.refreshingDeferred)
+        return this.refreshingDeferred.promise;
+      try {
+        if (this.refreshingDeferred = new Deferred(), !refreshToken)
+          throw new AuthSessionMissingError();
+        let { data, error } = yield this._refreshAccessToken(refreshToken);
+        if (error)
+          throw error;
+        if (!data.session)
+          throw new AuthSessionMissingError();
+        yield this._saveSession(data.session), this._notifyAllSubscribers("TOKEN_REFRESHED", data.session);
+        let result = { session: data.session, error: null };
+        return this.refreshingDeferred.resolve(result), result;
+      } catch (error) {
+        if (isAuthError(error)) {
+          let result = { session: null, error };
+          return (_a = this.refreshingDeferred) === null || _a === void 0 || _a.resolve(result), result;
+        }
+        throw (_b = this.refreshingDeferred) === null || _b === void 0 || _b.reject(error), error;
+      } finally {
+        this.refreshingDeferred = null;
+      }
+    });
+  }
+  _notifyAllSubscribers(event, session) {
+    this.stateChangeEmitters.forEach((x) => x.callback(event, session));
+  }
+  _saveSession(session) {
+    return __awaiter14(this, void 0, void 0, function* () {
+      this.persistSession || (this.inMemorySession = session);
+      let expiresAt2 = session.expires_at;
+      if (expiresAt2) {
+        let timeNow = Math.round(Date.now() / 1e3), expiresIn = expiresAt2 - timeNow, refreshDurationBeforeExpires = expiresIn > EXPIRY_MARGIN ? EXPIRY_MARGIN : 0.5;
+        this._startAutoRefreshToken((expiresIn - refreshDurationBeforeExpires) * 1e3);
+      }
+      this.persistSession && session.expires_at && (yield this._persistSession(session));
+    });
+  }
+  _persistSession(currentSession) {
+    return setItemAsync(this.storage, this.storageKey, currentSession);
+  }
+  _removeSession() {
+    return __awaiter14(this, void 0, void 0, function* () {
+      this.persistSession ? yield removeItemAsync(this.storage, this.storageKey) : this.inMemorySession = null, this.refreshTokenTimer && clearTimeout(this.refreshTokenTimer);
+    });
+  }
+  _startAutoRefreshToken(value) {
+    this.refreshTokenTimer && clearTimeout(this.refreshTokenTimer), !(value <= 0 || !this.autoRefreshToken) && (this.refreshTokenTimer = setTimeout(() => __awaiter14(this, void 0, void 0, function* () {
+      this.networkRetries++;
+      let { data: { session }, error: sessionError } = yield this.getSession();
+      if (!sessionError && session) {
+        let { error } = yield this._callRefreshToken(session.refresh_token);
+        error || (this.networkRetries = 0), error instanceof AuthRetryableFetchError && this.networkRetries < NETWORK_FAILURE.MAX_RETRIES && this._startAutoRefreshToken(Math.pow(NETWORK_FAILURE.RETRY_INTERVAL, this.networkRetries) * 100);
+      }
+    }), value), typeof this.refreshTokenTimer.unref == "function" && this.refreshTokenTimer.unref());
+  }
+  _handleVisibilityChange() {
+    if (!isBrowser2() || !(window != null && window.addEventListener))
+      return !1;
+    try {
+      window == null || window.addEventListener("visibilitychange", () => __awaiter14(this, void 0, void 0, function* () {
+        document.visibilityState === "visible" && (yield this.initializePromise, yield this._recoverAndRefresh());
+      }));
+    } catch (error) {
+      console.error("_handleVisibilityChange", error);
+    }
+  }
+  _getUrlForProvider(provider, options) {
+    let urlParams = [`provider=${encodeURIComponent(provider)}`];
+    if (options != null && options.redirectTo && urlParams.push(`redirect_to=${encodeURIComponent(options.redirectTo)}`), options != null && options.scopes && urlParams.push(`scopes=${encodeURIComponent(options.scopes)}`), options != null && options.queryParams) {
+      let query = new URLSearchParams(options.queryParams);
+      urlParams.push(query.toString());
+    }
+    return `${this.url}/authorize?${urlParams.join("&")}`;
+  }
+  _unenroll(params) {
+    var _a;
+    return __awaiter14(this, void 0, void 0, function* () {
+      let { data: sessionData, error: sessionError } = yield this.getSession();
+      return sessionError ? { data: null, error: sessionError } : yield _request(this.fetch, "DELETE", `${this.url}/factors/${params.factorId}`, {
+        headers: this.headers,
+        jwt: (_a = sessionData == null ? void 0 : sessionData.session) === null || _a === void 0 ? void 0 : _a.access_token
+      });
+    });
+  }
+  _enroll(params) {
+    var _a, _b;
+    return __awaiter14(this, void 0, void 0, function* () {
+      let { data: sessionData, error: sessionError } = yield this.getSession();
+      if (sessionError)
+        return { data: null, error: sessionError };
+      let { data, error } = yield _request(this.fetch, "POST", `${this.url}/factors`, {
+        body: {
+          friendly_name: params.friendlyName,
+          factor_type: params.factorType,
+          issuer: params.issuer
+        },
+        headers: this.headers,
+        jwt: (_a = sessionData == null ? void 0 : sessionData.session) === null || _a === void 0 ? void 0 : _a.access_token
+      });
+      return error ? { data: null, error } : (!((_b = data == null ? void 0 : data.totp) === null || _b === void 0) && _b.qr_code && (data.totp.qr_code = `data:image/svg+xml;utf-8,${data.totp.qr_code}`), { data, error: null });
+    });
+  }
+  _verify(params) {
+    var _a;
+    return __awaiter14(this, void 0, void 0, function* () {
+      let { data: sessionData, error: sessionError } = yield this.getSession();
+      if (sessionError)
+        return { data: null, error: sessionError };
+      let { data, error } = yield _request(this.fetch, "POST", `${this.url}/factors/${params.factorId}/verify`, {
+        body: { code: params.code, challenge_id: params.challengeId },
+        headers: this.headers,
+        jwt: (_a = sessionData == null ? void 0 : sessionData.session) === null || _a === void 0 ? void 0 : _a.access_token
+      });
+      return error ? { data: null, error } : (yield this._saveSession(Object.assign({ expires_at: Math.round(Date.now() / 1e3) + data.expires_in }, data)), this._notifyAllSubscribers("MFA_CHALLENGE_VERIFIED", data), { data, error });
+    });
+  }
+  _challenge(params) {
+    var _a;
+    return __awaiter14(this, void 0, void 0, function* () {
+      let { data: sessionData, error: sessionError } = yield this.getSession();
+      return sessionError ? { data: null, error: sessionError } : yield _request(this.fetch, "POST", `${this.url}/factors/${params.factorId}/challenge`, {
+        headers: this.headers,
+        jwt: (_a = sessionData == null ? void 0 : sessionData.session) === null || _a === void 0 ? void 0 : _a.access_token
+      });
+    });
+  }
+  _challengeAndVerify(params) {
+    return __awaiter14(this, void 0, void 0, function* () {
+      let { data: challengeData, error: challengeError } = yield this._challenge({
+        factorId: params.factorId
+      });
+      return challengeError ? { data: null, error: challengeError } : yield this._verify({
+        factorId: params.factorId,
+        challengeId: challengeData.id,
+        code: params.code
+      });
+    });
+  }
+  _listFactors() {
+    return __awaiter14(this, void 0, void 0, function* () {
+      let { data: { user }, error: userError } = yield this.getUser();
+      if (userError)
+        return { data: null, error: userError };
+      let factors = (user == null ? void 0 : user.factors) || [], totp = factors.filter((factor) => factor.factor_type === "totp" && factor.status === "verified");
+      return {
+        data: {
+          all: factors,
+          totp
+        },
+        error: null
+      };
+    });
+  }
+  _getAuthenticatorAssuranceLevel() {
+    var _a, _b;
+    return __awaiter14(this, void 0, void 0, function* () {
+      let { data: { session }, error: sessionError } = yield this.getSession();
+      if (sessionError)
+        return { data: null, error: sessionError };
+      if (!session)
+        return {
+          data: { currentLevel: null, nextLevel: null, currentAuthenticationMethods: [] },
+          error: null
+        };
+      let payload = this._decodeJWT(session.access_token), currentLevel = null;
+      payload.aal && (currentLevel = payload.aal);
+      let nextLevel = currentLevel;
+      ((_b = (_a = session.user.factors) === null || _a === void 0 ? void 0 : _a.filter((factor) => factor.status === "verified")) !== null && _b !== void 0 ? _b : []).length > 0 && (nextLevel = "aal2");
+      let currentAuthenticationMethods = payload.amr || [];
+      return { data: { currentLevel, nextLevel, currentAuthenticationMethods }, error: null };
+    });
+  }
+};
+
+// node_modules/@supabase/supabase-js/dist/module/lib/SupabaseAuthClient.js
+var SupabaseAuthClient = class extends GoTrueClient {
+  constructor(options) {
+    super(options);
+  }
+};
+
+// node_modules/@supabase/supabase-js/dist/module/SupabaseClient.js
+var __awaiter15 = function(thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function(resolve) {
+      resolve(value);
+    });
+  }
+  return new (P || (P = Promise))(function(resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function rejected(value) {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+}, DEFAULT_GLOBAL_OPTIONS = {
+  headers: DEFAULT_HEADERS4
+}, DEFAULT_DB_OPTIONS = {
+  schema: "public"
+}, DEFAULT_AUTH_OPTIONS = {
+  autoRefreshToken: !0,
+  persistSession: !0,
+  detectSessionInUrl: !0
+}, DEFAULT_REALTIME_OPTIONS = {}, SupabaseClient = class {
+  constructor(supabaseUrl, supabaseKey, options) {
+    var _a, _b, _c, _d, _e, _f, _g, _h;
+    if (this.supabaseUrl = supabaseUrl, this.supabaseKey = supabaseKey, !supabaseUrl)
+      throw new Error("supabaseUrl is required.");
+    if (!supabaseKey)
+      throw new Error("supabaseKey is required.");
+    let _supabaseUrl = stripTrailingSlash(supabaseUrl);
+    if (this.realtimeUrl = `${_supabaseUrl}/realtime/v1`.replace(/^http/i, "ws"), this.authUrl = `${_supabaseUrl}/auth/v1`, this.storageUrl = `${_supabaseUrl}/storage/v1`, _supabaseUrl.match(/(supabase\.co)|(supabase\.in)/)) {
+      let urlParts = _supabaseUrl.split(".");
+      this.functionsUrl = `${urlParts[0]}.functions.${urlParts[1]}.${urlParts[2]}`;
+    } else
+      this.functionsUrl = `${_supabaseUrl}/functions/v1`;
+    let defaultStorageKey = `sb-${new URL(this.authUrl).hostname.split(".")[0]}-auth-token`, DEFAULTS = {
+      db: DEFAULT_DB_OPTIONS,
+      realtime: DEFAULT_REALTIME_OPTIONS,
+      auth: Object.assign(Object.assign({}, DEFAULT_AUTH_OPTIONS), { storageKey: defaultStorageKey }),
+      global: DEFAULT_GLOBAL_OPTIONS
+    }, settings = applySettingDefaults(options ?? {}, DEFAULTS);
+    this.storageKey = (_b = (_a = settings.auth) === null || _a === void 0 ? void 0 : _a.storageKey) !== null && _b !== void 0 ? _b : "", this.headers = (_d = (_c = settings.global) === null || _c === void 0 ? void 0 : _c.headers) !== null && _d !== void 0 ? _d : {}, this.auth = this._initSupabaseAuthClient((_e = settings.auth) !== null && _e !== void 0 ? _e : {}, this.headers, (_f = settings.global) === null || _f === void 0 ? void 0 : _f.fetch), this.fetch = fetchWithAuth(supabaseKey, this._getAccessToken.bind(this), (_g = settings.global) === null || _g === void 0 ? void 0 : _g.fetch), this.realtime = this._initRealtimeClient(Object.assign({ headers: this.headers }, settings.realtime)), this.rest = new PostgrestClient(`${_supabaseUrl}/rest/v1`, {
+      headers: this.headers,
+      schema: (_h = settings.db) === null || _h === void 0 ? void 0 : _h.schema,
+      fetch: this.fetch
+    }), this._listenForAuthEvents();
+  }
+  get functions() {
+    return new FunctionsClient(this.functionsUrl, {
+      headers: this.headers,
+      customFetch: this.fetch
+    });
+  }
+  get storage() {
+    return new StorageClient(this.storageUrl, this.headers, this.fetch);
+  }
+  from(relation) {
+    return this.rest.from(relation);
+  }
+  rpc(fn, args = {}, options) {
+    return this.rest.rpc(fn, args, options);
+  }
+  channel(name, opts = { config: {} }) {
+    return this.realtime.channel(name, opts);
+  }
+  getChannels() {
+    return this.realtime.getChannels();
+  }
+  removeChannel(channel) {
+    return this.realtime.removeChannel(channel);
+  }
+  removeAllChannels() {
+    return this.realtime.removeAllChannels();
+  }
+  _getAccessToken() {
+    var _a, _b;
+    return __awaiter15(this, void 0, void 0, function* () {
+      let { data } = yield this.auth.getSession();
+      return (_b = (_a = data.session) === null || _a === void 0 ? void 0 : _a.access_token) !== null && _b !== void 0 ? _b : null;
+    });
+  }
+  _initSupabaseAuthClient({ autoRefreshToken, persistSession, detectSessionInUrl, storage, storageKey }, headers, fetch2) {
+    let authHeaders = {
+      Authorization: `Bearer ${this.supabaseKey}`,
+      apikey: `${this.supabaseKey}`
+    };
+    return new SupabaseAuthClient({
+      url: this.authUrl,
+      headers: Object.assign(Object.assign({}, authHeaders), headers),
+      storageKey,
+      autoRefreshToken,
+      persistSession,
+      detectSessionInUrl,
+      storage,
+      fetch: fetch2
+    });
+  }
+  _initRealtimeClient(options) {
+    return new RealtimeClient(this.realtimeUrl, Object.assign(Object.assign({}, options), { params: Object.assign({ apikey: this.supabaseKey }, options == null ? void 0 : options.params) }));
+  }
+  _listenForAuthEvents() {
+    return this.auth.onAuthStateChange((event, session) => {
+      this._handleTokenChanged(event, session == null ? void 0 : session.access_token, "CLIENT");
+    });
+  }
+  _handleTokenChanged(event, token, source) {
+    (event === "TOKEN_REFRESHED" || event === "SIGNED_IN") && this.changedAccessToken !== token ? (this.realtime.setAuth(token ?? null), this.changedAccessToken = token) : (event === "SIGNED_OUT" || event === "USER_DELETED") && (this.realtime.setAuth(this.supabaseKey), source == "STORAGE" && this.auth.signOut());
+  }
+};
+
+// node_modules/@supabase/supabase-js/dist/module/index.js
+var createClient = (supabaseUrl, supabaseKey, options) => new SupabaseClient(supabaseUrl, supabaseKey, options);
+
+// app/routes/tables.tsx
+var import_jsx_dev_runtime = __toESM(require_jsx_dev_runtime()), loader = async ({ context, request }) => {
+  console.log("CONTEXT", context);
+  let aa = await readFrom(context.TABLES, "/tables/gram2-tbl1");
+  console.log("aAA", aa);
+  let res, cachedTables = await readFrom(context.TABLES, "/tables");
+  if (cachedTables)
+    console.log("CACHE"), res = cachedTables;
+  else {
+    console.log("SUPABSE");
+    let supabase = createClient(context.SUPABASE_URL, context.SUPABASE_ANON_KEY), { data } = await supabase.from("table").select("*");
+    res = data;
+    let resWriteKV = await writeTo(context.TABLES, "/tables", data);
+  }
+  return { tables: res };
+}, action2 = async ({ request, context }) => {
+  let formData = await request.formData();
+  console.log("formData Entries root", Object.fromEntries(formData));
+  let { _action, id, name, ...values } = Object.fromEntries(formData);
+  return await writeTo(context.TABLES, `/tables/${id}`, { id, name }), null;
+};
+function Index() {
+  let { tables } = useLoaderData();
+  return console.log(tables), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+    style: { fontFamily: "system-ui, sans-serif", lineHeight: "1.4" },
+    children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+        children: "Tables"
+      }, void 0, !1, {
+        fileName: "app/routes/tables.tsx",
+        lineNumber: 70,
+        columnNumber: 7
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Form, {
+        method: "post",
+        children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("input", {
+            type: "text",
+            name: "id"
+          }, void 0, !1, {
+            fileName: "app/routes/tables.tsx",
+            lineNumber: 73,
+            columnNumber: 9
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("input", {
+            type: "text",
+            name: "value"
+          }, void 0, !1, {
+            fileName: "app/routes/tables.tsx",
+            lineNumber: 74,
+            columnNumber: 9
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", {
+            type: "submit",
+            children: "Create"
+          }, void 0, !1, {
+            fileName: "app/routes/tables.tsx",
+            lineNumber: 75,
+            columnNumber: 9
+          }, this)
+        ]
+      }, void 0, !0, {
+        fileName: "app/routes/tables.tsx",
+        lineNumber: 72,
+        columnNumber: 7
+      }, this)
+    ]
+  }, void 0, !0, {
+    fileName: "app/routes/tables.tsx",
+    lineNumber: 69,
+    columnNumber: 5
+  }, this);
+}
+
 // app/routes/hello.js
 var hello_exports = {};
 __export(hello_exports, {
   Fsdf: () => Fsdf
 });
-var import_cloudflare2 = __toESM(require_dist());
+var import_cloudflare3 = __toESM(require_dist());
 function Fsdf() {
   return { df: "hola" };
 }
@@ -10467,19 +14000,24 @@ function Fsdf() {
 // app/routes/index.tsx
 var routes_exports = {};
 __export(routes_exports, {
-  default: () => Index,
-  loader: () => loader
+  default: () => Index2,
+  loader: () => loader2
 });
-var import_jsx_dev_runtime = __toESM(require_jsx_dev_runtime()), loader = async ({ context, request }) => (console.log("XX", context == null ? void 0 : context.sessionStorage), null);
-function Index() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+var import_jsx_dev_runtime = __toESM(require_jsx_dev_runtime()), loader2 = async ({ context, request }) => {
+  console.log("XX", context), await context.sessionStorage.put("b", "bbbb");
+  let t = await context.sessionStorage.get("b");
+  return console.log("a", t), { data: t };
+};
+function Index2() {
+  let { data } = useLoaderData();
+  return console.log(data), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
     style: { fontFamily: "system-ui, sans-serif", lineHeight: "1.4" },
     children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
         children: "Hola"
       }, void 0, !1, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 26,
+        lineNumber: 34,
         columnNumber: 7
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("ul", {
@@ -10492,12 +14030,12 @@ function Index() {
               children: "15m Quickstart Blog Tutorial"
             }, void 0, !1, {
               fileName: "app/routes/index.tsx",
-              lineNumber: 29,
+              lineNumber: 37,
               columnNumber: 11
             }, this)
           }, void 0, !1, {
             fileName: "app/routes/index.tsx",
-            lineNumber: 28,
+            lineNumber: 36,
             columnNumber: 9
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("li", {
@@ -10508,12 +14046,12 @@ function Index() {
               children: "Deep Dive Jokes App Tutorial"
             }, void 0, !1, {
               fileName: "app/routes/index.tsx",
-              lineNumber: 38,
+              lineNumber: 46,
               columnNumber: 11
             }, this)
           }, void 0, !1, {
             fileName: "app/routes/index.tsx",
-            lineNumber: 37,
+            lineNumber: 45,
             columnNumber: 9
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("li", {
@@ -10524,30 +14062,30 @@ function Index() {
               children: "Remix Docs"
             }, void 0, !1, {
               fileName: "app/routes/index.tsx",
-              lineNumber: 47,
+              lineNumber: 55,
               columnNumber: 11
             }, this)
           }, void 0, !1, {
             fileName: "app/routes/index.tsx",
-            lineNumber: 46,
+            lineNumber: 54,
             columnNumber: 9
           }, this)
         ]
       }, void 0, !0, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 27,
+        lineNumber: 35,
         columnNumber: 7
       }, this)
     ]
   }, void 0, !0, {
     fileName: "app/routes/index.tsx",
-    lineNumber: 25,
+    lineNumber: 33,
     columnNumber: 5
   }, this);
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "d285dd42", entry: { module: "/build/entry.client-3IUT6VNV.js", imports: ["/build/_shared/chunk-NM2B5XN4.js", "/build/_shared/chunk-YW5IH3FG.js", "/build/_shared/chunk-42Z7WWMI.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-J6NINZYM.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/hello": { id: "routes/hello", parentId: "root", path: "hello", index: void 0, caseSensitive: void 0, module: "/build/routes/hello-42DM7SKU.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-IQODUKJC.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-D285DD42.js" };
+var assets_manifest_default = { version: "e9a26ad4", entry: { module: "/build/entry.client-732NCXVE.js", imports: ["/build/_shared/chunk-PCLGINGW.js", "/build/_shared/chunk-42Z7WWMI.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-M6HCUWNP.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/hello": { id: "routes/hello", parentId: "root", path: "hello", index: void 0, caseSensitive: void 0, module: "/build/routes/hello-42DM7SKU.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-E6O42T2G.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/resources/revalidate": { id: "routes/resources/revalidate", parentId: "root", path: "resources/revalidate", index: void 0, caseSensitive: void 0, module: "/build/routes/resources/revalidate-XZUMHZX6.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/tables": { id: "routes/tables", parentId: "root", path: "tables", index: void 0, caseSensitive: void 0, module: "/build/routes/tables-5BVD7N6F.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-E9A26AD4.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
@@ -10558,6 +14096,22 @@ var assetsBuildDirectory = "public/build", publicPath = "/build/", entry = { mod
     index: void 0,
     caseSensitive: void 0,
     module: root_exports
+  },
+  "routes/resources/revalidate": {
+    id: "routes/resources/revalidate",
+    parentId: "root",
+    path: "resources/revalidate",
+    index: void 0,
+    caseSensitive: void 0,
+    module: revalidate_exports
+  },
+  "routes/tables": {
+    id: "routes/tables",
+    parentId: "root",
+    path: "tables",
+    index: void 0,
+    caseSensitive: void 0,
+    module: tables_exports
   },
   "routes/hello": {
     id: "routes/hello",

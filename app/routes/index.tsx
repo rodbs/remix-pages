@@ -1,9 +1,15 @@
 import { json, LoaderFunction } from '@remix-run/cloudflare'
+import { useLoaderData } from '@remix-run/react'
 
 export const loader: LoaderFunction = async ({ context, request }) => {
   // const session = await context.sessionStorage.get("userId"))
-  console.log('XX', context?.sessionStorage)
-  return null
+  console.log('XX',   context )
+
+   await context.sessionStorage.put("b",'bbbb')
+ // console.log('put',put)
+  const t = await context.sessionStorage.get("b")
+  console.log('a', t)
+  return {data:t}
 
   // const session = await context.sessionStorage.getSession(
   //   request.headers.get("Cookie")
@@ -21,6 +27,8 @@ export const loader: LoaderFunction = async ({ context, request }) => {
 }
 
 export default function Index() {
+  const {data} =useLoaderData()
+  console.log(data)
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
       <h1>Hola</h1>

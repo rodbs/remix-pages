@@ -1,0 +1,58 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\rodri\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @supabase/supabase-js
+
+PATH: 
+  C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Program Files\Eclipse Adoptium\jdk-17.0.2.8-hotspot\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Git\cmd;C:\Program Files\PuTTY\;C:\Program Files\dotnet\;C:\Program Files\nodejs\;c:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;c:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Users\rodri\AppData\Local\Microsoft\WindowsApps;C:\Users\rodri\AppData\Roaming\npm
+
+Yarn version: 
+  1.22.18
+
+Node version: 
+  18.12.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, open 'C:\trials\remix-pages\node_modules\@esbuild-plugins\node-modules-polyfill\node_modules\.bin\esbuild'
+
+npm manifest: 
+  {
+    "private": true,
+    "sideEffects": false,
+    "scripts": {
+      "build": "remix build",
+      "dev:remix": "remix watch",
+      "dev:wrangler": "cross-env NODE_ENV=development wrangler pages dev ./public --kv sessionStorage --persist" ,
+      "dev": "remix build && run-p \"dev:*\"",
+      "start": "cross-env NODE_ENV=production npm run dev:wrangler"
+    },
+    "dependencies": {
+      "@remix-run/cloudflare": "^1.7.6",
+      "@remix-run/cloudflare-pages": "^1.7.6",
+      "@remix-run/react": "^1.7.6",
+      "cross-env": "^7.0.3",
+      "react": "^17.0.2",
+      "react-dom": "^17.0.2"
+    },
+    "devDependencies": {
+      "@cloudflare/workers-types": "^3.18.0",
+      "@remix-run/dev": "^1.7.6",
+      "@remix-run/eslint-config": "^1.7.6",
+      "@types/react": "^17.0.52",
+      "@types/react-dom": "^17.0.18",
+      "eslint": "^8.27.0",
+      "npm-run-all": "^4.1.5",
+      "typescript": "^4.8.4",
+      "wrangler": "^2.4.4"
+    },
+    "engines": {
+      "node": ">=16.13"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
