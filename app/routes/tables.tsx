@@ -21,7 +21,10 @@ export const loader: LoaderFunction = async ({ context, request }) => {
     const supabase = createClient(context.SUPABASE_URL, context.SUPABASE_ANON_KEY)
     const { data } = await supabase.from('table').select('*')
     res = data
-    const resWriteKV = await writeTo(context.TABLES, '/tables', data)
+    //const resWriteKV = await writeTo(context.TABLES, '/tables', data)
+    const resProm = await Promise.all(
+      data?.map(async (el) => await writeTo(context.TABLES, `/tables/${el.id}`, el))
+    )
   }
   // const { data } = await supabase.from('table').select('*')
   // const res = await writeTo(context.TABLES, '/tables', data)
@@ -64,7 +67,7 @@ export const action: ActionFunction = async ({ request, context }) => {
 
 export default function Index() {
   const { tables } = useLoaderData()
-  console.log(tables)
+  // console.log(tables)
   return (
     <div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.4' }}>
       <h1>Tables</h1>
@@ -74,6 +77,13 @@ export default function Index() {
         <input type="text" name="value" />
         <button type="submit">Create</button>
       </Form>
+      <div>
+        <ul>
+          {tables.map((el) => (
+            <li key={el.id}>{el.id}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   )
 }
