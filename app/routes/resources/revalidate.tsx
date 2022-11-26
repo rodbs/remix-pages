@@ -5,12 +5,13 @@ import { writeTo } from '~/lib/cache'
 export const action: ActionFunction = async ({ request, context }) => {
   // const { type, record, old_record } = JSON.parse(request.body)
   // // const supabase = createClient(context.SUPABASE_URL, context.SUPABASE_ANON_KEY)
-  console.log('request  ', request)
+  console.log('request payload ', request?.payload)
+  console.log('request bosy', request?.body)
   switch (request.method) {
     case 'POST': {
       /* handle "POST" */
-      //const payload = await request.json()
-      console.log('payload', payload)
+      const payload = await request.json()
+      //console.log('payload', payload)
       const { type, record, old_record } = payload
 
       if (type === 'INSERT' || type === 'UPDATE') {
