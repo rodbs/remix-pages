@@ -8,3 +8,12 @@ kv_namespaces = [
   { binding = "TABLES", id = "ee29828c18f94483b241b977e15d1df1" , preview_id = "300c38287c6e43afa833508b556fdc25" }
 ]
   
+
+[durable_objects]
+bindings = [
+  { name = "LIST", class_name = "List" } # Binding to our DurableObjectExample class
+]
+
+[[migrations]]
+tag = "v1" # Should be unique for each entry
+new_classes = ["List"]

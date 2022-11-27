@@ -1067,9 +1067,9 @@ var require_react_development = __commonJS({
             case REACT_BLOCK_TYPE:
               return getComponentName(type._render);
             case REACT_LAZY_TYPE: {
-              var lazyComponent = type, payload2 = lazyComponent._payload, init2 = lazyComponent._init;
+              var lazyComponent = type, payload = lazyComponent._payload, init2 = lazyComponent._init;
               try {
-                return getComponentName(init2(payload2));
+                return getComponentName(init2(payload));
               } catch {
                 return null;
               }
@@ -1374,37 +1374,37 @@ var require_react_development = __commonJS({
         return context._currentRenderer = null, context._currentRenderer2 = null, context;
       }
       var Uninitialized = -1, Pending = 0, Resolved = 1, Rejected = 2;
-      function lazyInitializer(payload2) {
-        if (payload2._status === Uninitialized) {
-          var ctor = payload2._result, thenable = ctor(), pending = payload2;
+      function lazyInitializer(payload) {
+        if (payload._status === Uninitialized) {
+          var ctor = payload._result, thenable = ctor(), pending = payload;
           pending._status = Pending, pending._result = thenable, thenable.then(function(moduleObject) {
-            if (payload2._status === Pending) {
+            if (payload._status === Pending) {
               var defaultExport = moduleObject.default;
               defaultExport === void 0 && error(`lazy: Expected the result of a dynamic import() call. Instead received: %s
 
 Your code should look like: 
   const MyComponent = lazy(() => import('./MyComponent'))`, moduleObject);
-              var resolved = payload2;
+              var resolved = payload;
               resolved._status = Resolved, resolved._result = defaultExport;
             }
           }, function(error2) {
-            if (payload2._status === Pending) {
-              var rejected = payload2;
+            if (payload._status === Pending) {
+              var rejected = payload;
               rejected._status = Rejected, rejected._result = error2;
             }
           });
         }
-        if (payload2._status === Resolved)
-          return payload2._result;
-        throw payload2._result;
+        if (payload._status === Resolved)
+          return payload._result;
+        throw payload._result;
       }
       function lazy(ctor) {
-        var payload2 = {
+        var payload = {
           _status: -1,
           _result: ctor
         }, lazyType = {
           $$typeof: REACT_LAZY_TYPE,
-          _payload: payload2,
+          _payload: payload,
           _init: lazyInitializer
         };
         {
@@ -1722,9 +1722,9 @@ Did you call array.map(useContext)? Calling Hooks inside a loop is not supported
             case REACT_BLOCK_TYPE:
               return describeFunctionComponentFrame(type._render);
             case REACT_LAZY_TYPE: {
-              var lazyComponent = type, payload2 = lazyComponent._payload, init2 = lazyComponent._init;
+              var lazyComponent = type, payload = lazyComponent._payload, init2 = lazyComponent._init;
               try {
-                return describeUnknownElementTypeFrameInDEV(init2(payload2), source, ownerFn);
+                return describeUnknownElementTypeFrameInDEV(init2(payload), source, ownerFn);
               } catch {
               }
             }
@@ -5587,9 +5587,9 @@ var require_react_dom_server_node_development = __commonJS({
             case REACT_BLOCK_TYPE:
               return getComponentName(type._render);
             case REACT_LAZY_TYPE: {
-              var lazyComponent = type, payload2 = lazyComponent._payload, init2 = lazyComponent._init;
+              var lazyComponent = type, payload = lazyComponent._payload, init2 = lazyComponent._init;
               try {
-                return getComponentName(init2(payload2));
+                return getComponentName(init2(payload));
               } catch {
                 return null;
               }
@@ -5778,9 +5778,9 @@ var require_react_dom_server_node_development = __commonJS({
             case REACT_BLOCK_TYPE:
               return describeFunctionComponentFrame(type._render);
             case REACT_LAZY_TYPE: {
-              var lazyComponent = type, payload2 = lazyComponent._payload, init2 = lazyComponent._init;
+              var lazyComponent = type, payload = lazyComponent._payload, init2 = lazyComponent._init;
               try {
-                return describeUnknownElementTypeFrameInDEV(init2(payload2), source, ownerFn);
+                return describeUnknownElementTypeFrameInDEV(init2(payload), source, ownerFn);
               } catch {
               }
             }
@@ -7687,7 +7687,7 @@ Add a <Suspense fallback=...> component higher in the tree to provide a loading 
                 case REACT_FUNDAMENTAL_TYPE:
                   throw Error("ReactDOMServer does not yet support the fundamental API.");
                 case REACT_LAZY_TYPE: {
-                  var _element2 = nextChild, lazyComponent = nextChild.type, payload2 = lazyComponent._payload, init2 = lazyComponent._init, result = init2(payload2), _nextChildren10 = [React5.createElement(result, _assign({
+                  var _element2 = nextChild, lazyComponent = nextChild.type, payload = lazyComponent._payload, init2 = lazyComponent._init, result = init2(payload), _nextChildren10 = [React5.createElement(result, _assign({
                     ref: _element2.ref
                   }, _element2.props))], _frame10 = {
                     type: null,
@@ -7949,9 +7949,9 @@ var require_react_jsx_dev_runtime_development = __commonJS({
             case REACT_BLOCK_TYPE:
               return getComponentName(type._render);
             case REACT_LAZY_TYPE: {
-              var lazyComponent = type, payload2 = lazyComponent._payload, init2 = lazyComponent._init;
+              var lazyComponent = type, payload = lazyComponent._payload, init2 = lazyComponent._init;
               try {
-                return getComponentName(init2(payload2));
+                return getComponentName(init2(payload));
               } catch {
                 return null;
               }
@@ -8140,9 +8140,9 @@ var require_react_jsx_dev_runtime_development = __commonJS({
             case REACT_BLOCK_TYPE:
               return describeFunctionComponentFrame(type._render);
             case REACT_LAZY_TYPE: {
-              var lazyComponent = type, payload2 = lazyComponent._payload, init2 = lazyComponent._init;
+              var lazyComponent = type, payload = lazyComponent._payload, init2 = lazyComponent._init;
               try {
-                return describeUnknownElementTypeFrameInDEV(init2(payload2), source, ownerFn);
+                return describeUnknownElementTypeFrameInDEV(init2(payload), source, ownerFn);
               } catch {
               }
             }
@@ -10889,16 +10889,16 @@ var import_cloudflare2 = __toESM(require_dist());
 var readFrom = async (cache, path) => {
   let data = await cache.get(path);
   return JSON.parse(data);
-}, writeTo = async (cache, path, data) => {
+};
+var writeTo = async (cache, path, data) => {
   await cache.put(path, JSON.stringify(data));
 };
 
 // app/routes/resources/revalidate.tsx
 var action = async ({ request, context }) => {
-  switch (console.log("request  ", request), request.method) {
+  switch (console.log("request payload ", request == null ? void 0 : request.payload), console.log("request bosy", request == null ? void 0 : request.body), request.method) {
     case "POST": {
-      console.log("payload", payload);
-      let { type, record, old_record } = payload;
+      let payload = await request.json(), { type, record, old_record } = payload;
       (type === "INSERT" || type === "UPDATE") && await writeTo(context.TABLES, `/tables/${record.id}`, record), type === "DELETE" && await context.TABLES.delete(`/tables/${old_record.id}`);
     }
     case "PUT":
@@ -11425,8 +11425,8 @@ var Serializer = class {
 
 // node_modules/@supabase/realtime-js/dist/module/lib/push.js
 var Push = class {
-  constructor(channel, event, payload2 = {}, timeout = DEFAULT_TIMEOUT) {
-    this.channel = channel, this.event = event, this.payload = payload2, this.timeout = timeout, this.sent = !1, this.timeoutTimer = void 0, this.ref = "", this.receivedResp = null, this.recHooks = [], this.refEvent = null, this.rateLimited = !1;
+  constructor(channel, event, payload = {}, timeout = DEFAULT_TIMEOUT) {
+    this.channel = channel, this.event = event, this.payload = payload, this.timeout = timeout, this.sent = !1, this.timeoutTimer = void 0, this.ref = "", this.receivedResp = null, this.recHooks = [], this.refEvent = null, this.rateLimited = !1;
   }
   resend(timeout) {
     this.timeout = timeout, this._cancelRefEvent(), this.ref = "", this.refEvent = null, this.receivedResp = null, this.sent = !1, this.send();
@@ -11442,8 +11442,8 @@ var Push = class {
       join_ref: this.channel._joinRef()
     }) === "rate limited" && (this.rateLimited = !0);
   }
-  updatePayload(payload2) {
-    this.payload = Object.assign(Object.assign({}, this.payload), payload2);
+  updatePayload(payload) {
+    this.payload = Object.assign(Object.assign({}, this.payload), payload);
   }
   receive(status, callback) {
     var _a;
@@ -11453,8 +11453,8 @@ var Push = class {
     if (this.timeoutTimer)
       return;
     this.ref = this.channel.socket._makeRef(), this.refEvent = this.channel._replyEventName(this.ref);
-    let callback = (payload2) => {
-      this._cancelRefEvent(), this._cancelTimeout(), this.receivedResp = payload2, this._matchReceive(payload2);
+    let callback = (payload) => {
+      this._cancelRefEvent(), this._cancelTimeout(), this.receivedResp = payload, this._matchReceive(payload);
     };
     this.channel._on(this.refEvent, {}, callback), this.timeoutTimer = setTimeout(() => {
       this.trigger("timeout", {});
@@ -11729,8 +11729,8 @@ var RealtimeChannel = class {
       this._isLeaving() || this._isClosed() || (this.socket.log("channel", `error ${this.topic}`, reason), this.state = CHANNEL_STATES.errored, this.rejoinTimer.scheduleTimeout());
     }), this.joinPush.receive("timeout", () => {
       !this._isJoining() || (this.socket.log("channel", `timeout ${this.topic}`, this.joinPush.timeout), this.state = CHANNEL_STATES.errored, this.rejoinTimer.scheduleTimeout());
-    }), this._on(CHANNEL_EVENTS.reply, {}, (payload2, ref) => {
-      this._trigger(this._replyEventName(ref), payload2);
+    }), this._on(CHANNEL_EVENTS.reply, {}, (payload, ref) => {
+      this._trigger(this._replyEventName(ref), payload);
     }), this.presence = new RealtimePresence(this);
   }
   subscribe(callback, timeout = this.timeout) {
@@ -11775,12 +11775,12 @@ var RealtimeChannel = class {
   presenceState() {
     return this.presence.state;
   }
-  track(payload2, opts = {}) {
+  track(payload, opts = {}) {
     return __awaiter4(this, void 0, void 0, function* () {
       return yield this.send({
         type: "presence",
         event: "track",
-        payload: payload2
+        payload
       }, opts.timeout || this.timeout);
     });
   }
@@ -11795,15 +11795,15 @@ var RealtimeChannel = class {
   on(type, filter, callback) {
     return this._on(type, filter, callback);
   }
-  send(payload2, opts = {}) {
+  send(payload, opts = {}) {
     return new Promise((resolve) => {
       var _a, _b, _c;
-      let push = this._push(payload2.type, payload2, opts.timeout || this.timeout);
-      push.rateLimited && resolve("rate limited"), payload2.type === "broadcast" && !(!((_c = (_b = (_a = this.params) === null || _a === void 0 ? void 0 : _a.config) === null || _b === void 0 ? void 0 : _b.broadcast) === null || _c === void 0) && _c.ack) && resolve("ok"), push.receive("ok", () => resolve("ok")), push.receive("timeout", () => resolve("timed out"));
+      let push = this._push(payload.type, payload, opts.timeout || this.timeout);
+      push.rateLimited && resolve("rate limited"), payload.type === "broadcast" && !(!((_c = (_b = (_a = this.params) === null || _a === void 0 ? void 0 : _a.config) === null || _b === void 0 ? void 0 : _b.broadcast) === null || _c === void 0) && _c.ack) && resolve("ok"), push.receive("ok", () => resolve("ok")), push.receive("timeout", () => resolve("timed out"));
     });
   }
-  updateJoinPayload(payload2) {
-    this.joinPush.updatePayload(payload2);
+  updateJoinPayload(payload) {
+    this.joinPush.updatePayload(payload);
   }
   unsubscribe(timeout = this.timeout) {
     this.state = CHANNEL_STATES.leaving;
@@ -11821,14 +11821,14 @@ var RealtimeChannel = class {
       }), leavePush.send(), this._canPush() || leavePush.trigger("ok", {});
     });
   }
-  _push(event, payload2, timeout = this.timeout) {
+  _push(event, payload, timeout = this.timeout) {
     if (!this.joinedOnce)
       throw `tried to push '${event}' to '${this.topic}' before joining. Use channel.subscribe() before pushing events`;
-    let pushEvent = new Push(this, event, payload2, timeout);
+    let pushEvent = new Push(this, event, payload, timeout);
     return this._canPush() ? pushEvent.send() : (pushEvent.startTimeout(), this.pushBuffer.push(pushEvent)), pushEvent;
   }
-  _onMessage(_event, payload2, _ref) {
-    return payload2;
+  _onMessage(_event, payload, _ref) {
+    return payload;
   }
   _isMember(topic) {
     return this.topic === topic;
@@ -11836,13 +11836,13 @@ var RealtimeChannel = class {
   _joinRef() {
     return this.joinPush.ref;
   }
-  _trigger(type, payload2, ref) {
+  _trigger(type, payload, ref) {
     var _a, _b;
     let typeLower = type.toLocaleLowerCase(), { close, error, leave, join } = CHANNEL_EVENTS;
     if (ref && [close, error, leave, join].indexOf(typeLower) >= 0 && ref !== this._joinRef())
       return;
-    let handledPayload = this._onMessage(typeLower, payload2, ref);
-    if (payload2 && !handledPayload)
+    let handledPayload = this._onMessage(typeLower, payload, ref);
+    if (payload && !handledPayload)
       throw "channel onMessage callbacks must return the payload, modified or unmodified";
     ["insert", "update", "delete"].includes(typeLower) ? (_a = this.bindings.postgres_changes) === null || _a === void 0 || _a.filter((bind) => {
       var _a2, _b2, _c;
@@ -11852,10 +11852,10 @@ var RealtimeChannel = class {
       if (["broadcast", "presence", "postgres_changes"].includes(typeLower))
         if ("id" in bind) {
           let bindId = bind.id, bindEvent = (_a2 = bind.filter) === null || _a2 === void 0 ? void 0 : _a2.event;
-          return bindId && ((_b2 = payload2.ids) === null || _b2 === void 0 ? void 0 : _b2.includes(bindId)) && (bindEvent === "*" || (bindEvent == null ? void 0 : bindEvent.toLocaleLowerCase()) === ((_c = payload2.data) === null || _c === void 0 ? void 0 : _c.type.toLocaleLowerCase()));
+          return bindId && ((_b2 = payload.ids) === null || _b2 === void 0 ? void 0 : _b2.includes(bindId)) && (bindEvent === "*" || (bindEvent == null ? void 0 : bindEvent.toLocaleLowerCase()) === ((_c = payload.data) === null || _c === void 0 ? void 0 : _c.type.toLocaleLowerCase()));
         } else {
           let bindEvent = (_e = (_d = bind == null ? void 0 : bind.filter) === null || _d === void 0 ? void 0 : _d.event) === null || _e === void 0 ? void 0 : _e.toLocaleLowerCase();
-          return bindEvent === "*" || bindEvent === ((_f = payload2 == null ? void 0 : payload2.event) === null || _f === void 0 ? void 0 : _f.toLocaleLowerCase());
+          return bindEvent === "*" || bindEvent === ((_f = payload == null ? void 0 : payload.event) === null || _f === void 0 ? void 0 : _f.toLocaleLowerCase());
         }
       else
         return bind.type.toLocaleLowerCase() === typeLower;
@@ -11928,12 +11928,12 @@ var RealtimeChannel = class {
   _rejoin(timeout = this.timeout) {
     this._isLeaving() || (this.socket._leaveOpenTopic(this.topic), this.state = CHANNEL_STATES.joining, this.joinPush.resend(timeout));
   }
-  _getPayloadRecords(payload2) {
+  _getPayloadRecords(payload) {
     let records = {
       new: {},
       old: {}
     };
-    return (payload2.type === "INSERT" || payload2.type === "UPDATE") && (records.new = convertChangeData(payload2.columns, payload2.record)), (payload2.type === "UPDATE" || payload2.type === "DELETE") && (records.old = convertChangeData(payload2.columns, payload2.old_record)), records;
+    return (payload.type === "INSERT" || payload.type === "UPDATE") && (records.new = convertChangeData(payload.columns, payload.record)), (payload.type === "UPDATE" || payload.type === "DELETE") && (records.old = convertChangeData(payload.columns, payload.old_record)), records;
   }
 };
 
@@ -11975,7 +11975,7 @@ var __awaiter5 = function(thisArg, _arguments, P, generator) {
       message: []
     }, this.eventsPerSecondLimitMs = 100, this.inThrottle = !1, this.endPoint = `${endPoint}/${TRANSPORTS.websocket}`, options != null && options.params && (this.params = options.params), options != null && options.headers && (this.headers = Object.assign(Object.assign({}, this.headers), options.headers)), options != null && options.timeout && (this.timeout = options.timeout), options != null && options.logger && (this.logger = options.logger), options != null && options.transport && (this.transport = options.transport), options != null && options.heartbeatIntervalMs && (this.heartbeatIntervalMs = options.heartbeatIntervalMs);
     let eventsPerSecond = (_a = options == null ? void 0 : options.params) === null || _a === void 0 ? void 0 : _a.eventsPerSecond;
-    eventsPerSecond && (this.eventsPerSecondLimitMs = Math.floor(1e3 / eventsPerSecond)), this.reconnectAfterMs = options != null && options.reconnectAfterMs ? options.reconnectAfterMs : (tries) => [1e3, 2e3, 5e3, 1e4][tries - 1] || 1e4, this.encode = options != null && options.encode ? options.encode : (payload2, callback) => callback(JSON.stringify(payload2)), this.decode = options != null && options.decode ? options.decode : this.serializer.decode.bind(this.serializer), this.reconnectTimer = new Timer(() => __awaiter5(this, void 0, void 0, function* () {
+    eventsPerSecond && (this.eventsPerSecondLimitMs = Math.floor(1e3 / eventsPerSecond)), this.reconnectAfterMs = options != null && options.reconnectAfterMs ? options.reconnectAfterMs : (tries) => [1e3, 2e3, 5e3, 1e4][tries - 1] || 1e4, this.encode = options != null && options.encode ? options.encode : (payload, callback) => callback(JSON.stringify(payload)), this.decode = options != null && options.decode ? options.decode : this.serializer.decode.bind(this.serializer), this.reconnectTimer = new Timer(() => __awaiter5(this, void 0, void 0, function* () {
       this.disconnect(), this.connect();
     }), this.reconnectAfterMs);
   }
@@ -12019,13 +12019,13 @@ var __awaiter5 = function(thisArg, _arguments, P, generator) {
     return this.channels.push(chan), chan;
   }
   push(data) {
-    let { topic, event, payload: payload2, ref } = data, callback = () => {
+    let { topic, event, payload, ref } = data, callback = () => {
       this.encode(data, (result) => {
         var _a;
         (_a = this.conn) === null || _a === void 0 || _a.send(result);
       });
     };
-    if (this.log("push", `${topic} ${event} (${ref})`, payload2), this.isConnected())
+    if (this.log("push", `${topic} ${event} (${ref})`, payload), this.isConnected())
       if (["broadcast", "presence", "postgres_changes"].includes(event)) {
         if (this._throttle(callback)())
           return "rate limited";
@@ -12055,8 +12055,8 @@ var __awaiter5 = function(thisArg, _arguments, P, generator) {
   }
   _onConnMessage(rawMessage) {
     this.decode(rawMessage.data, (msg) => {
-      let { topic, event, payload: payload2, ref } = msg;
-      (ref && ref === this.pendingHeartbeatRef || event === (payload2 == null ? void 0 : payload2.type)) && (this.pendingHeartbeatRef = null), this.log("receive", `${payload2.status || ""} ${topic} ${event} ${ref && "(" + ref + ")" || ""}`, payload2), this.channels.filter((channel) => channel._isMember(topic)).forEach((channel) => channel._trigger(event, payload2, ref)), this.stateChangeCallbacks.message.forEach((callback) => callback(msg));
+      let { topic, event, payload, ref } = msg;
+      (ref && ref === this.pendingHeartbeatRef || event === (payload == null ? void 0 : payload.type)) && (this.pendingHeartbeatRef = null), this.log("receive", `${payload.status || ""} ${topic} ${event} ${ref && "(" + ref + ")" || ""}`, payload), this.channels.filter((channel) => channel._isMember(topic)).forEach((channel) => channel._trigger(event, payload, ref)), this.stateChangeCallbacks.message.forEach((callback) => callback(msg));
     });
   }
   _onConnOpen() {
@@ -13395,8 +13395,8 @@ var DEFAULT_OPTIONS = {
       try {
         let timeNow = Date.now() / 1e3, expiresAt2 = timeNow, hasExpired = !0, session = null;
         if (currentSession.access_token && currentSession.access_token.split(".")[1]) {
-          let payload2 = this._decodeJWT(currentSession.access_token);
-          payload2.exp && (expiresAt2 = payload2.exp, hasExpired = expiresAt2 <= timeNow);
+          let payload = this._decodeJWT(currentSession.access_token);
+          payload.exp && (expiresAt2 = payload.exp, hasExpired = expiresAt2 <= timeNow);
         }
         if (hasExpired) {
           if (!currentSession.refresh_token)
@@ -13769,11 +13769,11 @@ var DEFAULT_OPTIONS = {
           data: { currentLevel: null, nextLevel: null, currentAuthenticationMethods: [] },
           error: null
         };
-      let payload2 = this._decodeJWT(session.access_token), currentLevel = null;
-      payload2.aal && (currentLevel = payload2.aal);
+      let payload = this._decodeJWT(session.access_token), currentLevel = null;
+      payload.aal && (currentLevel = payload.aal);
       let nextLevel = currentLevel;
       ((_b = (_a = session.user.factors) === null || _a === void 0 ? void 0 : _a.filter((factor) => factor.status === "verified")) !== null && _b !== void 0 ? _b : []).length > 0 && (nextLevel = "aal2");
-      let currentAuthenticationMethods = payload2.amr || [];
+      let currentAuthenticationMethods = payload.amr || [];
       return { data: { currentLevel, nextLevel, currentAuthenticationMethods }, error: null };
     });
   }
@@ -13915,9 +13915,9 @@ var createClient = (supabaseUrl, supabaseKey, options) => new SupabaseClient(sup
 // app/routes/tables.tsx
 var import_jsx_dev_runtime = __toESM(require_jsx_dev_runtime()), loader = async ({ context, request }) => {
   console.log("CONTEXT", context);
-  let aa = await readFrom(context.TABLES, "/tables/gram2-tbl1");
-  console.log("aAA", aa);
-  let res, cachedTables = await readFrom(context.TABLES, "/tables");
+  let res, { keys: keys2 } = await context.TABLES.list();
+  console.log("keys", keys2);
+  let cachedTables = await readFrom(context.TABLES, "/tables/%");
   if (cachedTables)
     console.log("CACHE"), res = cachedTables;
   else {
@@ -13944,7 +13944,7 @@ function Index() {
         children: "Tables"
       }, void 0, !1, {
         fileName: "app/routes/tables.tsx",
-        lineNumber: 73,
+        lineNumber: 77,
         columnNumber: 7
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Form, {
@@ -13955,7 +13955,7 @@ function Index() {
             name: "id"
           }, void 0, !1, {
             fileName: "app/routes/tables.tsx",
-            lineNumber: 76,
+            lineNumber: 80,
             columnNumber: 9
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("input", {
@@ -13963,7 +13963,7 @@ function Index() {
             name: "value"
           }, void 0, !1, {
             fileName: "app/routes/tables.tsx",
-            lineNumber: 77,
+            lineNumber: 81,
             columnNumber: 9
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", {
@@ -13971,13 +13971,13 @@ function Index() {
             children: "Create"
           }, void 0, !1, {
             fileName: "app/routes/tables.tsx",
-            lineNumber: 78,
+            lineNumber: 82,
             columnNumber: 9
           }, this)
         ]
       }, void 0, !0, {
         fileName: "app/routes/tables.tsx",
-        lineNumber: 75,
+        lineNumber: 79,
         columnNumber: 7
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
@@ -13986,23 +13986,23 @@ function Index() {
             children: el.id
           }, el.id, !1, {
             fileName: "app/routes/tables.tsx",
-            lineNumber: 83,
+            lineNumber: 87,
             columnNumber: 13
           }, this))
         }, void 0, !1, {
           fileName: "app/routes/tables.tsx",
-          lineNumber: 81,
+          lineNumber: 85,
           columnNumber: 9
         }, this)
       }, void 0, !1, {
         fileName: "app/routes/tables.tsx",
-        lineNumber: 80,
+        lineNumber: 84,
         columnNumber: 7
       }, this)
     ]
   }, void 0, !0, {
     fileName: "app/routes/tables.tsx",
-    lineNumber: 72,
+    lineNumber: 76,
     columnNumber: 5
   }, this);
 }
@@ -14105,7 +14105,7 @@ function Index2() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "eaaa54b1", entry: { module: "/build/entry.client-732NCXVE.js", imports: ["/build/_shared/chunk-PCLGINGW.js", "/build/_shared/chunk-42Z7WWMI.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-M6HCUWNP.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/hello": { id: "routes/hello", parentId: "root", path: "hello", index: void 0, caseSensitive: void 0, module: "/build/routes/hello-42DM7SKU.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-E6O42T2G.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/resources/revalidate": { id: "routes/resources/revalidate", parentId: "root", path: "resources/revalidate", index: void 0, caseSensitive: void 0, module: "/build/routes/resources/revalidate-XZUMHZX6.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/tables": { id: "routes/tables", parentId: "root", path: "tables", index: void 0, caseSensitive: void 0, module: "/build/routes/tables-7FHSNXXX.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-EAAA54B1.js" };
+var assets_manifest_default = { version: "222dd90e", entry: { module: "/build/entry.client-732NCXVE.js", imports: ["/build/_shared/chunk-PCLGINGW.js", "/build/_shared/chunk-42Z7WWMI.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-M6HCUWNP.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/hello": { id: "routes/hello", parentId: "root", path: "hello", index: void 0, caseSensitive: void 0, module: "/build/routes/hello-42DM7SKU.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-E6O42T2G.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/resources/revalidate": { id: "routes/resources/revalidate", parentId: "root", path: "resources/revalidate", index: void 0, caseSensitive: void 0, module: "/build/routes/resources/revalidate-XZUMHZX6.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/tables": { id: "routes/tables", parentId: "root", path: "tables", index: void 0, caseSensitive: void 0, module: "/build/routes/tables-WICMYEOC.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-222DD90E.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

@@ -1,7 +1,7 @@
 import { json, LoaderFunction, ActionFunction } from '@remix-run/cloudflare'
 import { Form, useLoaderData, useActionData } from '@remix-run/react'
 import supabase from '~/lib/supabase'
-import { readFrom, writeTo } from '~/lib/cache'
+import { readFrom, writeTo, listFrom } from '~/lib/cache'
 import { createClient } from '@supabase/supabase-js'
 
 export const loader: LoaderFunction = async ({ context, request }) => {
@@ -9,10 +9,14 @@ export const loader: LoaderFunction = async ({ context, request }) => {
   console.log('CONTEXT', context)
   // const aa = await writeTo(context.TABLES, 'tables/aa', { id: 'aa' })
   // console.log('aa', aa)
-  const aa = await readFrom(context.TABLES, '/tables/gram2-tbl1')
-  console.log('aAA', aa)
+  // const aa = await readFrom(context.TABLES, '/tables/gram2-tbl1')
+  // console.log('aAA', aa)
   let res
-  const cachedTables = await readFrom(context.TABLES, '/tables')
+
+  const { keys } = await context.TABLES.list() // (await listFrom(context.TABLES)) || {}
+  console.log('keys', keys)
+
+  const cachedTables = await readFrom(context.TABLES, '/tables/%')
   if (cachedTables) {
     console.log('CACHE')
     res = cachedTables
