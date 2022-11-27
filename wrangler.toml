@@ -7,13 +7,15 @@ kv_namespaces = [
   {binding = "sessionStorage", id = "d16f42d5fcfc4be4b7b8ddd46cb92dc1", preview_id="ba278d735fac4d64929e5b828159bb16"},
   { binding = "TABLES", id = "ee29828c18f94483b241b977e15d1df1" , preview_id = "300c38287c6e43afa833508b556fdc25" }
 ]
-  
+
 
 [durable_objects]
-bindings = [
-  { name = "LIST", class_name = "List" } # Binding to our DurableObjectExample class
-]
+bindings = [{ name = "LIST", class_name = "List", script_name = '_worker' }]  
 
+
+ 
+
+ 
 [[migrations]]
 tag = "v1" # Should be unique for each entry
 new_classes = ["List"]
