@@ -1,4 +1,4 @@
-export class List {
+export class Counter {
   constructor(public state: any, public env: any) {}
 
   async fetch(request: Request) {

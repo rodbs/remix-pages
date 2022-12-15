@@ -10,7 +10,7 @@ kv_namespaces = [
 
 
 [durable_objects]
-bindings = [{ name = "LIST", class_name = "List", script_name = '_worker' }]  
+bindings = [{ name = "COUNTER", class_name = "Counter"}]  
 
 
  
